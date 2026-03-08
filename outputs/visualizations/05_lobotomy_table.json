@@ -1,0 +1,23 @@
+[
+  {
+    "sample_idx": 0,
+    "prompt": "Question: Janet\u2019s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes mu...",
+    "baseline_output": "?\n\n**The Story of the Story of the Story of the Story of the Story of the Story of the Story of the Story of the Story of the Story of the Story of the Story of the Story of the Story of the Story of ",
+    "ablated_output": ".\n\nThe first step of the project is to create a new version of the project. The first step is to create a new version of the project. The second step is to create a new version of the project. The thi",
+    "ground_truth": "18"
+  },
+  {
+    "sample_idx": 1,
+    "prompt": "Question: A robe takes 2 bolts of blue fiber and half that much white fiber.  How many bolts in tota...",
+    "baseline_output": ".\n\n**Figure 1.1** The first step in the process of designing a new model of the model.\n\n**Figure 1.2** The second step in the process of designing a new model of the model.\n\n**Figure 1.3** The third s",
+    "ablated_output": ".\n\nThe first-generation, high-speed, and high-speed, high-speed, high-speed, high-speed, high-speed, high-speed, high-speed, high-speed, high-speed, high-speed, high-speed, high-speed, high-speed, hig",
+    "ground_truth": "3"
+  },
+  {
+    "sample_idx": 2,
+    "prompt": "Question: Josh decides to try flipping a house.  He buys a house for $80,000 and then puts in $50,00...",
+    "baseline_output": "?\n\n**The most important question is how to solve the problem of solving the problem of solving the problem of solving the problem of solving the problem of solving the problem of solving the problem o",
+    "ablated_output": ".\n\nThe following steps:\n\n1.  \n\n2.  \n\n3.  \n\n4.  \n\n5.  \n\n6.  \n\n7.  \n\n8.  \n\n9.  \n\n10.  \n\n11.  \n\n12.  \n\n13.  \n\n14.\n\n15.\n\n16.\n\n17.\n\n18.\n\n19.\n\n20.\n\n21.\n\n22.\n\n23.\n\n24.\n\n25.\n\n26.\n\n27.\n\n28.\n\n29.\n\n30.\n\n31.\n\n32.",
+    "ground_truth": "70000"
+  }
+]
