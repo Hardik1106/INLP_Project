@@ -1,0 +1,1233 @@
+Requirement already satisfied: sympy in c:\iiit-h\sem6\inlp\project\venv\lib\site-packages (from torch>=1.13->torchopt) (1.14.0)
+Requirement already satisfied: networkx in c:\iiit-h\sem6\inlp\project\venv\lib\site-packages (from torch>=1.13->torchopt) (3.4.2)
+Requirement already satisfied: jinja2 in c:\iiit-h\sem6\inlp\project\venv\lib\site-packages (from torch>=1.13->torchopt) (3.1.6)
+Requirement already satisfied: fsspec in c:\iiit-h\sem6\inlp\project\venv\lib\site-packages (from torch>=1.13->torchopt) (2026.2.0)
+Requirement already satisfied: MarkupSafe>=2.0 in c:\iiit-h\sem6\inlp\project\venv\lib\site-packages (from jinja2->torch>=1.13->torchopt) (3.0.3)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in c:\iiit-h\sem6\inlp\project\venv\lib\site-packages (from sympy->torch>=1.13->torchopt) (1.3.0)
+Downloading torchopt-0.7.3-py3-none-any.whl (168 kB)
+Installing collected packages: torchopt
+Successfully installed torchopt-0.7.3
+(venv) PS C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness> python run_70m_pipeline.py --phase verify 2>&1
+=== Verification ===
+[OK] Device: privateuseone:0
+python : W0307 03:35:20.025000 4252 
+torch\distributed\elastic\multiprocessing\redirects.py:28] NOTE: Redirects are currently    
+not supported in Windows or MacOs.
+At line:1 char:1
++ python run_70m_pipeline.py --phase verify 2>&1
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (W0307 03:35:20....ndows or MacOs.:String) [],  
+    RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+[OK] torchopt 0.7.3
+Traceback (most recent call last):
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\run_70m_pipeline.py", line 316,    
+in <module>
+    phase_verify()
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\run_70m_pipeline.py", line 275,    
+in phase_verify
+    from autoencoders.sae_ensemble import FunctionalTiedSAE
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\autoencoders\sae_ens 
+emble.py", line 8, in <module>
+    from autoencoders.learned_dict import (LearnedDict, ReverseSAE, TiedSAE,
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\autoencoders\learned 
+_dict.py", line 6, in <module>
+    from torchtyping import TensorType
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\torchtyping\__init__.py", line   
+10, in <module>
+    from .tensor_type import TensorType
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\torchtyping\tensor_type.py", 
+line 37, in <module>
+    class TensorTypeMixin(metaclass=_TensorTypeMeta):
+RuntimeError: Cannot subclass _TensorBase directly
+(venv) PS C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness> pip install torchtyping --upgrade 2>&1 | Select-Object -Last 5
+      Successfully uninstalled torchtyping-0.1.4
+
+pip : ERROR: pip's dependency resolver does not currently take into account all the
+packages that are installed. This behaviour is the source of the following dependency       
+conflicts.
+At line:1 char:1
++ pip install torchtyping --upgrade 2>&1 | Select-Object -Last 5
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (ERROR: pip's de...ency conflicts.:String) [],  
+    RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+transformer-lens 0.0.0 requires typeguard<4.0.0,>=3.0.2, but you have typeguard 2.13.3      
+which is incompatible.
+Successfully installed torchtyping-0.1.5 typeguard-2.13.3
+(venv) PS C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness> python run_70m_pipeline.py --phase verify 2>&1
+=== Verification ===
+[OK] Device: privateuseone:0
+python : W0307 03:35:44.855000 53636 
+torch\distributed\elastic\multiprocessing\redirects.py:28] NOTE: Redirects are currently    
+not supported in Windows or MacOs.
+At line:1 char:1
++ python run_70m_pipeline.py --phase verify 2>&1
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (W0307 03:35:44....ndows or MacOs.:String) [],  
+    RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+[OK] torchopt 0.7.3
+[OK] FunctionalTiedSAE.init has bias_decay buffer
+[--] NoCoT acts not found at C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\nocot_acts
+[--] CoT acts not found at C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\cot_acts
+[--] nocot r4 SAE not found
+[--] cot r4 SAE not found
+[--] nocot r8 SAE not found
+[--] cot r8 SAE not found
+=== Done ===
+(venv) PS C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness> python run_70m_pipeline.py --phase collect 2>&1
+Loading EleutherAI/pythia-70m on privateuseone:0 with dtype=torch.float32
+python : 
+At line:1 char:1
++ python run_70m_pipeline.py --phase collect 2>&1
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+Downloading config.json:   0%|          | 0.00/567 [00:00<?, ?B/s]
+Downloading config.json: 100%|##########| 567/567 [00:00<?, ?B/s]
+C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\huggingface_hub\file_download.py:133: 
+UserWarning: `huggingface_hub` cache-system uses symlinks by default to efficiently store   
+duplicated files but your machine does not support them in
+C:\Users\divij\.cache\huggingface\hub. Caching files will still work but in a degraded      
+version that might require more space on your disk. This warning can be disabled by
+setting the `HF_HUB_DISABLE_SYMLINKS_WARNING` environment variable. For more details, see   
+https://huggingface.co/docs/huggingface_hub/how-to-cache#limitations.
+To support symlinks on Windows, you either need to activate Developer Mode or to run        
+Python as an administrator. In order to see activate developer mode, see this article: http 
+s://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development    
+  warnings.warn(message)
+Downloading model.safetensors:   0%|          | 0.00/166M [00:00<?, ?B/s]
+Downloading model.safetensors:   6%|6         | 10.5M/166M [00:00<00:14, 10.8MB/s]
+Downloading model.safetensors:  13%|#2        | 21.0M/166M [00:01<00:12, 11.5MB/s]
+Downloading model.safetensors:  19%|#8        | 31.5M/166M [00:02<00:11, 11.9MB/s]
+Downloading model.safetensors:  25%|##5       | 41.9M/166M [00:03<00:10, 11.9MB/s]
+Downloading model.safetensors:  32%|###1      | 52.4M/166M [00:04<00:09, 11.9MB/s]
+Downloading model.safetensors:  38%|###7      | 62.9M/166M [00:05<00:08, 11.6MB/s]
+Downloading model.safetensors:  44%|####4     | 73.4M/166M [00:06<00:08, 10.7MB/s]
+Downloading model.safetensors:  51%|#####     | 83.9M/166M [00:07<00:07, 10.5MB/s]
+Downloading model.safetensors:  57%|#####6    | 94.4M/166M [00:08<00:06, 10.9MB/s]
+Downloading model.safetensors:  63%|######3   | 105M/166M [00:09<00:05, 11.2MB/s] 
+Downloading model.safetensors:  69%|######9   | 115M/166M [00:10<00:04, 11.4MB/s]
+Downloading model.safetensors:  76%|#######5  | 126M/166M [00:11<00:03, 11.7MB/s]
+Downloading model.safetensors:  82%|########2 | 136M/166M [00:11<00:02, 11.8MB/s]
+Downloading model.safetensors:  88%|########8 | 147M/166M [00:12<00:01, 11.9MB/s]
+Downloading model.safetensors:  95%|#########4| 157M/166M [00:13<00:00, 12.0MB/s]
+Downloading model.safetensors: 100%|##########| 166M/166M [00:14<00:00, 12.0MB/s]
+Downloading model.safetensors: 100%|##########| 166M/166M [00:14<00:00, 11.6MB/s]
+Downloading tokenizer_config.json:   0%|          | 0.00/396 [00:00<?, ?B/s]
+Downloading tokenizer_config.json: 100%|##########| 396/396 [00:00<?, ?B/s]
+Downloading tokenizer.json: 0.00B [00:00, ?B/s]
+Downloading tokenizer.json: 2.08MB [00:00, 17.2MB/s]
+Downloading tokenizer.json: 2.11MB [00:00, 17.6MB/s]
+Downloading (à)cial_tokens_map.json:   0%|          | 0.00/99.0 [00:00<?, ?B/s]
+Downloading (à)cial_tokens_map.json: 100%|##########| 99.0/99.0 [00:00<?, ?B/s]
+Using pad_token, but it is not set yet.
+Changing model dtype to torch.float32
+Loaded pretrained model EleutherAI/pythia-70m into HookedTransformer
+  Collecting NoCoT activations → C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\nocot_acts
+Setting max_lines to 1953 to minimize sentences processed
+DATASET + NoCoT
+Loading openai/gsm8k dataset...
+Traceback (most recent call last):
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\run_70m_pipeline.py", line 318,    
+in <module>
+    phase_collect()
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\run_70m_pipeline.py", line 76, in  
+phase_collect
+    n = setup_data(
+  File
+"C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\activation_dataset.py",     
+line 719, in setup_data
+    sentence_dataset = make_sentence_dataset_with_Nocot(dataset_name, max_lines=max_lines,  
+start_line=start_line)
+  File
+"C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\activation_dataset.py",     
+line 199, in make_sentence_dataset_with_Nocot
+    dataset = make_sentence_dataset(dataset_name, max_lines=max_lines,
+start_line=start_line)
+  File
+"C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\activation_dataset.py",     
+line 176, in make_sentence_dataset
+    dataset = load_dataset(
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\datasets\load.py", line 1773,    
+in load_dataset
+    builder_instance = load_dataset_builder(
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\datasets\load.py", line 1502,    
+in load_dataset_builder
+    dataset_module = dataset_module_factory(
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\datasets\load.py", line 1219,    
+in dataset_module_factory
+    raise e1 from None
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\datasets\load.py", line 1203,    
+in dataset_module_factory
+    ).get_module()
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\datasets\load.py", line 769, in  
+get_module
+    else get_data_patterns_in_dataset_repository(hfh_dataset_info, self.data_dir)
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\datasets\data_files.py", line    
+662, in get_data_patterns_in_dataset_repository
+    return _get_data_files_patterns(resolver)
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\datasets\data_files.py", line    
+223, in _get_data_files_patterns
+    data_files = pattern_resolver(pattern)
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\datasets\data_files.py", line    
+473, in _resolve_single_pattern_in_dataset_repository
+    glob_iter = [PurePath(filepath) for filepath in fs.glob(PurePath(pattern).as_posix())   
+if fs.isfile(filepath)]
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\fsspec\spec.py", line 644, in    
+glob
+    pattern = glob_translate(path + ("/" if ends_with_sep else ""))
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\fsspec\utils.py", line 740, in   
+glob_translate
+    raise ValueError(
+ValueError: Invalid pattern: '**' can only be an entire path component
+(venv) PS C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness> pip install "fsspec<2024.9" 2>&1 | Select-Object -Last 5
+    Uninstalling fsspec-2026.2.0:
+      Successfully uninstalled fsspec-2026.2.0
+pip : ERROR: pip's dependency resolver does not currently take into account all the
+packages that are installed. This behaviour is the source of the following dependency       
+conflicts.
+At line:1 char:1
++ pip install "fsspec<2024.9" 2>&1 | Select-Object -Last 5
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (ERROR: pip's de...ency conflicts.:String) [],  
+    RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+transformer-lens 0.0.0 requires typeguard<4.0.0,>=3.0.2, but you have typeguard 2.13.3      
+which is incompatible.
+Successfully installed fsspec-2024.6.1
+(venv) PS C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness> python run_70m_pipeline.py --phase collect 2>&1
+Loading EleutherAI/pythia-70m on privateuseone:0 with dtype=torch.float32
+python : Using pad_token, but it is not set yet.
+At line:1 char:1
++ python run_70m_pipeline.py --phase collect 2>&1
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Using pad_token, but it is not set yet.:Strin  
+   g) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+Changing model dtype to torch.float32
+Loaded pretrained model EleutherAI/pythia-70m into HookedTransformer
+  Collecting NoCoT activations → C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\nocot_acts
+Setting max_lines to 1953 to minimize sentences processed
+DATASET + NoCoT
+Loading openai/gsm8k dataset...
+Traceback (most recent call last):
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\run_70m_pipeline.py", line 318,    
+in <module>
+    phase_collect()
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\run_70m_pipeline.py", line 76, in  
+phase_collect
+    n = setup_data(
+  File
+"C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\activation_dataset.py",     
+line 719, in setup_data
+    sentence_dataset = make_sentence_dataset_with_Nocot(dataset_name, max_lines=max_lines,  
+start_line=start_line)
+  File
+"C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\activation_dataset.py",     
+line 199, in make_sentence_dataset_with_Nocot
+    dataset = make_sentence_dataset(dataset_name, max_lines=max_lines,
+start_line=start_line)
+  File
+"C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\activation_dataset.py",     
+line 176, in make_sentence_dataset
+    dataset = load_dataset(
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\datasets\load.py", line 1773,    
+in load_dataset
+    builder_instance = load_dataset_builder(
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\datasets\load.py", line 1502,    
+in load_dataset_builder
+    dataset_module = dataset_module_factory(
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\datasets\load.py", line 1219,    
+in dataset_module_factory
+    raise e1 from None
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\datasets\load.py", line 1203,    
+in dataset_module_factory
+    ).get_module()
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\datasets\load.py", line 769, in  
+get_module
+    else get_data_patterns_in_dataset_repository(hfh_dataset_info, self.data_dir)
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\datasets\data_files.py", line    
+662, in get_data_patterns_in_dataset_repository
+    return _get_data_files_patterns(resolver)
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\datasets\data_files.py", line    
+223, in _get_data_files_patterns
+    data_files = pattern_resolver(pattern)
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\datasets\data_files.py", line    
+473, in _resolve_single_pattern_in_dataset_repository
+    glob_iter = [PurePath(filepath) for filepath in fs.glob(PurePath(pattern).as_posix())   
+if fs.isfile(filepath)]
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\fsspec\spec.py", line 613, in    
+glob
+    pattern = glob_translate(path + ("/" if ends_with_sep else ""))
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\fsspec\utils.py", line 732, in   
+glob_translate
+    raise ValueError(
+ValueError: Invalid pattern: '**' can only be an entire path component
+(venv) PS C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness> python -c "import datasets; print(datasets.__version__)"
+2.12.0
+(venv) PS C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness> pip install "datasets>=2.18" 2>&1 | Select-Object -Last 10
+      Successfully uninstalled huggingface-hub-0.15.1
+  Attempting uninstall: datasets
+    Found existing installation: datasets 2.12.0
+    Uninstalling datasets-2.12.0:
+      Successfully uninstalled datasets-2.12.0
+
+pip : ERROR: pip's dependency resolver does not currently take into account all the
+packages that are installed. This behaviour is the source of the following dependency       
+conflicts.
+At line:1 char:1
++ pip install "datasets>=2.18" 2>&1 | Select-Object -Last 10
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (ERROR: pip's de...ency conflicts.:String) [],  
+    RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+transformer-lens 0.0.0 requires typeguard<4.0.0,>=3.0.2, but you have typeguard 2.13.3      
+which is incompatible.
+transformers 4.30.1 requires huggingface-hub<1.0,>=0.14.1, but you have huggingface-hub     
+1.6.0 which is incompatible.
+Successfully installed annotated-doc-0.0.4 click-8.3.1 datasets-4.6.1 hf-xet-1.3.2 huggingface-hub-1.6.0 pyarrow-23.0.1 requests-2.32.5 shellingham-1.5.4 tqdm-4.67.3 typer-0.24.1      
+(venv) PS C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness> python run_70m_pipeline.py --phase collect 2>&1
+Loading EleutherAI/pythia-70m on privateuseone:0 with dtype=torch.float32
+python : C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\huggingface_hub\utils\_validato
+rs.py:190: UserWarning: The `resume_download` argument is deprecated and ignored in
+`hf_hub_download`. Downloads always resume whenever possible.
+At line:1 char:1
++ python run_70m_pipeline.py --phase collect 2>&1
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (C:\IIIT-H\Sem6\...never possible.:String) [],  
+    RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+  warnings.warn(
+Traceback (most recent call last):
+  File 
+"C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\transformers\configuration_utils.py",   
+line 629, in _get_config_dict
+    resolved_config_file = cached_file(
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\transformers\utils\hub.py",      
+line 417, in cached_file
+    resolved_file = hf_hub_download(
+  File
+"C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\huggingface_hub\utils\_validators.py",  
+line 89, in _inner_fn
+    return fn(*args, **kwargs)
+TypeError: hf_hub_download() got an unexpected keyword argument 'use_auth_token'
+During handling of the above exception, another exception occurred:
+Traceback (most recent call last):
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\run_70m_pipeline.py", line 318,    
+in <module>
+    phase_collect()
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\run_70m_pipeline.py", line 57, in  
+phase_collect
+    model = HookedTransformer.from_pretrained(
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\transformer_lens\HookedTransform 
+er.py", line 848, in from_pretrained
+    cfg = loading.get_pretrained_model_config(
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\transformer_lens\loading_from_pr 
+etrained.py", line 753, in get_pretrained_model_config
+    cfg_dict = convert_hf_model_config(official_model_name, **kwargs)
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\transformer_lens\loading_from_pr 
+etrained.py", line 486, in convert_hf_model_config
+    hf_config = AutoConfig.from_pretrained(official_model_name, **kwargs)
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\transformers\models\auto\configu 
+ration_auto.py", line 944, in from_pretrained
+    config_dict, unused_kwargs = 
+PretrainedConfig.get_config_dict(pretrained_model_name_or_path, **kwargs)
+  File
+"C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\transformers\configuration_utils.py",   
+line 574, in get_config_dict
+    config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)     
+  File
+"C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\transformers\configuration_utils.py",   
+line 650, in _get_config_dict
+    raise EnvironmentError(
+OSError: Can't load the configuration of 'EleutherAI/pythia-70m'. If you were trying to     
+load it from 'https://huggingface.co/models', make sure you don't have a local directory    
+with the same name. Otherwise, make sure 'EleutherAI/pythia-70m' is the correct path to a   
+directory containing a config.json file
+(venv) PS C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness> python -c "import transformers; print(transformers.__version__)"
+4.30.1
+(venv) PS C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness> pip install "huggingface_hub>=0.20,<0.25" "datasets>=2.18,<3" 2>&1 | Select-Object -Last 10
+    Uninstalling huggingface_hub-1.6.0:
+      Successfully uninstalled huggingface_hub-1.6.0
+  Attempting uninstall: datasets
+    Found existing installation: datasets 4.6.1
+    Uninstalling datasets-4.6.1:
+      Successfully uninstalled datasets-4.6.1
+
+pip : ERROR: pip's dependency resolver does not currently take into account all the
+packages that are installed. This behaviour is the source of the following dependency       
+conflicts.
+At line:1 char:1
++ pip install "huggingface_hub>=0.20,<0.25" "datasets>=2.18,<3" 2>&1 |  ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (ERROR: pip's de...ency conflicts.:String) [],  
+    RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+transformer-lens 0.0.0 requires typeguard<4.0.0,>=3.0.2, but you have typeguard 2.13.3      
+which is incompatible.
+Successfully installed datasets-2.21.0 huggingface_hub-0.24.7
+(venv) PS C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness> python -c "import datasets; print('datasets', datasets.__version__); import huggingface_hub; print('huggingface_hub', huggingface_hub.__version__); import transformers; print('transformers', transformers.__version__); import transformer_lens; print('transformer_lens OK'); import torchopt; print('torchopt', torchopt.__version__)"
+datasets 2.21.0
+huggingface_hub 0.24.7
+transformers 4.30.1
+transformer_lens OK
+W0307 03:40:40.746000 60568 torch\distributed\elastic\multiprocessing\redirects.py:28] NOTE: Redirects are currently not supported in Windows or MacOs.
+torchopt 0.7.3
+(venv) PS C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness> cd sparse_coding; python -c "from device_utils import get_device; print('device:', get_device()); from autoencoders.sae_ensemble import FunctionalTiedSAE; p,b = FunctionalTiedSAE.init(512, 2048, 1e-3); assert 'bias_decay' in b, 'bias_decay missing!'; print('bias_decay fix: OK'); print('All Phase 0 checks pass')"
+device: privateuseone:0
+W0307 03:41:00.105000 8512 torch\distributed\elastic\multiprocessing\redirects.py:28] NOTE: Redirects are currently not supported in Windows or MacOs.
+bias_decay fix: OK
+All Phase 0 checks pass
+(venv) PS C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding> python -c "from datasets import load_dataset; ds = load_dataset('openai/gsm8k', 'main', split='train'); print(f'GSM8K train: {len(ds)} examples')"
+Downloading readme: 100%|█████████████████████████████| 7.93k/7.93k [00:00<00:00, 29.5kB/s]
+Downloading data: 100%|███████████████████████████████| 2.31M/2.31M [00:00<00:00, 3.85MB/s]
+Downloading data: 100%|█████████████████████████████████| 419k/419k [00:00<00:00, 1.37MB/s]
+Generating train split: 100%|███████████████| 7473/7473 [00:00<00:00, 677489.11 examples/s]
+Generating test split: 100%|███████████████| 1319/1319 [00:00<00:00, 1483186.86 examples/s] 
+GSM8K train: 7473 examples
+(venv) PS C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding> cd "c:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness"; python run_pipeline.py --phase collect 2>&1 | Select-Object -First 40
+python : 
+C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\huggingface_hub\file_download.py:1150:   
+FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0.        
+Downloads always resume when possible. If you want to force a new download, use
+`force_download=True`.
+At line:1 char:56
++ ... cotFaithfulness"; python run_pipeline.py --phase collect 2>&1 | Selec ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (C:\IIIT-H\Sem6\...download=True`.:String) [],  
+    RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+  warnings.warn(
+Using pad_token, but it is not set yet.
+[collect] Loading EleutherAI/pythia-70m on privateuseone:0 (dtype=torch.float32)
+Changing model dtype to torch.float32
+Loaded pretrained model EleutherAI/pythia-70m into HookedTransformer
+Traceback (most recent call last):
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\run_pipeline.py", line 245, in     
+<module>
+    phase_collect()
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\run_pipeline.py", line 65, in      
+phase_collect
+    print(f"[collect] Collecting {tag.upper()} activations \u2192 {out_dir}")
+  File "C:\Users\divij\AppData\Local\Programs\Python\Python310\lib\encodings\cp1252.py",    
+line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2192' in position 39:
+character maps to <undefined>
+(venv) PS C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness> python run_pipeline.py --phase collect 2>&1 | Select-Object -First 50
+python : 
+C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\huggingface_hub\file_download.py:1150:   
+FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0.        
+Downloads always resume when possible. If you want to force a new download, use
+`force_download=True`.
+At line:1 char:1
++ python run_pipeline.py --phase collect 2>&1 | Select-Object -First 50
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (C:\IIIT-H\Sem6\...download=True`.:String) [],  
+    RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+  warnings.warn(
+Using pad_token, but it is not set yet.
+[collect] Loading EleutherAI/pythia-70m on privateuseone:0 (dtype=torch.float32)
+Changing model dtype to torch.float32
+Loaded pretrained model EleutherAI/pythia-70m into HookedTransformer
+[collect] Collecting NOCOT activations -> C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\nocot_acts
+Setting max_lines to 1953 to minimize sentences processed
+DATASET + NoCoT
+Loading openai/gsm8k dataset...
+Traceback (most recent call last):
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\run_pipeline.py", line 245, in     
+<module>
+    phase_collect()
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\run_pipeline.py", line 66, in      
+phase_collect
+    setup_data(
+  File
+"C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\activation_dataset.py",     
+line 719, in setup_data
+    sentence_dataset = make_sentence_dataset_with_Nocot(dataset_name, max_lines=max_lines,  
+start_line=start_line)
+  File
+"C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\activation_dataset.py",     
+line 199, in make_sentence_dataset_with_Nocot
+    dataset = make_sentence_dataset(dataset_name, max_lines=max_lines,
+start_line=start_line)
+  File
+"C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\activation_dataset.py",     
+line 176, in make_sentence_dataset
+    dataset = load_dataset(
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\datasets\load.py", line 2606, 
+in load_dataset
+    builder_instance = load_dataset_builder(
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\datasets\load.py", line 2314,    
+in load_dataset_builder
+    builder_instance: DatasetBuilder = builder_cls(
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\datasets\builder.py", line 374,  
+in __init__
+    self.config, self.config_id = self._create_builder_config(
+  File "C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\datasets\builder.py", line 586,  
+in _create_builder_config
+    raise ValueError(
+ValueError: Config name is missing.
+Please pick one among the available configs: ['main', 'socratic']
+Example of usage:
+        `load_dataset('openai/gsm8k', 'main')`
+(venv) PS C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness> python run_pipeline.py --phase collect 2>&1 | Select-Object -First 60
+python : 
+C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\huggingface_hub\file_download.py:1150:   
+FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0.        
+Downloads always resume when possible. If you want to force a new download, use
+`force_download=True`.
+At line:1 char:1
++ python run_pipeline.py --phase collect 2>&1 | Select-Object -First 60
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (C:\IIIT-H\Sem6\...download=True`.:String) [],  
+    RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+  warnings.warn(
+Using pad_token, but it is not set yet.
+[collect] Loading EleutherAI/pythia-70m on privateuseone:0 (dtype=torch.float32)
+Changing model dtype to torch.float32
+Loaded pretrained model EleutherAI/pythia-70m into HookedTransformer
+[collect] Collecting NOCOT activations -> C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\nocot_acts
+Setting max_lines to 1953 to minimize sentences processed
+DATASET + NoCoT
+Loading openai/gsm8k dataset...
+Map:   0%|          | 0/7473 [00:00<?, ? examples/s]
+Map:  44%|####3     | 3286/7473 [00:00<00:00, 32516.98 examples/s]
+Map: 100%|##########| 7473/7473 [00:00<00:00, 35762.16 examples/s]
+Map:   0%|          | 0/7473 [00:00<?, ? examples/s]
+Map:  53%|#####3    | 3978/7473 [00:00<00:00, 37662.50 examples/s]
+Map: 100%|##########| 7473/7473 [00:00<00:00, 33276.64 examples/s]
+Map:   0%|          | 0/7473 [00:00<?, ? examples/s]
+Map:  13%|#3        | 1000/7473 [00:00<00:00, 7997.91 examples/s]
+Map:  27%|##6       | 2000/7473 [00:00<00:00, 7629.53 examples/s]
+Map:  54%|#####3    | 4000/7473 [00:00<00:00, 9384.48 examples/s]
+Map:  80%|########  | 6000/7473 [00:00<00:00, 10210.78 examples/s]
+Map: 100%|##########| 7473/7473 [00:00<00:00, 10500.30 examples/s]
+Map: 100%|##########| 7473/7473 [00:00<00:00, 9739.29 examples/s]
+0it [00:00, ?it/s]
+1it [00:00,  2.46it/s]
+4it [00:00,  9.12it/s]
+7it [00:00, 13.65it/s]
+10it [00:00, 16.77it/s]
+13it [00:00, 18.90it/s]
+16it [00:01, 20.47it/s]
+19it [00:01, 21.56it/s]
+22it [00:01, 22.30it/s]
+25it [00:01, 17.45it/s]
+28it [00:01, 19.01it/s]
+31it [00:01, 20.31it/s]
+34it [00:01, 21.40it/s]
+37it [00:02, 22.02it/s]
+40it [00:02, 22.69it/s]
+43it [00:02, 22.87it/s]
+46it [00:02, 23.30it/s]
+49it [00:02, 23.47it/s]
+52it [00:02, 23.57it/s]
+55it [00:02, 23.95it/s]
+58it [00:02, 23.90it/s]
+61it [00:03, 23.99it/s]
+64it [00:03, 23.95it/s]
+67it [00:03, 23.90it/s]
+70it [00:03, 23.91it/s]
+73it [00:03, 23.69it/s]
+76it [00:03, 23.85it/s]
+79it [00:03, 23.96it/s]
+82it [00:03, 23.87it/s]
+85it [00:04, 23.94it/s]
+88it [00:04, 24.04it/s]
+91it [00:04, 23.66it/s]
+94it [00:04, 23.92it/s]
+(venv) PS C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness> Get-ChildItem "sparse_coding\data" -Recurse | Select-Object FullName, Length
+
+FullName                                                                       Length
+--------                                                                       ------       
+C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\nocot_acts
+
+
+(venv) PS C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness> Get-ChildItem "sparse_coding\data\nocot_acts" -File | Measure-Object | Select-Object Count
+
+Count
+-----
+    0
+
+
+(venv) PS C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness> python run_pipeline.py --phase collect
+[collect] Loading EleutherAI/pythia-70m on privateuseone:0 (dtype=torch.float32)
+C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\huggingface_hub\file_download.py:1150: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+Using pad_token, but it is not set yet.
+Changing model dtype to torch.float32
+Loaded pretrained model EleutherAI/pythia-70m into HookedTransformer
+[collect] Collecting NOCOT activations -> C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\nocot_acts
+Setting max_lines to 1953 to minimize sentences processed
+DATASET + NoCoT
+Loading openai/gsm8k dataset...
+204it [00:09, 22.64it/s]
+Saved chunk 0 of activations, total size: 213909504
+204it [00:08, 24.02it/s]
+Saved chunk 1 of activations, total size: 427819008
+204it [00:08, 23.44it/s]
+Saved chunk 2 of activations, total size: 641728512
+204it [00:08, 23.13it/s]
+Saved chunk 3 of activations, total size: 855638016
+204it [00:08, 23.00it/s]
+Saved chunk 4 of activations, total size: 1069547520
+204it [00:08, 23.19it/s]
+Saved chunk 5 of activations, total size: 1283457024
+204it [00:09, 21.66it/s]
+Saved chunk 6 of activations, total size: 1497366528
+204it [00:09, 22.58it/s]
+Saved chunk 7 of activations, total size: 1711276032
+204it [00:08, 23.10it/s]
+Saved chunk 8 of activations, total size: 1925185536
+24it [00:01, 18.68it/s]
+Saved undersized chunk 9 of activations, total size: 24117248
+[collect] Done: NOCOT
+[collect] Collecting COT activations -> C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\cot_acts
+C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\huggingface_hub\file_download.py:1150: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+Setting max_lines to 1953 to minimize sentences processed
+DATASET + CoT
+Loading openai/gsm8k dataset...
+Map: 100%|███████████████████████████████████| 7473/7473 [00:00<00:00, 22148.13 examples/s]
+Map: 100%|████████████████████████████████████| 7473/7473 [00:02<00:00, 3309.90 examples/s]
+204it [00:08, 23.16it/s]
+Saved chunk 0 of activations, total size: 213909504
+204it [00:08, 23.10it/s]
+Saved chunk 1 of activations, total size: 427819008
+204it [00:09, 22.47it/s]
+Saved chunk 2 of activations, total size: 641728512
+204it [00:09, 22.47it/s]
+Saved chunk 3 of activations, total size: 855638016
+204it [00:08, 23.29it/s]
+Saved chunk 4 of activations, total size: 1069547520
+204it [00:08, 22.95it/s]
+Saved chunk 5 of activations, total size: 1283457024
+204it [00:09, 22.60it/s]
+Saved chunk 6 of activations, total size: 1497366528
+204it [00:08, 22.85it/s]
+Saved chunk 7 of activations, total size: 1711276032
+204it [00:08, 22.99it/s]
+Saved chunk 8 of activations, total size: 1925185536
+24it [00:01, 21.92it/s]
+Saved undersized chunk 9 of activations, total size: 24117248
+[collect] Done: COT
+[collect] Phase 1 complete.
+(venv) PS C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness> python -c "
+>> import torch, os
+>> for tag in ['nocot_acts', 'cot_acts']:
+>>     d = os.path.join('sparse_coding', 'data', tag)
+>>     pts = sorted([f for f in os.listdir(d) if f.endswith('.pt') and not f.startswith('input')])
+>>     ids = sorted([f for f in os.listdir(d) if f.startswith('input')])
+>>     t = torch.load(os.path.join(d, '0.pt'), map_location='cpu')
+>>     print(f'{tag}: {len(pts)} chunks, {len(ids)} input_id files, chunk0 shape={t.shape} dtype={t.dtype}')
+>> "
+<string>:7: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+nocot_acts: 10 chunks, 10 input_id files, chunk0 shape=torch.Size([209920, 512]) dtype=torch.float16
+cot_acts: 10 chunks, 10 input_id files, chunk0 shape=torch.Size([209920, 512]) dtype=torch.float16
+(venv) PS C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness> python run_pipeline.py --phase train
+W0307 03:50:06.029000 23968 torch\distributed\elastic\multiprocessing\redirects.py:28] NOTE: Redirects are currently not supported in Windows or MacOs.
+[train] Using device: cpu
+C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\run_pipeline.py:113: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  sample = torch.load(os.path.join(acts_dir, "0.pt"), map_location="cpu")
+[train] Training NOCOT ratio=4  (512→2048)  l1s=[0, 0.001, 0.0003, 0.0001]
+C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\run_pipeline.py:139: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  dataset = torch.load(chunk_path, map_location="cpu").to(dtype=torch.float32)
+usage: run_pipeline.py [-h] [--layer LAYER] [--layer_loc LAYER_LOC]
+                       [--model_name MODEL_NAME] [--dataset_name DATASET_NAME]
+                       [--dataset_folder DATASET_FOLDER] [--device DEVICE]
+                       [--tied_ae TIED_AE] [--seed SEED]
+                       [--learned_dict_ratio LEARNED_DICT_RATIO]
+                       [--output_folder OUTPUT_FOLDER] [--dtype DTYPE] [--epochs EPOCHS]    
+                       [--center_dataset CENTER_DATASET] [--n_chunks N_CHUNKS]
+                       [--chunk_size_gb CHUNK_SIZE_GB] [--batch_size BATCH_SIZE]
+                       [--use_wandb USE_WANDB] [--wandb_images WANDB_IMAGES] [--lr LR]      
+                       [--l1_alpha L1_ALPHA] [--save_every SAVE_EVERY]
+                       [--n_epochs N_EPOCHS]
+run_pipeline.py: error: unrecognized arguments: --phase train
+(venv) PS C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness> python run_pipeline.py --phase train
+W0307 03:50:56.635000 38660 torch\distributed\elastic\multiprocessing\redirects.py:28] NOTE: Redirects are currently not supported in Windows or MacOs.
+[train] Using device: cpu
+C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\run_pipeline.py:112: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  sample = torch.load(os.path.join(acts_dir, "0.pt"), map_location="cpu")
+[train] Training NOCOT ratio=4  (512→2048)  l1s=[0, 0.001, 0.0003, 0.0001]
+C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\run_pipeline.py:138: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  dataset = torch.load(chunk_path, map_location="cpu").to(dtype=torch.float32)
+  chunk 1/10 (C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\nocot_acts\3.pt, 209920 samples)
+C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\torchopt\transform\utils.py:180: UserWarning: There is a performance drop because we have not yet implemented the batching rule for aten::addcmul_. Please file us an issue on GitHub so that we can prioritize its implementation. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\functorch\BatchedFallback.cpp:84.)
+  return t.mul_(decay).addcmul_(g, g, value=1 - decay) if g is not None else t
+  chunk 2/10 (C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\nocot_acts\4.pt, 209920 samples)
+  chunk 3/10 (C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\nocot_acts\8.pt, 209920 samples)
+  chunk 4/10 (C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\nocot_acts\2.pt, 209920 samples)
+  chunk 5/10 (C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\nocot_acts\6.pt, 209920 samples)
+  chunk 6/10 (C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\nocot_acts\9.pt, 23808 samples)
+  chunk 7/10 (C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\nocot_acts\5.pt, 209920 samples)
+  chunk 8/10 (C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\nocot_acts\0.pt, 209920 samples)
+  chunk 9/10 (C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\nocot_acts\1.pt, 209920 samples)
+  chunk 10/10 (C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\nocot_acts\7.pt, 209920 samples)
+[train] Saved C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\output\nocot_sae_r4\learned_dicts.pt and C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\output\nocot_sae_r4\dict.pkl
+[train] Training NOCOT ratio=8  (512→4096)  l1s=[0, 0.001, 0.0003, 0.0001]
+  chunk 1/10 (C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\nocot_acts\2.pt, 209920 samples)
+  chunk 2/10 (C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\nocot_acts\8.pt, 209920 samples)
+  chunk 3/10 (C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\nocot_acts\4.pt, 209920 samples)
+  chunk 4/10 (C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\nocot_acts\9.pt, 23808 samples)
+  chunk 5/10 (C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\nocot_acts\1.pt, 209920 samples)
+  chunk 6/10 (C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\nocot_acts\6.pt, 209920 samples)
+  chunk 7/10 (C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\nocot_acts\7.pt, 209920 samples)
+  chunk 8/10 (C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\nocot_acts\3.pt, 209920 samples)
+  chunk 9/10 (C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\nocot_acts\0.pt, 209920 samples)
+  chunk 10/10 (C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\nocot_acts\5.pt, 209920 samples)
+[train] Saved C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\output\nocot_sae_r8\learned_dicts.pt and C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\output\nocot_sae_r8\dict.pkl
+[train] Training COT ratio=4  (512→2048)  l1s=[0, 0.001, 0.0003, 0.0001]
+  chunk 1/10 (C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\cot_acts\2.pt, 209920 samples)
+  chunk 2/10 (C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\cot_acts\8.pt, 209920 samples)
+  chunk 3/10 (C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\cot_acts\4.pt, 209920 samples)
+  chunk 4/10 (C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\cot_acts\9.pt, 23808 samples)
+  chunk 5/10 (C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\cot_acts\1.pt, 209920 samples)
+  chunk 6/10 (C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\cot_acts\6.pt, 209920 samples)
+  chunk 7/10 (C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\cot_acts\7.pt, 209920 samples)
+  chunk 8/10 (C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\cot_acts\3.pt, 209920 samples)
+  chunk 9/10 (C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\cot_acts\0.pt, 209920 samples)
+  chunk 10/10 (C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\cot_acts\5.pt, 209920 samples)
+[train] Saved C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\output\cot_sae_r4\learned_dicts.pt and C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\output\cot_sae_r4\dict.pkl
+[train] Training COT ratio=8  (512→4096)  l1s=[0, 0.001, 0.0003, 0.0001]
+  chunk 1/10 (C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\cot_acts\2.pt, 209920 samples)
+  chunk 2/10 (C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\cot_acts\8.pt, 209920 samples)
+  chunk 3/10 (C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\cot_acts\4.pt, 209920 samples)
+  chunk 4/10 (C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\cot_acts\9.pt, 23808 samples)
+  chunk 5/10 (C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\cot_acts\1.pt, 209920 samples)
+  chunk 6/10 (C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\cot_acts\6.pt, 209920 samples)
+  chunk 7/10 (C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\cot_acts\7.pt, 209920 samples)
+  chunk 8/10 (C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\cot_acts\3.pt, 209920 samples)
+  chunk 9/10 (C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\cot_acts\0.pt, 209920 samples)
+  chunk 10/10 (C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\cot_acts\5.pt, 209920 samples)
+[train] Saved C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\output\cot_sae_r8\learned_dicts.pt and C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\output\cot_sae_r8\dict.pkl
+[train] Phase 2 complete.
+(venv) PS C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness> Get-ChildItem -Recurse "c:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\output" | Select-Object FullName, Length
+
+FullName
+--------
+C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\output\cot_sae_r4
+C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\output\cot_sae_r8
+C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\output\nocot_sae_r4
+C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\output\nocot_sae_r8
+C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\output\cot_sae_r4\dict.pkl   
+C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\output\cot_sae_r4\learned... 
+C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\output\cot_sae_r8\dict.pkl   
+C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\output\cot_sae_r8\learned... 
+C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\output\nocot_sae_r4\dict.pkl 
+C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\output\nocot_sae_r4\learn... 
+C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\output\nocot_sae_r8\dict.pkl 
+C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\output\nocot_sae_r8\learn... 
+
+
+(venv) PS C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness> ..\Scripts\Activate.ps1; python -c "import seaborn; import einops; import scipy; print('all ok')"
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'seaborn'
+(venv) PS C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness> pip install seaborn einops scipy
+
+Collecting seaborn
+  Downloading seaborn-0.13.2-py3-none-any.whl.metadata (5.4 kB)
+Requirement already satisfied: einops in c:\iiit-h\sem6\inlp\project\venv\lib\site-packages (0.6.1)
+Requirement already satisfied: scipy in c:\iiit-h\sem6\inlp\project\venv\lib\site-packages (1.10.1)
+Requirement already satisfied: numpy!=1.24.0,>=1.20 in c:\iiit-h\sem6\inlp\project\venv\lib\site-packages (from seaborn) (1.26.4)
+Requirement already satisfied: pandas>=1.2 in c:\iiit-h\sem6\inlp\project\venv\lib\site-packages (from seaborn) (2.0.2)
+Requirement already satisfied: matplotlib!=3.6.1,>=3.4 in c:\iiit-h\sem6\inlp\project\venv\lib\site-packages (from seaborn) (3.7.1)
+Requirement already satisfied: contourpy>=1.0.1 in c:\iiit-h\sem6\inlp\project\venv\lib\site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (1.0.7)
+Requirement already satisfied: cycler>=0.10 in c:\iiit-h\sem6\inlp\project\venv\lib\site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (0.11.0)
+Requirement already satisfied: fonttools>=4.22.0 in c:\iiit-h\sem6\inlp\project\venv\lib\site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (4.39.4)
+Requirement already satisfied: kiwisolver>=1.0.1 in c:\iiit-h\sem6\inlp\project\venv\lib\site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (1.4.4)
+Requirement already satisfied: packaging>=20.0 in c:\iiit-h\sem6\inlp\project\venv\lib\site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (23.1)
+Requirement already satisfied: pillow>=6.2.0 in c:\iiit-h\sem6\inlp\project\venv\lib\site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (12.1.1)
+Requirement already satisfied: pyparsing>=2.3.1 in c:\iiit-h\sem6\inlp\project\venv\lib\site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (3.0.9)
+Requirement already satisfied: python-dateutil>=2.7 in c:\iiit-h\sem6\inlp\project\venv\lib\site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (2.8.2)
+Requirement already satisfied: pytz>=2020.1 in c:\iiit-h\sem6\inlp\project\venv\lib\site-packages (from pandas>=1.2->seaborn) (2023.3)
+Requirement already satisfied: tzdata>=2022.1 in c:\iiit-h\sem6\inlp\project\venv\lib\site-packages (from pandas>=1.2->seaborn) (2023.3)
+Requirement already satisfied: six>=1.5 in c:\iiit-h\sem6\inlp\project\venv\lib\site-packages (from python-dateutil>=2.7->matplotlib!=3.6.1,>=3.4->seaborn) (1.16.0)
+Downloading seaborn-0.13.2-py3-none-any.whl (294 kB)
+Installing collected packages: seaborn
+Successfully installed seaborn-0.13.2
+(venv) PS C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness> python -c "import pickle; d=pickle.load(open('sparse_coding/output/nocot_sae_r4/dict.pkl','rb')); print(type(d)); print(list(d.keys())); layer=list(d.keys())[0]; print('layer=', layer); print('num ranks=', len(d[layer])); print('type entry[0]=', type(d[layer][0])); print('  sae type=', type(d[layer][0][0])); print('  hypers=', d[layer][0][1]); sae=d[layer][2][0]; print('rank2 n_feats=', sae.n_feats); print('has encode=', hasattr(sae, 'encode')); print('has to_device=', hasattr(sae, 'to_device'))"
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'autoencoders'
+(venv) PS C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness> cd sparse_coding; python -c "import pickle; d=pickle.load(open('output/nocot_sae_r4/dict.pkl','rb')); print(type(d)); print(list(d.keys())); layer=list(d.keys())[0]; print('layer=', layer); print('num ranks=', len(d[layer])); print('type entry[0]=', type(d[layer][0])); print('  sae type=', type(d[layer][0][0])); print('  hypers=', d[layer][0][1]); sae=d[layer][2][0]; print('rank2 n_feats=', sae.n_feats); print('has encode=', hasattr(sae, 'encode')); print('has to_device=', hasattr(sae, 'to_device'))"
+W0307 05:13:33.892000 42376 torch\distributed\elastic\multiprocessing\redirects.py:28] NOTE: Redirects are currently not supported in Windows or MacOs.
+<class 'dict'>
+[2]
+layer= 2
+num ranks= 4
+type entry[0]= <class 'tuple'>
+  sae type= <class 'autoencoders.learned_dict.TiedSAE'>
+  hypers= {'dict_size': 2048, 'l1_alpha': 0.0}
+rank2 n_feats= 2048
+has encode= True
+has to_device= True
+(venv) PS C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding> python -c "import pickle; d=pickle.load(open('output/nocot_sae_r4/dict.pkl','rb')); sae=d[2][2][0]; print(hasattr(sae,'center_rot')); print(sae.center_rot.shape if hasattr(sae,'center_rot') else 'no'); sae.to_device('cpu'); print('to_device ok'); x=__import__('torch').randn(2,512); c=sae.encode(x); print('encode ok, shape=', c.shape)"
+W0307 05:15:18.363000 6648 torch\distributed\elastic\multiprocessing\redirects.py:28] NOTE: Redirects are currently not supported in Windows or MacOs.
+True
+torch.Size([512, 512])
+to_device ok
+encode ok, shape= torch.Size([2, 2048])
+(venv) PS C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding> Get-ChildItem "c:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\nocot_acts" | Select-Object
+ Name
+
+Name
+----
+0.pt
+1.pt
+2.pt
+3.pt
+4.pt
+5.pt
+6.pt
+7.pt
+8.pt
+9.pt
+input_ids_layer2_chunk0.pt
+input_ids_layer2_chunk1.pt
+input_ids_layer2_chunk2.pt
+input_ids_layer2_chunk3.pt
+input_ids_layer2_chunk4.pt
+input_ids_layer2_chunk5.pt
+input_ids_layer2_chunk6.pt
+input_ids_layer2_chunk7.pt
+input_ids_layer2_chunk8.pt
+input_ids_layer2_chunk9.pt
+
+
+(venv) PS C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding>
+
+
+
+
+
+NoCoT → CoT:
+  No significant effects found
+
+Detailed results saved to: C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\results\ttest_r4.txt
+==================================================
+
+[experiment] Activation Patching (ratio=8)
+  Running: C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\..\Scripts\python.exe C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\experiments\activated_patching.py --model EleutherAI/pythia-70m --layer 2 --layer_loc resid --rank 2 --dict_nocot C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\output\nocot_sae_r8\dict.pkl --dict_cot C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\output\cot_sae_r8\dict.pkl --acts_nocot_dir C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\nocot_acts --acts_cot_dir C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\cot_acts --topk 20 --max_samples 1000 --out C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\results\patching_hist_r8.png
+W0307 07:23:21.806000 68716 torch\distributed\elastic\multiprocessing\redirects.py:28] NOTE: Redirects are currently not supported in Windows or MacOs.
+lookup size = 7473
+C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\huggingface_hub\file_download.py:1150: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+Using pad_token, but it is not set yet.
+Changing model dtype to torch.float32
+Loaded pretrained model EleutherAI/pythia-70m into HookedTransformer
+Loaded model EleutherAI/pythia-70m  (d_model=512)
+SAE (layer=2, rank=2) with dict_size=4096
+DATASET + NoCoT
+Loading openai/gsm8k dataset...
+patch-eval:   0%|                                                 | 0/1000 [00:00<?, ?it/s]C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\experiments\activated_patching.py:163: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  acts_nc = torch.load(act_f_nc, map_location="cpu").to(torch.float32).to(device)
+C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\experiments\activated_patching.py:164: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  acts_c = torch.load(act_f_c, map_location="cpu").to(torch.float32).to(device)
+C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\experiments\activated_patching.py:165: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ids_list: List[torch.Tensor] = torch.load(ids_f)
+seq_len = 256
+
+Sample 0
+top‑k diff: [122.88597869873047, 7.049378871917725, 6.215729236602783, 4.351547718048096, 2.738874912261963, 0.19218981266021729, 0.09100019931793213, 0.034803420305252075, 0.019605979323387146, 0.018798723816871643]
+baseline_ll = -1944.122 , patched_ll = -1944.122 , Δ = 0.000
+question: Q: Natalia sold clips to 48 of her friends in April, and then she sold half as many clips in May. How many clips did Natalia sell altogether in April and May?
+A:<|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|>
+question: Natalia sold clips to 48 of her friends in April, and then she sold half as many clips in May. How many clips did Natalia sell altogether in April and May?
+extracted answer: 72
+patch-eval:   0%|                              | 1/1000 [00:01<24:01,  1.44s/it, ll_gain=0]seq_len = 256
+
+Sample 1
+top‑k diff: [122.88243865966797, 7.049378871917725, 6.215729236602783, 4.351547718048096, 2.738874912261963, 0.19218981266021729, 0.09100019931793213, 0.034803420305252075, 0.019605979323387146, 0.018798723816871643]
+baseline_ll = -1941.392 , patched_ll = -1941.392 , Δ = 0.000
+question: Q: Weng earns $12 an hour for babysitting. Yesterday, she just did 50 minutes of babysitting. How much did she earn?
+A:<|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|>   
+question: Weng earns $12 an hour for babysitting. Yesterday, she just did 50 minutes of babysitting. How much did she earn?
+extracted answer: 10
+patch-eval:   0%|                              | 2/1000 [00:01<10:57,  1.52it/s, ll_gain=0]seq_len = 256
+
+Sample 2
+top‑k diff: [122.87937927246094, 7.049378871917725, 6.215729236602783, 4.351547718048096, 2.738874912261963, 0.19218981266021729, 0.09100019931793213, 0.034803420305252075, 0.019605979323387146, 0.018798723816871643]
+baseline_ll = -1824.919 , patched_ll = -1824.919 , Δ = 0.000
+question: Q: Betty is saving money for a new wallet which costs $100. Betty has only half of the money she needs. Her parents decided to give her $15 for that purpose, and her grandparents twice as much as her parents. How much more money does Betty need to buy the wallet?   
+A:<|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|>
+question: Betty is saving money for a new wallet which costs $100. Betty has only half of the money she needs. Her parents decided to give her $15 for that purpose, and her grandparents twice as much as her parents. How much more money does Betty need to buy the wallet?      
+extracted answer: 5
+patch-eval:   0%|                              | 3/1000 [00:01<06:46,  2.45it/s, ll_gain=0] 
+Sample 3
+top‑k diff: [122.83943176269531, 7.049378871917725, 6.215729236602783, 4.351547718048096, 2.738874912261963, 0.19218981266021729, 0.09100019931793213, 0.034803420305252075, 0.019605979323387146, 0.018798723816871643]
+baseline_ll = -1840.782 , patched_ll = -1840.782 , Δ = 0.000
+question: Q: Julie is reading a 120-page book. Yesterday, she was able to read 12 pages and today, she read twice as many pages as yesterday. If she wants to read half of the remaining pages tomorrow, how many pages should she read?
+A:<|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|>
+question: Julie is reading a 120-page book. Yesterday, she was able to read 12 pages and today, she read twice as many pages as yesterday. If she wants to read half of the remaining pages tomorrow, how many pages should she read?
+extracted answer: 42
+patch-eval:   0%|                              | 4/1000 [00:01<04:46,  3.48it/s, ll_gain=0] 
+Sample 4
+top‑k diff: [122.97382354736328, 7.049378871917725, 6.215729236602783, 4.351547718048096, 2.738874912261963, 0.19218981266021729, 0.09100019931793213, 0.034803420305252075, 0.019605979323387146, 0.018798723816871643]
+baseline_ll = -1991.931 , patched_ll = -1991.931 , Δ = 0.000
+question: Q: James writes a 3-page letter to 2 different friends twice a week.  How many pages does he write a year?
+A:<|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|>    
+question: James writes a 3-page letter to 2 different friends twice a week.  How many pages does he write a year?
+extracted answer: 624
+patch-eval:   0%|▏                             | 5/1000 [00:01<03:42,  4.48it/s, ll_gain=0] 
+Sample 5
+top‑k diff: [122.83988189697266, 7.049378871917725, 6.215729236602783, 4.351547718048096, 2.738874912261963, 0.19218981266021729, 0.09100019931793213, 0.034803420305252075, 0.019605979323387146, 0.018798723816871643]
+baseline_ll = -1802.498 , patched_ll = -1802.498 , Δ = 0.000
+question: Q: Mark has a garden with flowers. He planted plants of three different colors in it. Ten of them are yellow, and there are 80% more of those in purple. There are only 25% as many green flowers as there are yellow and purple flowers. How many flowers does Mark have in his garden?
+A:<|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|>
+question: Mark has a garden with flowers. He planted plants of three different colors in it. Ten of them are yellow, and there are 80% more of those in purple. There are only 25% as many green flowers as there are yellow and purple flowers. How many flowers does Mark have in his garden?
+extracted answer: 35
+patch-eval:   1%|▏                             | 6/1000 [00:01<03:01,  5.46it/s, ll_gain=0] 
+Sample 6
+top‑k diff: [122.8392562866211, 7.049378871917725, 6.215729236602783, 4.351547718048096, 2.738874912261963, 0.19218981266021729, 0.09100019931793213, 0.034803420305252075, 0.019605979323387146, 0.018798723816871643]
+baseline_ll = -1811.851 , patched_ll = -1811.851 , Δ = 0.000
+question: Q: Albert is wondering how much pizza he can eat in one day. He buys 2 large pizzas and 2 small pizzas. A large pizza has 16 slices and a small pizza has 8 slices. If he eats it all, how many pieces does he eat that day?
+A:<|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|>
+question: Albert is wondering how much pizza he can eat in one day. He buys 2 large pizzas and 2 small pizzas. A large pizza has 16 slices and a small pizza has 8 slices. If he eats it all, how many pieces does he eat that day?
+extracted answer: 48
+patch-eval:   1%|▏                             | 7/1000 [00:02<02:36,  6.34it/s, ll_gain=0] 
+Sample 7
+top‑k diff: [122.56170654296875, 7.049378871917725, 6.215729236602783, 4.351547718048096, 2.738874912261963, 0.19218981266021729, 0.09100019931793213, 0.04670214653015137, 0.034803420305252075, 0.019605979323387146]
+baseline_ll = -1621.316 , patched_ll = -1621.316 , Δ = 0.000
+question: Q: Ken created a care package to send to his brother, who was away at boarding school.  Ken placed a box on a scale, and then he poured into the box enough jelly beans to bring the weight to 2 pounds.  Then, he added enough brownies to cause the weight to triple.  Next, he added another 2 pounds of jelly beans.  And finally, he added enough gummy worms to double the weight once again.  What was the final weight of the box of goodies, in pounds?  
+A:<|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|>
+question: Ken created a care package to send to his brother, who was away at boarding school.  Ken placed a box on a scale, and then he poured into the box enough jelly beans to bring the weight to 2 pounds.  Then, he added enough brownies to cause the weight to triple.  Next, he added another 2 pounds of jelly beans.  And finally, he added enough gummy worms to double the weight once again.  What was the final weight of the box of goodies, in pounds?     
+extracted answer: 16
+patch-eval:   1%|▏                             | 8/1000 [00:02<02:21,  7.01it/s, ll_gain=0] 
+Sample 8
+top‑k diff: [122.65707397460938, 7.049378871917725, 6.215729236602783, 4.351547718048096, 2.738874912261963, 0.19218981266021729, 0.09100019931793213, 0.034803420305252075, 0.019605979323387146, 0.018798723816871643]
+baseline_ll = -1580.525 , patched_ll = -1580.525 , Δ = 0.000
+question: Q: Alexis is applying for a new job and bought a new set of business clothes to wear to the interview. She went to a department store with a budget of $200 and spent $30 on a button-up shirt, $46 on suit pants, $38 on a suit coat, $11 on socks, and $18 on a belt. She also purchased a pair of shoes, but lost the receipt for them. She has $16 left from her budget. How much did Alexis pay for the shoes?
+A:<|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|>
+question: Alexis is applying for a new job and bought a new set of business clothes to wear to the interview. She went to a department store with a budget of $200 and spent $30 on a button-up shirt, $46 on suit pants, $38 on a suit coat, $11 on socks, and $18 on a belt. She also purchased a pair of shoes, but lost the receipt for them. She has $16 left from her budget. How much did Alexis pay for the shoes?
+extracted answer: 41
+patch-eval:   1%|▎                             | 9/1000 [00:02<02:11,  7.55it/s, ll_gain=0] 
+Sample 9
+top‑k diff: [122.88187408447266, 7.049378871917725, 6.215729236602783, 4.351547718048096, 2.738874912261963, 0.19218981266021729, 0.09100019931793213, 0.034803420305252075, 0.019605979323387146, 0.018798723816871643]
+baseline_ll = -1794.232 , patched_ll = -1794.232 , Δ = 0.000
+question: Q: Tina makes $18.00 an hour.  If she works more than 8 hours per shift, she is eligible for overtime, which is paid by your hourly wage + 1/2 your hourly wage.  If she works 10 hours every day for 5 days, how much money does she make?
+A:<|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|>
+question: Tina makes $18.00 an hour.  If she works more than 8 hours per shift, she is eligible for overtime, which is paid by your hourly wage + 1/2 your hourly wage.  If she works 10 hours every day for 5 days, how much money does she make?
+extracted answer: 990
+patch-eval: 100%|███████████████████████████| 1000/1000 [01:53<00:00,  8.82it/s, ll_gain=0] 
+
+Completed 1000 samples. Average Δlog-prob = 0.000
+Saved plot → C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\results\patching_hist_r8.png
+
+[experiment] Patch Curve (ratio=8)
+  Running: C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\..\Scripts\python.exe C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\experiments\patch_curve.py --model EleutherAI/pythia-70m --layer 2 --layer_loc resid --rank 2 --dict_nocot C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\output\nocot_sae_r8\dict.pkl --dict_cot C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\output\cot_sae_r8\dict.pkl --acts_nocot_dir C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\nocot_acts --acts_cot_dir C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\cot_acts --max_samples 1000 --out C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\results\patch_curve_r8.png --save_stats C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\results\ttest_r8.txt
+W0307 07:25:38.193000 8416 torch\distributed\elastic\multiprocessing\redirects.py:28] NOTE: Redirects are currently not supported in Windows or MacOs.
+GSM lookup size = 7473
+C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\huggingface_hub\file_download.py:1150: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+Using pad_token, but it is not set yet.
+Changing model dtype to torch.float32
+Loaded pretrained model EleutherAI/pythia-70m into HookedTransformer
+Loaded EleutherAI/pythia-70m
+SAE loaded. dict size = 4096
+>>> CoT → NoCoT
+CoT→NoCoT:   0%|                                                  | 0/1000 [00:00<?, ?it/s]C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\experiments\patch_curve.py:132: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  acts_f = torch.load(f_f, map_location="cpu").to(torch.float32).to(device)
+C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\experiments\patch_curve.py:133: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  acts_t = torch.load(f_t, map_location="cpu").to(torch.float32).to(device)
+C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\experiments\patch_curve.py:134: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ids_ls = torch.load(f_i)
+CoT→NoCoT: 100%|███████████████████████████████████████| 1000/1000 [08:29<00:00,  1.96it/s]
+>>> NoCoT → CoT
+NoCoT→CoT: 100%|███████████████████████████████████████| 1000/1000 [08:30<00:00,  1.96it/s] 
+>>> Random patching CoT → NoCoT
+CoT→NoCoT-Random:   0%|                                           | 0/1000 [00:00<?, ?it/s]C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\experiments\patch_curve.py:200: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  acts_f = torch.load(f_f, map_location="cpu").to(torch.float32).to(device)
+C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\experiments\patch_curve.py:201: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  acts_t = torch.load(f_t, map_location="cpu").to(torch.float32).to(device)
+C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\experiments\patch_curve.py:202: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ids_ls = torch.load(f_i)
+CoT→NoCoT-Random: 100%|████████████████████████████████| 1000/1000 [08:26<00:00,  1.98it/s]
+>>> Random patching NoCoT → CoT
+NoCoT→CoT-Random: 100%|████████████████████████████████| 1000/1000 [08:26<00:00,  1.97it/s] 
+Statistical analysis saved to: C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\results\ttest_r8.txt
+Plot saved → C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\results\patch_curve_r8.png
+
+==================================================
+KEY STATISTICAL RESULTS
+==================================================
+
+CoT → NoCoT:
+  No significant effects found
+
+NoCoT → CoT:
+  No significant effects found
+
+Detailed results saved to: C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\results\ttest_r8.txt
+==================================================
+
+[experiment] Box Plot (NOCOT)
+  Running: C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\..\Scripts\python.exe C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\experiments\activated_box_plot.py --model EleutherAI/pythia-70m --sae_pkl C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\output\nocot_sae_r4\dict.pkl --layer 2 --layer_loc resid --out C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\results\boxplot_nocot.png
+W0307 07:59:57.442000 66196 torch\distributed\elastic\multiprocessing\redirects.py:28] NOTE: Redirects are currently not supported in Windows or MacOs.
+>> load model
+C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\huggingface_hub\file_download.py:1150: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+Using pad_token, but it is not set yet.
+Changing model dtype to torch.float32
+Loaded pretrained model EleutherAI/pythia-70m into HookedTransformer
+>> load SAE
+>> dataset
+Map: 100%|███████████████████████████████████| 7473/7473 [00:00<00:00, 20304.87 examples/s]
+Filter: 100%|████████████████████████████████| 7473/7473 [00:00<00:00, 12861.11 examples/s] 
+Map: 100%|████████████████████████████████████| 7342/7342 [00:00<00:00, 7457.21 examples/s] 
+pass-1: 100%|████████████████████████████████████████████| 115/115 [00:12<00:00,  9.15it/s]
+pass-2: 100%|████████████████████████████████████████████| 115/115 [00:12<00:00,  9.51it/s] 
+pass-3: 100%|████████████████████████████████████████████| 115/115 [00:12<00:00,  9.39it/s] 
+>> plot saved to C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\results\boxplot_nocot.png
+
+[experiment] Box Plot (COT)
+  Running: C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\..\Scripts\python.exe C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\experiments\activated_box_plot.py --model EleutherAI/pythia-70m --sae_pkl C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\output\cot_sae_r4\dict.pkl --layer 2 --layer_loc resid --out C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\results\boxplot_cot.png
+W0307 08:01:00.153000 67048 torch\distributed\elastic\multiprocessing\redirects.py:28] NOTE: Redirects are currently not supported in Windows or MacOs.
+>> load model
+C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\huggingface_hub\file_download.py:1150: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+Using pad_token, but it is not set yet.
+Changing model dtype to torch.float32
+Loaded pretrained model EleutherAI/pythia-70m into HookedTransformer
+>> load SAE
+>> dataset
+Filter: 100%|████████████████████████████████| 7473/7473 [00:00<00:00, 16114.23 examples/s]
+Map: 100%|████████████████████████████████████| 7342/7342 [00:01<00:00, 6522.04 examples/s] 
+pass-1: 100%|████████████████████████████████████████████| 115/115 [00:12<00:00,  9.20it/s] 
+pass-2: 100%|████████████████████████████████████████████| 115/115 [00:12<00:00,  9.41it/s] 
+pass-3: 100%|████████████████████████████████████████████| 115/115 [00:12<00:00,  9.45it/s] 
+>> plot saved to C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\results\boxplot_cot.png
+
+[experiment] Phase 3 complete. Results in C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\results/
+(venv) PS C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness> $f = Get-Content "c:\Users\divij\AppData\Roaming\Code\User\workspaceStorage\47ccd6b3089d2ff82cdafa4c5eb23a12\GitHub.copilot-chat\chat-session-resources\a215c900-bdda-4406-a079-afeb13495b81\toolu_vrtx_016vSBgHGFonrRDuN1h7ppRz__vscode-1772831950919\content.txt"; $f[-100..-1] -join "`n"
+to the interview. She went to a department store with a budget of $200 and spent $30 on a button-up shirt, $46 on suit pants, $38 on a suit coat, $11 on socks, and $18 on a belt. She also purchased a pair of shoes, but lost the receipt for them. She has $16 left from her budget. How much did Alexis pay for the shoes?                                                  
+extracted answer: 41
+patch-eval:   1%|â–Ž                             | 9/1000 [00:02<02:11,  7.55it/s, ll_gain=0]
+Sample 9
+topâ€‘k diff: [122.88187408447266, 7.049378871917725, 6.215729236602783, 4.351547718048096, 2.
+738874912261963, 0.19218981266021729, 0.09100019931793213, 0.034803420305252075, 0.019605979323387146, 0.018798723816871643]                                                            
+baseline_ll = -1794.232 , patched_ll = -1794.232 , Î” = 0.000
+question: Q: Tina makes $18.00 an hour.  If she works more than 8 hours per shift, she is el
+igible for overtime, which is paid by your hourly wage + 1/2 your hourly wage.  If she works 10 hours every day for 5 days, how much money does she make?                               
+A:<|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|
+><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|><|endoftext|>                                                                                           
+question: Tina makes $18.00 an hour.  If she works more than 8 hours per shift, she is eligi
+ble for overtime, which is paid by your hourly wage + 1/2 your hourly wage.  If she works 10 hours every day for 5 days, how much money does she make?                                  
+extracted answer: 990
+patch-eval: 100%|â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ| 1000/1000 [01:53<00:00,  8.82it/s, ll_gain=0]
+
+Completed 1000 samples. Average Î”log-prob = 0.000
+Saved plot â†’ C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\results\patching_hist_r8.png
+
+[experiment] Patch Curve (ratio=8)
+  Running: C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\..\Scripts\python.exe C:\IIIT-H\
+Sem6\inlp\Project\venv\cotFaithfulness\experiments\patch_curve.py --model EleutherAI/pythia-70m --layer 2 --layer_loc resid --rank 2 --dict_nocot C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\output\nocot_sae_r8\dict.pkl --dict_cot C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\output\cot_sae_r8\dict.pkl --acts_nocot_dir C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\nocot_acts --acts_cot_dir C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\data\cot_acts --max_samples 1000 --out C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\results\patch_curve_r8.png --save_stats C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\results\ttest_r8.txt                          
+W0307 07:25:38.193000 8416 torch\distributed\elastic\multiprocessing\redirects.py:28] NOTE: 
+Redirects are currently not supported in Windows or MacOs.                                  
+GSM lookup size = 7473
+C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\huggingface_hub\file_download.py:1150: Fu
+tureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.                                                                                           
+  warnings.warn(
+Using pad_token, but it is not set yet.
+Changing model dtype to torch.float32
+Loaded pretrained model EleutherAI/pythia-70m into HookedTransformer
+Loaded EleutherAI/pythia-70m
+SAE loaded. dict size = 4096
+>>> CoT â†’ NoCoT
+CoTâ†’NoCoT:   0%|                                                  | 0/1000 [00:00<?, ?it/s]C
+:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\experiments\patch_curve.py:132: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.                                                              
+  acts_f = torch.load(f_f, map_location="cpu").to(torch.float32).to(device)
+C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\experiments\patch_curve.py:133: FutureWarni
+ng: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.                                                             
+  acts_t = torch.load(f_t, map_location="cpu").to(torch.float32).to(device)
+C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\experiments\patch_curve.py:134: FutureWarni
+ng: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.                                                             
+  ids_ls = torch.load(f_i)
+CoTâ†’NoCoT: 100%|â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ| 1000/1000 [08:29<00:00,  1.96it/s]
+>>> NoCoT â†’ CoT
+NoCoTâ†’CoT: 100%|â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ| 1000/1000 [08:30<00:00,  1.96it/s]
+>>> Random patching CoT â†’ NoCoT
+CoTâ†’NoCoT-Random:   0%|                                           | 0/1000 [00:00<?, ?it/s]C
+:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\experiments\patch_curve.py:200: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.                                                              
+  acts_f = torch.load(f_f, map_location="cpu").to(torch.float32).to(device)
+C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\experiments\patch_curve.py:201: FutureWarni
+ng: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.                                                             
+  acts_t = torch.load(f_t, map_location="cpu").to(torch.float32).to(device)
+C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\experiments\patch_curve.py:202: FutureWarni
+ng: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.                                                             
+  ids_ls = torch.load(f_i)
+CoTâ†’NoCoT-Random: 100%|â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ| 1000/1000 [08:26<00:00,  1.98it/s]
+>>> Random patching NoCoT â†’ CoT
+NoCoTâ†’CoT-Random: 100%|â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ| 1000/1000 [08:26<00:00,  1.97it/s]
+Statistical analysis saved to: C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\results\ttes
+t_r8.txt                                                                                    
+Plot saved â†’ C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\results\patch_curve_r8.png  
+
+==================================================
+KEY STATISTICAL RESULTS
+==================================================
+
+CoT â†’ NoCoT:
+  No significant effects found
+
+NoCoT â†’ CoT:
+  No significant effects found
+
+Detailed results saved to: C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\results\ttest_r8
+.txt                                                                                        
+==================================================
+
+[experiment] Box Plot (NOCOT)
+  Running: C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\..\Scripts\python.exe C:\IIIT-H\
+Sem6\inlp\Project\venv\cotFaithfulness\experiments\activated_box_plot.py --model EleutherAI/pythia-70m --sae_pkl C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\output\nocot_sae_r4\dict.pkl --layer 2 --layer_loc resid --out C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\results\boxplot_nocot.png                                                       
+W0307 07:59:57.442000 66196 torch\distributed\elastic\multiprocessing\redirects.py:28] NOTE:
+ Redirects are currently not supported in Windows or MacOs.                                 
+>> load model
+C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\huggingface_hub\file_download.py:1150: Fu
+tureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.                                                                                           
+  warnings.warn(
+Using pad_token, but it is not set yet.
+Changing model dtype to torch.float32
+Loaded pretrained model EleutherAI/pythia-70m into HookedTransformer
+>> load SAE
+>> dataset
+Map: 100%|â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ| 7473/7473 [00:00<00:00, 20304.87 examples/s]
+Filter: 100%|â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ| 7473/7473 [00:00<00:00, 12861.11 examples/s]
+Map: 100%|â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ| 7342/7342 [00:00<00:00, 7457.21 examples/s]
+pass-1: 100%|â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ| 115/115 [00:12<00:00,  9.15it/s]     
+pass-2: 100%|â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ| 115/115 [00:12<00:00,  9.51it/s]     
+pass-3: 100%|â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ| 115/115 [00:12<00:00,  9.39it/s]     
+>> plot saved to C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\results\boxplot_nocot.png
+
+[experiment] Box Plot (COT)
+  Running: C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\..\Scripts\python.exe C:\IIIT-H\
+Sem6\inlp\Project\venv\cotFaithfulness\experiments\activated_box_plot.py --model EleutherAI/pythia-70m --sae_pkl C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\sparse_coding\output\cot_sae_r4\dict.pkl --layer 2 --layer_loc resid --out C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\results\boxplot_cot.png                                                           
+W0307 08:01:00.153000 67048 torch\distributed\elastic\multiprocessing\redirects.py:28] NOTE:
+ Redirects are currently not supported in Windows or MacOs.                                 
+>> load model
+C:\IIIT-H\Sem6\inlp\Project\venv\lib\site-packages\huggingface_hub\file_download.py:1150: Fu
+tureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.                                                                                           
+  warnings.warn(
+Using pad_token, but it is not set yet.
+Changing model dtype to torch.float32
+Loaded pretrained model EleutherAI/pythia-70m into HookedTransformer
+>> load SAE
+>> dataset
+Filter: 100%|â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ| 7473/7473 [00:00<00:00, 16114.23 examples/s]
+Map: 100%|â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ| 7342/7342 [00:01<00:00, 6522.04 examples/s]
+pass-1: 100%|â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ| 115/115 [00:12<00:00,  9.20it/s]     
+pass-2: 100%|â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ| 115/115 [00:12<00:00,  9.41it/s]     
+pass-3: 100%|â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ| 115/115 [00:12<00:00,  9.45it/s]     
+>> plot saved to C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\results\boxplot_cot.png   
+
+[experiment] Phase 3 complete. Results in C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\r
+esults/
+(venv) PS C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness> Get-ChildItem "c:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness\results" | Select-Object Name, Length
+
+Name                 Length
+----                 ------
+boxplot_cot.png      100587
+boxplot_nocot.png     98473
+patching_hist_r4.png  18892
+patching_hist_r8.png  18892
+patch_curve_r4.png    26559
+patch_curve_r8.png    26559
+ttest_r4.txt           2947
+ttest_r8.txt           2947
+
+
+(venv) PS C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness> ..\Scripts\Activate.ps1; Get-Content results\ttest_r4.txt
+============================================================
+Statistical Analysis Results
+============================================================
+
+1. One-sample t-tests (H0: mean = 0)
+----------------------------------------
+
+CoT â†’ NoCoT:
+  K=  1: mean=+0.0000, std=0.0000, t=+nan, p=nan
+  K=  2: mean=+0.0000, std=0.0000, t=+nan, p=nan
+  K=  4: mean=+0.0000, std=0.0000, t=+nan, p=nan
+  K=  8: mean=+0.0000, std=0.0000, t=+nan, p=nan
+  K= 16: mean=+0.0000, std=0.0000, t=+nan, p=nan
+  K= 32: mean=+0.0000, std=0.0000, t=+nan, p=nan
+  K= 64: mean=+0.0000, std=0.0000, t=+nan, p=nan
+  K=128: mean=+0.0000, std=0.0000, t=+nan, p=nan
+  K=256: mean=+0.0000, std=0.0000, t=+nan, p=nan
+
+NoCoT â†’ CoT:
+  K=  1: mean=+0.0000, std=0.0000, t=+nan, p=nan
+  K=  2: mean=+0.0000, std=0.0000, t=+nan, p=nan
+  K=  4: mean=+0.0000, std=0.0000, t=+nan, p=nan
+  K=  8: mean=+0.0000, std=0.0000, t=+nan, p=nan
+  K= 16: mean=+0.0000, std=0.0000, t=+nan, p=nan
+  K= 32: mean=+0.0000, std=0.0000, t=+nan, p=nan
+  K= 64: mean=+0.0000, std=0.0000, t=+nan, p=nan
+  K=128: mean=+0.0000, std=0.0000, t=+nan, p=nan
+  K=256: mean=+0.0000, std=0.0000, t=+nan, p=nan
+
+
+2. Paired t-tests (CoTâ†’NoCoT vs NoCoTâ†’CoT)
+--------------------------------------------------
+K=  1: diff_mean=+0.0000, t=+nan, p=nan
+K=  2: diff_mean=+0.0000, t=+nan, p=nan
+K=  4: diff_mean=+0.0000, t=+nan, p=nan
+K=  8: diff_mean=+0.0000, t=+nan, p=nan
+K= 16: diff_mean=+0.0000, t=+nan, p=nan
+K= 32: diff_mean=+0.0000, t=+nan, p=nan
+K= 64: diff_mean=+0.0000, t=+nan, p=nan
+K=128: diff_mean=+0.0000, t=+nan, p=nan
+K=256: diff_mean=+0.0000, t=+nan, p=nan
+
+
+3. Summary Statistics
+------------------------------
+
+CoT â†’ NoCoT:
+  K=  1:    0/1000 positive (  0.0%), mean=+0.0000
+  K=  2:    0/1000 positive (  0.0%), mean=+0.0000
+  K=  4:    0/1000 positive (  0.0%), mean=+0.0000
+  K=  8:    0/1000 positive (  0.0%), mean=+0.0000
+  K= 16:    0/1000 positive (  0.0%), mean=+0.0000
+  K= 32:    0/1000 positive (  0.0%), mean=+0.0000
+  K= 64:    0/1000 positive (  0.0%), mean=+0.0000
+  K=128:    0/1000 positive (  0.0%), mean=+0.0000
+  K=256:    0/1000 positive (  0.0%), mean=+0.0000
+  Positive effect at K: []
+  Negative effect at K: [1, 2, 4, 8, 16, 32, 64, 128, 256]
+
+NoCoT â†’ CoT:
+  K=  1:    0/1000 positive (  0.0%), mean=+0.0000
+  K=  2:    0/1000 positive (  0.0%), mean=+0.0000
+  K=  4:    0/1000 positive (  0.0%), mean=+0.0000
+  K=  8:    0/1000 positive (  0.0%), mean=+0.0000
+  K= 16:    0/1000 positive (  0.0%), mean=+0.0000
+  K= 32:    0/1000 positive (  0.0%), mean=+0.0000
+  K= 64:    0/1000 positive (  0.0%), mean=+0.0000
+  K=128:    0/1000 positive (  0.0%), mean=+0.0000
+  K=256:    0/1000 positive (  0.0%), mean=+0.0000
+  Positive effect at K: []
+  Negative effect at K: [1, 2, 4, 8, 16, 32, 64, 128, 256]
+
+
+Significance levels: * p<0.05, ** p<0.01, *** p<0.001
+Total samples per direction: ~1000
+(venv) PS C:\IIIT-H\Sem6\inlp\Project\venv\cotFaithfulness> 
