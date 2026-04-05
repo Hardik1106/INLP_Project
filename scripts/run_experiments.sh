@@ -53,7 +53,7 @@ MODELS=(
 # Experiment parameters
 # ---------------------------------------------------------------------------
 
-NUM_SAMPLES=200
+NUM_SAMPLES=100
 K_VALUES="10,50,100"
 DEVICE="cuda"
 

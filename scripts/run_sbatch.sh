@@ -2,9 +2,9 @@
 #SBATCH -A research
 #SBATCH -p u22
 #SBATCH -n 1
-#SBATCH --cpus-per-task=9
+#SBATCH --cpus-per-task=4
 #SBATCH --gres=gpu:1
-#SBATCH --mem=112G
+#SBATCH --mem=64G
 #SBATCH --time=4-00:00:00
 #SBATCH --output=logs/full_run_%j.txt
 #SBATCH --job-name=cot_full_run
@@ -14,7 +14,7 @@
 # CoT Mechanistic Faithfulness - Full Run
 # ===========================================================================
 # Complete pipeline execution with full dataset and all models
-# - 1 GPU, 9 CPU cores, 112GB memory
+# - 1 GPU, 9 CPU cores, 64GB memory
 # - 200+ samples (full dataset)
 # - Cross-model sweep (Pythia-70M, [add more models as needed])
 # - Multiple layers and intervention types
@@ -34,7 +34,7 @@ echo "Job ID: $SLURM_JOB_ID"
 echo "Node: $SLURM_NODELIST"
 echo "CPU cores: $SLURM_CPUS_PER_TASK"
 echo "GPU: $CUDA_VISIBLE_DEVICES"
-echo "Memory: 112GB"
+echo "Memory: 64GB"
 echo "Time limit: 4 days"
 echo ""
 

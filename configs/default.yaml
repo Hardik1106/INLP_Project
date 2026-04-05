@@ -78,7 +78,7 @@ sweep:
 
 # --- Output ---
 output:
-  results_dir: "outputs"
+  results_dir: "outputs_70m_deduped"
   save_activations: true
   save_generated_text: true
   log_level: "INFO"

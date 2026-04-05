@@ -1,0 +1,9 @@
+{
+  "intra_diff_mean": 2.725148806348443e-05,
+  "intra_diff_max": 0.09228923916816711,
+  "inter_diff_mean": 0.0,
+  "inter_diff_max": 0.0,
+  "n_intra_candidates": 32768,
+  "n_inter_candidates": 0,
+  "n_reasoning_features": 32768
+}

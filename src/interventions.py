@@ -457,20 +457,28 @@ def run_intervention_experiment(
                     layer=layer,
                     device=device,
                 )
-            except ValueError as e:
+            except (ValueError, FileNotFoundError, KeyError) as e:
                 msg = str(e)
-                if "not found in pretrained SAEs directory" in msg:
-                    logger.warning(
-                        "Skipping intervention stage because SAE release '%s' is not available "
-                        "in this sae_lens installation. Baseline outputs are still valid.",
-                        sae_config.release,
-                    )
-                    logger.warning(
-                        "To enable interventions, install/point to a compatible SAE release "
-                        "or provide local SAE checkpoints."
-                    )
-                    return all_results
-                raise
+                logger.warning(
+                    "Skipping intervention stage because SAE release '%s' could not be loaded. "
+                    "Error: %s\n"
+                    "Baseline outputs are still valid.",
+                    sae_config.release,
+                    msg,
+                )
+                logger.info(
+                    "To enable interventions: (1) use a release available in sae_lens, "
+                    "(2) update sae_lens with upgraded pretrained_saes.yaml, or "
+                    "(3) download SAE weights manually."
+                )
+                return all_results
+            except Exception as e:
+                logger.warning(
+                    "Unexpected error loading SAE for interventions: %s. "
+                    "Skipping intervention stage but keeping baseline outputs.",
+                    str(e),
+                )
+                return all_results
 
             for spec in layer_specs:
                 subdir = f"{output_dir}/{spec.intervention_type.value}/{spec.sampling_strategy.value}"

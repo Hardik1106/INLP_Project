@@ -140,23 +140,164 @@ def load_sae_from_saelens(
     except ValueError as e:
         msg = str(e)
         if "not found in pretrained SAEs directory" in msg:
-            try:
-                from sae_lens.toolkit.pretrained_saes_directory import get_pretrained_saes_directory
-
-                available = sorted(get_pretrained_saes_directory().keys())
-                logger.error(
-                    "Failed to load SAE from SAELens: %s\n"
-                    "Available SAE releases in this sae_lens install: %s",
-                    msg,
-                    ", ".join(available) if available else "<none>",
-                )
-            except Exception:
-                logger.error(f"Failed to load SAE from SAELens: {e}")
+            logger.warning(
+                f"SAE '{release}' not in SAELens registry. Attempting HuggingFace fallback...\n{msg}"
+            )
+            return _load_sae_from_huggingface(release, layer, device)
         else:
             logger.error(f"Failed to load SAE from SAELens: {e}")
+            raise
+    except Exception as e:
+        logger.warning(f"SAELens load failed: {e}. Attempting HuggingFace fallback...")
+        return _load_sae_from_huggingface(release, layer, device)
+
+
+def _load_sae_from_huggingface(
+    release: str,
+    layer: int,
+    device: str = "cpu",
+) -> SparseAutoencoder:
+    """
+    Direct HuggingFace loader for SAELens-compatible SAEs.
+    
+    Works for releases like "pythia-70m-deduped-res-sm" by constructing
+    the HuggingFace repo path and loading weights directly from .safetensors.
+    
+    File structure: {layer}-{suffix}/sae_weights.safetensors
+    E.g., layer 2 res-sm: 2-res-sm/sae_weights.safetensors
+    
+    Supported releases:
+      - pythia-70m-deduped-res-sm (residual stream)
+      - pythia-70m-deduped-mlp-sm (MLP output)
+      - pythia-70m-deduped-att-sm (attention output)
+    """
+    try:
+        from huggingface_hub import hf_hub_download
+        import os
+        
+        # Map common release patterns to HuggingFace repos
+        hf_repo_map = {
+            "pythia-70m-deduped-res-sm": "ctigges/pythia-70m-deduped__res-sm_processed",
+            "pythia-70m-deduped-mlp-sm": "ctigges/pythia-70m-deduped__mlp-sm_processed",
+            "pythia-70m-deduped-att-sm": "ctigges/pythia-70m-deduped__att-sm_processed",
+        }
+        
+        repo_id = hf_repo_map.get(release)
+        if not repo_id:
+            raise ValueError(
+                f"Cannot load SAE '{release}' from HuggingFace. "
+                f"Unknown release mapping. Available: {list(hf_repo_map.keys())}"
+            )
+        
+        # Determine hook suffix from release name
+        if "res-sm" in release:
+            suffix = "res-sm"
+        elif "mlp-sm" in release:
+            suffix = "mlp-sm"
+        elif "att-sm" in release:
+            suffix = "att-sm"
+        else:
+            suffix = "res-sm"  # default
+        
+        # Construct paths: e.g., "2-res-sm/sae_weights.safetensors" for layer 2
+        layer_folder = f"{layer}-{suffix}"
+        weights_filename = f"{layer_folder}/sae_weights.safetensors"
+        
+        logger.info(
+            f"Loading SAE from HuggingFace: repo={repo_id}, "
+            f"layer={layer}, file={weights_filename}"
+        )
+        
+        weights_path = hf_hub_download(
+            repo_id=repo_id,
+            filename=weights_filename,
+            cache_dir=os.path.expanduser("~/.cache/huggingface/hub"),
+        )
+        logger.info(f"Downloaded SAE weights to {weights_path}")
+        
+        # Load from .safetensors format
+        try:
+            from safetensors.torch import load_file
+            state = load_file(weights_path)
+            logger.info("Loaded .safetensors file successfully")
+        except ImportError:
+            logger.warning("safetensors not installed, attempting torch fallback...")
+            state = torch.load(weights_path, map_location=device, weights_only=True)
+        
+        # Extract weight tensors - safetensors may use different key names
+        # Try to find encoder/decoder weights by pattern matching
+        W_enc, b_enc, W_dec, b_dec = None, None, None, None
+        
+        for key in state.keys():
+            key_lower = key.lower()
+            if 'w_enc' in key_lower or ('encoder' in key_lower and 'weight' in key_lower):
+                if W_enc is None:
+                    W_enc = state[key]
+            elif 'b_enc' in key_lower or ('encoder' in key_lower and 'bias' in key_lower):
+                if b_enc is None:
+                    b_enc = state[key]
+            elif 'w_dec' in key_lower or ('decoder' in key_lower and 'weight' in key_lower):
+                if W_dec is None:
+                    W_dec = state[key]
+            elif 'b_dec' in key_lower or ('decoder' in key_lower and 'bias' in key_lower):
+                if b_dec is None:
+                    b_dec = state[key]
+        
+        # Fallback to direct keys if pattern matching didn't work
+        if W_enc is None:
+            for key in ["W_enc", "encoder.weight", "encoder_weight"]:
+                if key in state:
+                    W_enc = state[key]
+                    break
+        
+        if b_enc is None:
+            for key in ["b_enc", "encoder.bias", "encoder_bias"]:
+                if key in state:
+                    b_enc = state[key]
+                    break
+        
+        if W_dec is None:
+            for key in ["W_dec", "decoder.weight", "decoder_weight"]:
+                if key in state:
+                    W_dec = state[key]
+                    break
+        
+        if b_dec is None:
+            for key in ["b_dec", "decoder.bias", "decoder_bias"]:
+                if key in state:
+                    b_dec = state[key]
+                    break
+        
+        if W_enc is None or b_enc is None or W_dec is None or b_dec is None:
+            logger.error(
+                f"Could not find SAE weights in {weights_filename}.\n"
+                f"Available keys: {list(state.keys())}"
+            )
+            raise ValueError(f"Missing required weight tensors in {weights_filename}")
+        
+        sae = SparseAutoencoder(
+            d_model=W_enc.shape[0],
+            d_sae=W_enc.shape[1],
+            W_enc=W_enc.to(device),
+            b_enc=b_enc.to(device),
+            W_dec=W_dec.to(device),
+            b_dec=b_dec.to(device),
+        )
+        sae = sae.to(device)
+        logger.info(
+            f"  ✓ SAE loaded from HuggingFace: d_model={W_enc.shape[0]}, "
+            f"d_sae={W_enc.shape[1]}"
+        )
+        return sae
+    except FileNotFoundError as e:
+        logger.error(
+            f"HuggingFace file not found for {release} layer {layer}: {e}"
+        )
         raise
     except Exception as e:
-        logger.error(f"Failed to load SAE from SAELens: {e}")
+        logger.error(
+            f"Failed to load SAE '{release}' layer {layer} from HuggingFace: {e}"
+        )
         raise
 
 
