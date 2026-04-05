@@ -75,10 +75,6 @@ sweep:
       tl_name: "pythia-70m"
       sae_release: "pythia-70m-res-jb"
       layers: [1, 2, 3]
-    - name: "EleutherAI/pythia-2.8b"
-      tl_name: "pythia-2.8b"
-      sae_release: "pythia-2.8b-res-jb"
-      layers: [2, 12, 14, 16]
 
 # --- Output ---
 output:

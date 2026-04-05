@@ -450,12 +450,27 @@ def run_intervention_experiment(
         for layer, layer_specs in sorted(specs_by_layer.items()):
             logger.info(f"=== Layer {layer}: {len(layer_specs)} specs ===")
 
-            sae = load_sae_from_saelens(
-                release=sae_config.release,
-                sae_id=sae_config.sae_id,
-                layer=layer,
-                device=device,
-            )
+            try:
+                sae = load_sae_from_saelens(
+                    release=sae_config.release,
+                    sae_id=sae_config.sae_id,
+                    layer=layer,
+                    device=device,
+                )
+            except ValueError as e:
+                msg = str(e)
+                if "not found in pretrained SAEs directory" in msg:
+                    logger.warning(
+                        "Skipping intervention stage because SAE release '%s' is not available "
+                        "in this sae_lens installation. Baseline outputs are still valid.",
+                        sae_config.release,
+                    )
+                    logger.warning(
+                        "To enable interventions, install/point to a compatible SAE release "
+                        "or provide local SAE checkpoints."
+                    )
+                    return all_results
+                raise
 
             for spec in layer_specs:
                 subdir = f"{output_dir}/{spec.intervention_type.value}/{spec.sampling_strategy.value}"

@@ -34,10 +34,35 @@ def load_hooked_model(
     """
     logger.info(f"Loading HookedTransformer: {model_name}")
     torch_dtype = get_torch_dtype(dtype)
-    model = tl.HookedTransformer.from_pretrained(
-        model_name,
-        device=device,
-    )
+
+    try:
+        model = tl.HookedTransformer.from_pretrained(
+            model_name,
+            device=device,
+        )
+    except AttributeError as exc:
+        # Compatibility shim for newer transformers versions where
+        # GPTNeoXConfig may not expose rotary_pct (needed by some TL versions).
+        if "rotary_pct" not in str(exc):
+            raise
+
+        logger.warning(
+            "TransformerLens compatibility fallback: missing GPTNeoXConfig.rotary_pct; "
+            "injecting default rotary_pct=0.25 and retrying model load."
+        )
+        try:
+            from transformers.models.gpt_neox.configuration_gpt_neox import GPTNeoXConfig
+        except Exception:
+            raise
+
+        if not hasattr(GPTNeoXConfig, "rotary_pct"):
+            GPTNeoXConfig.rotary_pct = 0.25
+
+        model = tl.HookedTransformer.from_pretrained(
+            model_name,
+            device=device,
+        )
+
     model.eval()
     logger.info(
         f"  Loaded model with {model.cfg.n_layers} layers, "

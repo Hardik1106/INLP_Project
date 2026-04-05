@@ -92,8 +92,6 @@ def load_sae_from_saelens(
     layer-specific IDs.
     """
     try:
-        print("==============================")
-        print(release, sae_id, layer)
         # from sae_lens import SAE
         # if sae_id is None:
         #     sae_id = f"blocks.{layer}.hook_resid_post"
@@ -139,6 +137,24 @@ def load_sae_from_saelens(
         logger.info(f"  SAE loaded: d_model={d_model}, d_sae={d_sae}")
         return sae
 
+    except ValueError as e:
+        msg = str(e)
+        if "not found in pretrained SAEs directory" in msg:
+            try:
+                from sae_lens.toolkit.pretrained_saes_directory import get_pretrained_saes_directory
+
+                available = sorted(get_pretrained_saes_directory().keys())
+                logger.error(
+                    "Failed to load SAE from SAELens: %s\n"
+                    "Available SAE releases in this sae_lens install: %s",
+                    msg,
+                    ", ".join(available) if available else "<none>",
+                )
+            except Exception:
+                logger.error(f"Failed to load SAE from SAELens: {e}")
+        else:
+            logger.error(f"Failed to load SAE from SAELens: {e}")
+        raise
     except Exception as e:
         logger.error(f"Failed to load SAE from SAELens: {e}")
         raise
@@ -259,6 +275,44 @@ def encode_and_cache_all(
     results = {}
     for layer in layers:
         logger.info(f"--- Encoding layer {layer} ---")
+
+        # Fast path: reuse precomputed SAE features if they already exist.
+        # This is useful on clusters where the desired SAE release is unavailable
+        # in the installed sae_lens pretrained registry.
+        can_reuse_cached = True
+        cached_feature_tensors: Dict[str, torch.Tensor] = {}
+
+        for label, layer_acts in cached_activations.items():
+            if layer not in layer_acts:
+                continue
+
+            feature_path = f"{cache_dir}/{label}/sae_features_layer_{layer}.pt"
+            if not Path(feature_path).exists():
+                can_reuse_cached = False
+                break
+
+            feats = load_tensor(feature_path)
+            expected_n = layer_acts[layer].shape[0]
+            if feats.shape[0] < expected_n:
+                logger.warning(
+                    f"Cached SAE features too short at {feature_path}: "
+                    f"found {feats.shape[0]}, expected at least {expected_n}. Recomputing."
+                )
+                can_reuse_cached = False
+                break
+
+            cached_feature_tensors[label] = feats[:expected_n].cpu()
+
+        if can_reuse_cached and cached_feature_tensors:
+            for label, feats in cached_feature_tensors.items():
+                if label not in results:
+                    results[label] = {}
+                results[label][layer] = feats
+                logger.info(
+                    f"  {label} layer {layer}: reused cached SAE features {tuple(feats.shape)}"
+                )
+            continue
+
         sae = load_sae_from_saelens(
             release=sae_config.release,
             sae_id=sae_config.sae_id,
