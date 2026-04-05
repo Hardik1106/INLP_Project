@@ -40,6 +40,7 @@ from src.interventions import (
     run_baseline_generation,
 )
 from src.eval_accuracy import evaluate_accuracy, evaluate_accuracy_baseline
+from src.eval_confidence import evaluate_confidence, evaluate_confidence_baseline
 from src.eval_fluency import evaluate_fluency, evaluate_fluency_baseline
 
 
@@ -208,9 +209,9 @@ def stage_4_evaluation(
     intervention_results: List,
     model,
 ):
-    """Stage 4: Two-axis evaluation (accuracy + fluency)."""
+    """Stage 4: Evaluation (accuracy + confidence + fluency)."""
     logger.info("=" * 60)
-    logger.info("STAGE 4: Evaluation (Accuracy + Fluency)")
+    logger.info("STAGE 4: Evaluation (Accuracy + Confidence + Fluency)")
     logger.info("=" * 60)
 
     eval_dir = ensure_dir(f"{config.output.results_dir}/evaluation")
@@ -223,8 +224,22 @@ def stage_4_evaluation(
     save_json(accuracy_baseline, f"{eval_dir}/accuracy_baseline.json")
     save_json(accuracy_intervention, f"{eval_dir}/accuracy_intervention.json")
 
-    # --- Axis 2: Language Fluency (Perplexity) ---
-    logger.info("--- Axis 2: Language Fluency ---")
+    # --- Axis 2: Confidence (Answer Log-Probability) ---
+    logger.info("--- Axis 2: Confidence (Answer Log-Probability) ---")
+    confidence_baseline = evaluate_confidence_baseline(
+        baseline_results,
+        model,
+    )
+    confidence_intervention = evaluate_confidence(
+        intervention_results,
+        model,
+    )
+
+    save_json(confidence_baseline, f"{eval_dir}/confidence_baseline.json")
+    save_json(confidence_intervention, f"{eval_dir}/confidence_intervention.json")
+
+    # --- Axis 3: Language Fluency (Perplexity) ---
+    logger.info("--- Axis 3: Language Fluency ---")
     fluency_baseline = evaluate_fluency_baseline(
         baseline_results, model, config.evaluation,
     )
@@ -238,6 +253,8 @@ def stage_4_evaluation(
     return {
         "accuracy_baseline": accuracy_baseline,
         "accuracy_intervention": accuracy_intervention,
+        "confidence_baseline": confidence_baseline,
+        "confidence_intervention": confidence_intervention,
         "fluency_baseline": fluency_baseline,
         "fluency_intervention": fluency_intervention,
     }
@@ -270,21 +287,31 @@ def generate_summary(
         f"Baseline Perplexity: {bl_flu['mean_perplexity']:.2f}"
     )
 
+    # Baseline confidence
+    bl_conf = eval_results.get("confidence_baseline", {})
+    if bl_conf:
+        summary_lines.append(
+            "Baseline Confidence (mean logP/token): "
+            f"{bl_conf.get('mean_answer_logprob_per_token', -1):.4f}"
+        )
+
     # Intervention results table
     summary_lines.append("\n--- Intervention Results ---")
     summary_lines.append(
-        f"{'Spec Label':<50} {'Accuracy':>8} {'Perplexity':>11}"
+        f"{'Spec Label':<50} {'Accuracy':>8} {'LogP/tok':>10} {'Perplexity':>11}"
     )
     summary_lines.append("-" * 70)
 
     acc_inv = eval_results["accuracy_intervention"]
+    conf_inv = eval_results.get("confidence_intervention", {})
     flu_inv = eval_results["fluency_intervention"]
 
     for label in sorted(acc_inv.keys()):
         acc = acc_inv[label]["accuracy"]
+        conf = conf_inv.get(label, {}).get("mean_answer_logprob_per_token", -1)
         ppl = flu_inv.get(label, {}).get("mean_perplexity", -1)
         summary_lines.append(
-            f"{label:<50} {acc:>8.3f} {ppl:>11.2f}"
+            f"{label:<50} {acc:>8.3f} {conf:>10.4f} {ppl:>11.2f}"
         )
 
     summary_text = "\n".join(summary_lines)

@@ -41,7 +41,6 @@ echo ""
 
 MODELS=(
     "EleutherAI/pythia-70m|pythia-70m|pythia-70m-res-jb|1,2,3"
-    "EleutherAI/pythia-2.8b|pythia-2.8b|pythia-2.8b-res-jb|2,12,14,16"
 )
 
 # Uncomment additional models as compute allows:
