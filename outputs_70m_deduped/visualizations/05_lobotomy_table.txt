@@ -1,0 +1,70 @@
+====================================================================================================
+QUALITATIVE ANALYSIS: MODEL BEHAVIOR BEFORE & AFTER REASONING FEATURE ABLATION
+====================================================================================================
+
+
+--- Sample 0 ---
+Prompt (truncated): Question: Janet’s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes mu...
+
+BASELINE OUTPUT:
+Q. What is the difference between the two?
+A. The difference between the two is that the two are the same.
+Q. What is the difference between the two?
+A. The difference between the two is that the two 
+
+AFTER ABLATION:
+ yourself?.... and????????????????tyine??????
+
+????????????
+?????????
+????????????
+???????
+??????????
+???????
+???????????
+???????
+??????????
+???????
+?????????
+????????
+?????????dually are???????
+?????
+
+Ground Truth: 18
+----------------------------------------------------------------------------------------------------
+
+--- Sample 1 ---
+Prompt (truncated): Question: A robe takes 2 bolts of blue fiber and half that much white fiber.  How many bolts in tota...
+
+BASELINE OUTPUT:
+Q. Does the rope have a "wrist" or a "wrist" in it?
+A. The rope is a "wrist" and the rope is a "wrist" in it.
+Q. Does the rope have a "wrist" or a "wrist" in it?
+A. The rope is a "wrist" and the rope 
+
+AFTER ABLATION:
+ yourself: the number of the are the number of the number of the number of the ones whoes-ine elegans and are required-ine elegansine and]]> elegans- sciencesine elegansinallyorge-]]> elegans- science
+
+Ground Truth: 3
+----------------------------------------------------------------------------------------------------
+
+--- Sample 2 ---
+Prompt (truncated): Question: Josh decides to try flipping a house.  He buys a house for $80,000 and then puts in $50,00...
+
+BASELINE OUTPUT:
+Q:
+
+A:
+
+I think you're right.  I think you're right.  I think you're right.  I think you're right.  I think you're right.
+
+A:
+
+I think you're right.  I think you're right.  I think you're right.  I th
+
+AFTER ABLATION:
+ yourself and the others are all of the same we are whoine-ine elegans and are the other are the same- andineineineineineously
+]]> elegans and/ others risk-ine elegans elegans mustrine elegans elegans
+
+Ground Truth: 70000
+----------------------------------------------------------------------------------------------------
