@@ -1,0 +1,98 @@
+{
+  "model": {
+    "name": "EleutherAI/pythia-70m-deduped",
+    "transformer_lens_name": "pythia-70m",
+    "device": "cuda:0",
+    "dtype": "float16"
+  },
+  "sae": {
+    "release": "pythia-70m-deduped-res-sm",
+    "sae_id": null,
+    "expansion_factor": 8
+  },
+  "layers": {
+    "shallow": [
+      0,
+      1,
+      2
+    ],
+    "deep": [
+      3,
+      4,
+      5
+    ],
+    "intervention_layers": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  "data": {
+    "gsm8k_split": "test",
+    "triviaqa_split": "validation",
+    "num_samples": 100,
+    "max_seq_len": 1024,
+    "cache_dir": "data/activations",
+    "use_triviaqa": true
+  },
+  "prompts": {
+    "cot_prefix": "Let's solve this step by step.\n",
+    "no_cot_prefix": "Answer directly.\n",
+    "cot_suffix": "\nTherefore, the answer is",
+    "no_cot_suffix": "\nThe answer is"
+  },
+  "contrastive": {
+    "activation_diff_threshold": 0.5,
+    "top_percentile": 97,
+    "intersection_method": "strict"
+  },
+  "interventions": {
+    "k_values": [
+      10,
+      50,
+      100
+    ],
+    "ablation_value": 0.0,
+    "amplification_scales": [
+      1.5,
+      3.0
+    ],
+    "num_random_trials": 2,
+    "max_new_tokens": 512
+  },
+  "evaluation": {
+    "answer_regex": "#### (\\-?[\\d,]+\\.?\\d*)",
+    "perplexity_model": null,
+    "perplexity_stride": 256
+  },
+  "sweep": {
+    "models": [
+      {
+        "name": "EleutherAI/pythia-70m-deduped",
+        "tl_name": "pythia-70m",
+        "sae_release": "pythia-70m-deduped-res-sm",
+        "layers": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    ]
+  },
+  "output": {
+    "results_dir": "outputs_70m_cross_layer_mapping",
+    "save_activations": true,
+    "save_generated_text": true,
+    "log_level": "INFO"
+  },
+  "performance": {
+    "activation_cache_batch_size": 1024,
+    "sae_encode_batch_size": 2560,
+    "intervention_batch_size": 1024
+  }
+}

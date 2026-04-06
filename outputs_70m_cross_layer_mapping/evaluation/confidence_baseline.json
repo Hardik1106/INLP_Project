@@ -1,0 +1,720 @@
+{
+  "mean_answer_logprob": -27.35641821861267,
+  "mean_answer_logprob_per_token": -3.180000597536564,
+  "logprob_stats": {
+    "mean": -27.35641821861267,
+    "std": 9.630624732409695,
+    "min": -78.4534912109375,
+    "max": -8.401893615722656,
+    "n": 100
+  },
+  "logprob_per_token_stats": {
+    "mean": -3.180000597536564,
+    "std": 2.313772704138116,
+    "min": -11.769838333129883,
+    "max": -0.11754468083381653,
+    "n": 100
+  },
+  "details": [
+    {
+      "sample_idx": 0,
+      "answer_text": "Q. What is the difference between the two?",
+      "answer_logprob": -28.243141174316406,
+      "answer_logprob_per_token": -2.8243141174316406,
+      "n_answer_tokens": 10
+    },
+    {
+      "sample_idx": 1,
+      "answer_text": "Q. Does the rope have a \"wrist\" or a \"wrist\" in it?",
+      "answer_logprob": -50.86014938354492,
+      "answer_logprob_per_token": -2.5430076122283936,
+      "n_answer_tokens": 20
+    },
+    {
+      "sample_idx": 2,
+      "answer_text": "Q:",
+      "answer_logprob": -15.838178634643555,
+      "answer_logprob_per_token": -7.919089317321777,
+      "n_answer_tokens": 2
+    },
+    {
+      "sample_idx": 3,
+      "answer_text": "10",
+      "answer_logprob": -11.769838333129883,
+      "answer_logprob_per_token": -11.769838333129883,
+      "n_answer_tokens": 1
+    },
+    {
+      "sample_idx": 4,
+      "answer_text": "Q: What is the best way to feed the chickens?",
+      "answer_logprob": -28.43707847595215,
+      "answer_logprob_per_token": -2.3697566986083984,
+      "n_answer_tokens": 12
+    },
+    {
+      "sample_idx": 5,
+      "answer_text": "Q: What is the difference between the price of a glass and the price of a glass?",
+      "answer_logprob": -31.69434928894043,
+      "answer_logprob_per_token": -1.6681236028671265,
+      "n_answer_tokens": 19
+    },
+    {
+      "sample_idx": 6,
+      "answer_text": "Q. What is the difference between the two?",
+      "answer_logprob": -26.608535766601562,
+      "answer_logprob_per_token": -2.660853624343872,
+      "n_answer_tokens": 10
+    },
+    {
+      "sample_idx": 7,
+      "answer_text": "Q: How do you install the download?",
+      "answer_logprob": -27.027048110961914,
+      "answer_logprob_per_token": -3.003005266189575,
+      "n_answer_tokens": 9
+    },
+    {
+      "sample_idx": 8,
+      "answer_text": "Q: What is the difference between the two?",
+      "answer_logprob": -28.429222106933594,
+      "answer_logprob_per_token": -2.8429222106933594,
+      "n_answer_tokens": 10
+    },
+    {
+      "sample_idx": 9,
+      "answer_text": "Q: What is the difference between the two?",
+      "answer_logprob": -26.078975677490234,
+      "answer_logprob_per_token": -2.6078975200653076,
+      "n_answer_tokens": 10
+    },
+    {
+      "sample_idx": 10,
+      "answer_text": "Q: What is the number of downloads in the first month?",
+      "answer_logprob": -25.220081329345703,
+      "answer_logprob_per_token": -1.9400063753128052,
+      "n_answer_tokens": 13
+    },
+    {
+      "sample_idx": 11,
+      "answer_text": "50.",
+      "answer_logprob": -18.018238067626953,
+      "answer_logprob_per_token": -9.009119033813477,
+      "n_answer_tokens": 2
+    },
+    {
+      "sample_idx": 12,
+      "answer_text": "90.",
+      "answer_logprob": -18.373815536499023,
+      "answer_logprob_per_token": -9.186907768249512,
+      "n_answer_tokens": 2
+    },
+    {
+      "sample_idx": 13,
+      "answer_text": "Q: What is the difference between the two?",
+      "answer_logprob": -26.788209915161133,
+      "answer_logprob_per_token": -2.678821086883545,
+      "n_answer_tokens": 10
+    },
+    {
+      "sample_idx": 14,
+      "answer_text": "Q: How many students are enrolled in hip-hop dance?",
+      "answer_logprob": -25.474151611328125,
+      "answer_logprob_per_token": -1.959550142288208,
+      "n_answer_tokens": 13
+    },
+    {
+      "sample_idx": 15,
+      "answer_text": "8000.",
+      "answer_logprob": -22.265422821044922,
+      "answer_logprob_per_token": -11.132711410522461,
+      "n_answer_tokens": 2
+    },
+    {
+      "sample_idx": 16,
+      "answer_text": "Q: What is the distance covered by each train in the two days?",
+      "answer_logprob": -23.608232498168945,
+      "answer_logprob_per_token": -1.5738822221755981,
+      "n_answer_tokens": 15
+    },
+    {
+      "sample_idx": 17,
+      "answer_text": "Q: How much do you pay for a cheerleading coach?",
+      "answer_logprob": -30.60000991821289,
+      "answer_logprob_per_token": -2.353847026824951,
+      "n_answer_tokens": 13
+    },
+    {
+      "sample_idx": 18,
+      "answer_text": "Q. What is the best way to get the best eggs for your breakfast?",
+      "answer_logprob": -41.27473831176758,
+      "answer_logprob_per_token": -2.5796711444854736,
+      "n_answer_tokens": 16
+    },
+    {
+      "sample_idx": 19,
+      "answer_text": "Q: How long do you plan to walk the next two miles?",
+      "answer_logprob": -30.747177124023438,
+      "answer_logprob_per_token": -2.1962270736694336,
+      "n_answer_tokens": 14
+    },
+    {
+      "sample_idx": 20,
+      "answer_text": "Q: What is the difference between the two?",
+      "answer_logprob": -26.409223556518555,
+      "answer_logprob_per_token": -2.6409223079681396,
+      "n_answer_tokens": 10
+    },
+    {
+      "sample_idx": 21,
+      "answer_text": "Q. What is the relationship between the two?",
+      "answer_logprob": -26.27499771118164,
+      "answer_logprob_per_token": -2.62749981880188,
+      "n_answer_tokens": 10
+    },
+    {
+      "sample_idx": 22,
+      "answer_text": "Q.  How many DVDs did Billy sell on Tuesday?",
+      "answer_logprob": -25.940645217895508,
+      "answer_logprob_per_token": -1.995434284210205,
+      "n_answer_tokens": 13
+    },
+    {
+      "sample_idx": 23,
+      "answer_text": "Q. What is the relationship between the candle and the candle's temperature?",
+      "answer_logprob": -34.70903778076172,
+      "answer_logprob_per_token": -2.3139359951019287,
+      "n_answer_tokens": 15
+    },
+    {
+      "sample_idx": 24,
+      "answer_text": "50.",
+      "answer_logprob": -18.341720581054688,
+      "answer_logprob_per_token": -9.170860290527344,
+      "n_answer_tokens": 2
+    },
+    {
+      "sample_idx": 25,
+      "answer_text": "Q: How many boxes of pizza did Marie order if each box costs $12, 5 packs of milk that costs $3.50?",
+      "answer_logprob": -27.474586486816406,
+      "answer_logprob_per_token": -0.9812352657318115,
+      "n_answer_tokens": 28
+    },
+    {
+      "sample_idx": 26,
+      "answer_text": "50.",
+      "answer_logprob": -15.732797622680664,
+      "answer_logprob_per_token": -7.866398811340332,
+      "n_answer_tokens": 2
+    },
+    {
+      "sample_idx": 27,
+      "answer_text": "Q: What is the best way to get a good picture of the ice cream?",
+      "answer_logprob": -40.513092041015625,
+      "answer_logprob_per_token": -2.3831231594085693,
+      "n_answer_tokens": 17
+    },
+    {
+      "sample_idx": 28,
+      "answer_text": "Q. What is the difference between the two?",
+      "answer_logprob": -28.319608688354492,
+      "answer_logprob_per_token": -2.831960916519165,
+      "n_answer_tokens": 10
+    },
+    {
+      "sample_idx": 29,
+      "answer_text": "Q: What is the difference between the two shoes?",
+      "answer_logprob": -26.5699462890625,
+      "answer_logprob_per_token": -2.415449619293213,
+      "n_answer_tokens": 11
+    },
+    {
+      "sample_idx": 30,
+      "answer_text": "Q. What is the average age of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of the youngest child of",
+      "answer_logprob": -78.4534912109375,
+      "answer_logprob_per_token": -0.1532294750213623,
+      "n_answer_tokens": 512
+    },
+    {
+      "sample_idx": 31,
+      "answer_text": "Q: What is the average guess?",
+      "answer_logprob": -22.833892822265625,
+      "answer_logprob_per_token": -2.854236602783203,
+      "n_answer_tokens": 8
+    },
+    {
+      "sample_idx": 32,
+      "answer_text": "Q.  How many hours a week does he spend taking care of his business?",
+      "answer_logprob": -27.236900329589844,
+      "answer_logprob_per_token": -1.6021705865859985,
+      "n_answer_tokens": 17
+    },
+    {
+      "sample_idx": 33,
+      "answer_text": "Q: How many coins do Gretchen have?",
+      "answer_logprob": -20.850759506225586,
+      "answer_logprob_per_token": -1.8955236673355103,
+      "n_answer_tokens": 11
+    },
+    {
+      "sample_idx": 34,
+      "answer_text": "1.",
+      "answer_logprob": -9.845590591430664,
+      "answer_logprob_per_token": -4.922795295715332,
+      "n_answer_tokens": 2
+    },
+    {
+      "sample_idx": 35,
+      "answer_text": "Q:",
+      "answer_logprob": -16.578044891357422,
+      "answer_logprob_per_token": -8.289022445678711,
+      "n_answer_tokens": 2
+    },
+    {
+      "sample_idx": 36,
+      "answer_text": "Q: How much do you spend on yogurt?",
+      "answer_logprob": -24.533220291137695,
+      "answer_logprob_per_token": -2.453322172164917,
+      "n_answer_tokens": 10
+    },
+    {
+      "sample_idx": 37,
+      "answer_text": "Q: How many lego sets does he still have?",
+      "answer_logprob": -19.260025024414062,
+      "answer_logprob_per_token": -1.6050021648406982,
+      "n_answer_tokens": 12
+    },
+    {
+      "sample_idx": 38,
+      "answer_text": "Q:",
+      "answer_logprob": -15.670679092407227,
+      "answer_logprob_per_token": -7.835339546203613,
+      "n_answer_tokens": 2
+    },
+    {
+      "sample_idx": 39,
+      "answer_text": "Q: What is the difference between the two?",
+      "answer_logprob": -27.784652709960938,
+      "answer_logprob_per_token": -2.7784652709960938,
+      "n_answer_tokens": 10
+    },
+    {
+      "sample_idx": 40,
+      "answer_text": "Q: How long is the iPhone's iPhone's iPhone?",
+      "answer_logprob": -31.52039909362793,
+      "answer_logprob_per_token": -2.626699924468994,
+      "n_answer_tokens": 12
+    },
+    {
+      "sample_idx": 41,
+      "answer_text": "A:",
+      "answer_logprob": -15.267265319824219,
+      "answer_logprob_per_token": -7.633632659912109,
+      "n_answer_tokens": 2
+    },
+    {
+      "sample_idx": 42,
+      "answer_text": "The following is a list of the items that were taken by the guests.  The items that were taken by the guests are listed below.  The items that were taken by the guests are listed below.  The items that were taken by the guests are listed below.  The items that were taken by the guests are listed below.  The items that were taken by the guests are listed below.  The items that were taken by the guests are listed below.  The items that were taken by the guests are listed below.  The items that were taken by the guests are listed below.  The items that were taken by the guests are listed below.  The items that were taken by the guests are listed below.  The items that were taken by the guests are listed below.  The items that were taken by the guests are listed below.  The items that were taken by the guests are listed below.  The items that were taken by the guests are listed below.  The items that were taken by the guests are listed below.  The items that were taken by the guests are listed below.  The items that were taken by the guests are listed below.  The items that were taken by the guests are listed below.  The items that were taken by the guests are listed below.  The items that were taken by the guests are listed below.  The items that were taken by the guests are listed below.  The items that were taken by the guests are listed below.  The items that were taken by the guests are listed below.  The items that were taken by the guests are listed below.  The items that were taken by the guests are listed below.  The items that were taken by the guests are listed below.  The items that were taken by the guests are listed below.  The items that were taken by the guests are listed below.  The items that were taken by the guests are listed below.  The items that were taken by the guests are listed below.  The items that were taken by the guests are listed below.  The items that were taken by the guests are listed below.  The items that were taken by the guests are listed below.  The items that were taken by the guests are listed below.  The items that were taken by the guests are listed below.  The items that were taken by the guests are listed below.  The items that were taken by the guests are listed below.  The items that were taken by the guests are listed below.  The items",
+      "answer_logprob": -60.18287658691406,
+      "answer_logprob_per_token": -0.11754468083381653,
+      "n_answer_tokens": 512
+    },
+    {
+      "sample_idx": 43,
+      "answer_text": "Q: What is the nutritional info of a bag of chips?",
+      "answer_logprob": -26.313217163085938,
+      "answer_logprob_per_token": -2.0240936279296875,
+      "n_answer_tokens": 13
+    },
+    {
+      "sample_idx": 44,
+      "answer_text": "Q: What is the net profit of a candle?",
+      "answer_logprob": -26.085142135620117,
+      "answer_logprob_per_token": -2.3713765144348145,
+      "n_answer_tokens": 11
+    },
+    {
+      "sample_idx": 45,
+      "answer_text": "Q: How many articles do you have in your blog?",
+      "answer_logprob": -29.90475082397461,
+      "answer_logprob_per_token": -2.492062568664551,
+      "n_answer_tokens": 12
+    },
+    {
+      "sample_idx": 46,
+      "answer_text": "Q: What is the difference between the two?",
+      "answer_logprob": -27.257343292236328,
+      "answer_logprob_per_token": -2.7257344722747803,
+      "n_answer_tokens": 10
+    },
+    {
+      "sample_idx": 47,
+      "answer_text": "Q:",
+      "answer_logprob": -16.590465545654297,
+      "answer_logprob_per_token": -8.295232772827148,
+      "n_answer_tokens": 2
+    },
+    {
+      "sample_idx": 48,
+      "answer_text": "Q. What is the best way to get the best result?",
+      "answer_logprob": -34.768089294433594,
+      "answer_logprob_per_token": -2.674468517303467,
+      "n_answer_tokens": 13
+    },
+    {
+      "sample_idx": 49,
+      "answer_text": "Q. What is the total number of unoccupied units In the building?",
+      "answer_logprob": -23.718591690063477,
+      "answer_logprob_per_token": -1.5812395811080933,
+      "n_answer_tokens": 15
+    },
+    {
+      "sample_idx": 50,
+      "answer_text": "Q. What is the probability of a chicken being born in a farm?",
+      "answer_logprob": -39.87677764892578,
+      "answer_logprob_per_token": -2.658452033996582,
+      "n_answer_tokens": 15
+    },
+    {
+      "sample_idx": 51,
+      "answer_text": "Q:",
+      "answer_logprob": -15.762086868286133,
+      "answer_logprob_per_token": -7.881043434143066,
+      "n_answer_tokens": 2
+    },
+    {
+      "sample_idx": 52,
+      "answer_text": "Q: What is the best way to remove 15 pounds from a box?",
+      "answer_logprob": -32.94086456298828,
+      "answer_logprob_per_token": -2.1960577964782715,
+      "n_answer_tokens": 15
+    },
+    {
+      "sample_idx": 53,
+      "answer_text": "Q:  How much more revenue did the mechanic earn on the day with higher revenue?",
+      "answer_logprob": -25.225173950195312,
+      "answer_logprob_per_token": -1.4013985395431519,
+      "n_answer_tokens": 18
+    },
+    {
+      "sample_idx": 54,
+      "answer_text": "Q. What is the Doubtfire sisters' name?",
+      "answer_logprob": -27.062477111816406,
+      "answer_logprob_per_token": -2.25520658493042,
+      "n_answer_tokens": 12
+    },
+    {
+      "sample_idx": 55,
+      "answer_text": "Q. What is the probability of getting a bag of 1 lollipops?",
+      "answer_logprob": -34.39030456542969,
+      "answer_logprob_per_token": -2.022958993911743,
+      "n_answer_tokens": 17
+    },
+    {
+      "sample_idx": 56,
+      "answer_text": "Q. What is the difference between the two?",
+      "answer_logprob": -28.049087524414062,
+      "answer_logprob_per_token": -2.8049087524414062,
+      "n_answer_tokens": 10
+    },
+    {
+      "sample_idx": 57,
+      "answer_text": "Q: What is the maximum number of boxes which can be loaded onto the truck while not exceeding the bridge's weight limit?",
+      "answer_logprob": -22.53038787841797,
+      "answer_logprob_per_token": -0.9012154936790466,
+      "n_answer_tokens": 25
+    },
+    {
+      "sample_idx": 58,
+      "answer_text": "Q:  How many times did you get a $1.00 tip?",
+      "answer_logprob": -40.38688659667969,
+      "answer_logprob_per_token": -2.5241804122924805,
+      "n_answer_tokens": 16
+    },
+    {
+      "sample_idx": 59,
+      "answer_text": "Q: What is the number of raspberry bushes?",
+      "answer_logprob": -28.410608291625977,
+      "answer_logprob_per_token": -2.582782745361328,
+      "n_answer_tokens": 11
+    },
+    {
+      "sample_idx": 60,
+      "answer_text": "Q. What is the best way to solve this?",
+      "answer_logprob": -27.2101993560791,
+      "answer_logprob_per_token": -2.4736545085906982,
+      "n_answer_tokens": 11
+    },
+    {
+      "sample_idx": 61,
+      "answer_text": "Q:  How much did she pay?",
+      "answer_logprob": -22.98987579345703,
+      "answer_logprob_per_token": -2.5544307231903076,
+      "n_answer_tokens": 9
+    },
+    {
+      "sample_idx": 62,
+      "answer_text": "Q: What is the difference between the two?",
+      "answer_logprob": -27.427637100219727,
+      "answer_logprob_per_token": -2.7427637577056885,
+      "n_answer_tokens": 10
+    },
+    {
+      "sample_idx": 63,
+      "answer_text": "Q. What is the total amount of the service that she paid for the streaming service?",
+      "answer_logprob": -37.126556396484375,
+      "answer_logprob_per_token": -2.062586545944214,
+      "n_answer_tokens": 18
+    },
+    {
+      "sample_idx": 64,
+      "answer_text": "Q: What is the meaning of the word \"passenger\"?",
+      "answer_logprob": -32.484642028808594,
+      "answer_logprob_per_token": -2.4988186359405518,
+      "n_answer_tokens": 13
+    },
+    {
+      "sample_idx": 65,
+      "answer_text": "Q: How many hours do he spend on TV and reading in 4 weeks?",
+      "answer_logprob": -21.209266662597656,
+      "answer_logprob_per_token": -1.3255791664123535,
+      "n_answer_tokens": 16
+    },
+    {
+      "sample_idx": 66,
+      "answer_text": "Q: What are the schools that have the best basketball team in the world?",
+      "answer_logprob": -31.831350326538086,
+      "answer_logprob_per_token": -1.9894593954086304,
+      "n_answer_tokens": 16
+    },
+    {
+      "sample_idx": 67,
+      "answer_text": "Q: What is the value of the treasure?",
+      "answer_logprob": -27.833812713623047,
+      "answer_logprob_per_token": -2.783381223678589,
+      "n_answer_tokens": 10
+    },
+    {
+      "sample_idx": 68,
+      "answer_text": "Q. What is the difference between the two?",
+      "answer_logprob": -27.408952713012695,
+      "answer_logprob_per_token": -2.7408952713012695,
+      "n_answer_tokens": 10
+    },
+    {
+      "sample_idx": 69,
+      "answer_text": "Q: How much money did Bailey start with?",
+      "answer_logprob": -20.831876754760742,
+      "answer_logprob_per_token": -2.0831878185272217,
+      "n_answer_tokens": 10
+    },
+    {
+      "sample_idx": 70,
+      "answer_text": "Q: How much do you spend on the weekdays?",
+      "answer_logprob": -28.435033798217773,
+      "answer_logprob_per_token": -2.369586229324341,
+      "n_answer_tokens": 12
+    },
+    {
+      "sample_idx": 71,
+      "answer_text": "Q. What is the best way to prepare the two dishes?",
+      "answer_logprob": -27.95815658569336,
+      "answer_logprob_per_token": -2.150627613067627,
+      "n_answer_tokens": 13
+    },
+    {
+      "sample_idx": 72,
+      "answer_text": "Q: How much money does he raise?",
+      "answer_logprob": -23.965940475463867,
+      "answer_logprob_per_token": -2.6628823280334473,
+      "n_answer_tokens": 9
+    },
+    {
+      "sample_idx": 73,
+      "answer_text": "1",
+      "answer_logprob": -8.401893615722656,
+      "answer_logprob_per_token": -8.401893615722656,
+      "n_answer_tokens": 1
+    },
+    {
+      "sample_idx": 74,
+      "answer_text": "Q: What is Artie's flower stand?",
+      "answer_logprob": -25.64815330505371,
+      "answer_logprob_per_token": -2.5648152828216553,
+      "n_answer_tokens": 10
+    },
+    {
+      "sample_idx": 75,
+      "answer_text": "Q: What is the average square footage of a level?",
+      "answer_logprob": -19.16179084777832,
+      "answer_logprob_per_token": -1.5968159437179565,
+      "n_answer_tokens": 12
+    },
+    {
+      "sample_idx": 76,
+      "answer_text": "Q: What is the best way to feed the puppy?",
+      "answer_logprob": -28.1617488861084,
+      "answer_logprob_per_token": -2.3468124866485596,
+      "n_answer_tokens": 12
+    },
+    {
+      "sample_idx": 77,
+      "answer_text": "Q. What is the difference between the two?",
+      "answer_logprob": -23.96210289001465,
+      "answer_logprob_per_token": -2.3962104320526123,
+      "n_answer_tokens": 10
+    },
+    {
+      "sample_idx": 78,
+      "answer_text": "Q. What is the best way to buy flowers in packages of 3 for $2.50 or $1. How much money does he save by buying 18 flowers at the best price?",
+      "answer_logprob": -37.422061920166016,
+      "answer_logprob_per_token": -0.984791100025177,
+      "n_answer_tokens": 38
+    },
+    {
+      "sample_idx": 79,
+      "answer_text": "Q.  How much does the groomer have to pay for the groomer?",
+      "answer_logprob": -32.91343307495117,
+      "answer_logprob_per_token": -1.936084270477295,
+      "n_answer_tokens": 17
+    },
+    {
+      "sample_idx": 80,
+      "answer_text": "Q. What is the difference between the two?",
+      "answer_logprob": -27.19580078125,
+      "answer_logprob_per_token": -2.7195801734924316,
+      "n_answer_tokens": 10
+    },
+    {
+      "sample_idx": 81,
+      "answer_text": "Q: What is the best way to get the stickers?",
+      "answer_logprob": -31.207744598388672,
+      "answer_logprob_per_token": -2.4005959033966064,
+      "n_answer_tokens": 13
+    },
+    {
+      "sample_idx": 82,
+      "answer_text": "Q. What is the difference between the two?",
+      "answer_logprob": -28.66012954711914,
+      "answer_logprob_per_token": -2.8660130500793457,
+      "n_answer_tokens": 10
+    },
+    {
+      "sample_idx": 83,
+      "answer_text": "1.",
+      "answer_logprob": -8.80708122253418,
+      "answer_logprob_per_token": -4.40354061126709,
+      "n_answer_tokens": 2
+    },
+    {
+      "sample_idx": 84,
+      "answer_text": "Q: How many did they win?",
+      "answer_logprob": -18.5363712310791,
+      "answer_logprob_per_token": -2.3170464038848877,
+      "n_answer_tokens": 8
+    },
+    {
+      "sample_idx": 85,
+      "answer_text": "Q: What is the difference between a quilt and a quilt?",
+      "answer_logprob": -27.17635726928711,
+      "answer_logprob_per_token": -2.090489149093628,
+      "n_answer_tokens": 13
+    },
+    {
+      "sample_idx": 86,
+      "answer_text": "Q: What is the time to get the alarm?",
+      "answer_logprob": -33.52845764160156,
+      "answer_logprob_per_token": -3.048041582107544,
+      "n_answer_tokens": 11
+    },
+    {
+      "sample_idx": 87,
+      "answer_text": "Q. What is the difference between the salary of a company and the salary of a company?",
+      "answer_logprob": -35.750362396240234,
+      "answer_logprob_per_token": -1.8815979957580566,
+      "n_answer_tokens": 19
+    },
+    {
+      "sample_idx": 88,
+      "answer_text": "Q. What is the first record sold by Harald's first record?",
+      "answer_logprob": -32.523223876953125,
+      "answer_logprob_per_token": -2.168215036392212,
+      "n_answer_tokens": 15
+    },
+    {
+      "sample_idx": 89,
+      "answer_text": "Q: How much will she spend?",
+      "answer_logprob": -20.030803680419922,
+      "answer_logprob_per_token": -2.5038504600524902,
+      "n_answer_tokens": 8
+    },
+    {
+      "sample_idx": 90,
+      "answer_text": "Q.  How long would you be willing to spend on a dinner?",
+      "answer_logprob": -39.6551628112793,
+      "answer_logprob_per_token": -2.6436777114868164,
+      "n_answer_tokens": 15
+    },
+    {
+      "sample_idx": 91,
+      "answer_text": "Q: How many pets do the three have?",
+      "answer_logprob": -22.90492820739746,
+      "answer_logprob_per_token": -2.2904927730560303,
+      "n_answer_tokens": 10
+    },
+    {
+      "sample_idx": 92,
+      "answer_text": "Q: How many kids are in the world?",
+      "answer_logprob": -29.6376953125,
+      "answer_logprob_per_token": -2.9637696743011475,
+      "n_answer_tokens": 10
+    },
+    {
+      "sample_idx": 93,
+      "answer_text": "Q: What is the best way to run the 400-meter hurdles?",
+      "answer_logprob": -27.30608367919922,
+      "answer_logprob_per_token": -1.7066302299499512,
+      "n_answer_tokens": 16
+    },
+    {
+      "sample_idx": 94,
+      "answer_text": "Q. What is the number of rabbits in the neighborhood?",
+      "answer_logprob": -26.86083984375,
+      "answer_logprob_per_token": -2.2384033203125,
+      "n_answer_tokens": 12
+    },
+    {
+      "sample_idx": 95,
+      "answer_text": "1.",
+      "answer_logprob": -8.825139045715332,
+      "answer_logprob_per_token": -4.412569522857666,
+      "n_answer_tokens": 2
+    },
+    {
+      "sample_idx": 96,
+      "answer_text": "Q. What is the probability that Harry slept in the night?",
+      "answer_logprob": -35.02824783325195,
+      "answer_logprob_per_token": -2.6944806575775146,
+      "n_answer_tokens": 13
+    },
+    {
+      "sample_idx": 97,
+      "answer_text": "Q: What is the difference between the two?",
+      "answer_logprob": -27.757186889648438,
+      "answer_logprob_per_token": -2.7757186889648438,
+      "n_answer_tokens": 10
+    },
+    {
+      "sample_idx": 98,
+      "answer_text": "Q: What is the difference between the two cars?",
+      "answer_logprob": -27.860515594482422,
+      "answer_logprob_per_token": -2.5327742099761963,
+      "n_answer_tokens": 11
+    },
+    {
+      "sample_idx": 99,
+      "answer_text": "Q. What is the best way to get the best of both worlds?",
+      "answer_logprob": -37.07290267944336,
+      "answer_logprob_per_token": -2.471526861190796,
+      "n_answer_tokens": 15
+    }
+  ]
+}

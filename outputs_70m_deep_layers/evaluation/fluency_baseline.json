@@ -1,0 +1,412 @@
+{
+  "mean_perplexity": 1.3103011743854378,
+  "perplexity_stats": {
+    "mean": 1.3103011743854378,
+    "std": 0.07954115820503552,
+    "min": 1.154571729360226,
+    "max": 1.6814227777116528,
+    "n": 100
+  },
+  "details": [
+    {
+      "sample_idx": 0,
+      "perplexity": 1.3009197407740705
+    },
+    {
+      "sample_idx": 1,
+      "perplexity": 1.3261506593165042
+    },
+    {
+      "sample_idx": 2,
+      "perplexity": 1.337795095176028
+    },
+    {
+      "sample_idx": 3,
+      "perplexity": 1.382617887595101
+    },
+    {
+      "sample_idx": 4,
+      "perplexity": 1.3733885323871373
+    },
+    {
+      "sample_idx": 5,
+      "perplexity": 1.2025950933769682
+    },
+    {
+      "sample_idx": 6,
+      "perplexity": 1.3483562652921806
+    },
+    {
+      "sample_idx": 7,
+      "perplexity": 1.316215187250775
+    },
+    {
+      "sample_idx": 8,
+      "perplexity": 1.2676073139967727
+    },
+    {
+      "sample_idx": 9,
+      "perplexity": 1.3359147018425264
+    },
+    {
+      "sample_idx": 10,
+      "perplexity": 1.2629496919867942
+    },
+    {
+      "sample_idx": 11,
+      "perplexity": 1.3123009809160435
+    },
+    {
+      "sample_idx": 12,
+      "perplexity": 1.3123710281093182
+    },
+    {
+      "sample_idx": 13,
+      "perplexity": 1.358324241050942
+    },
+    {
+      "sample_idx": 14,
+      "perplexity": 1.2840421777166025
+    },
+    {
+      "sample_idx": 15,
+      "perplexity": 1.2819317617711221
+    },
+    {
+      "sample_idx": 16,
+      "perplexity": 1.3611852642945013
+    },
+    {
+      "sample_idx": 17,
+      "perplexity": 1.280875726737231
+    },
+    {
+      "sample_idx": 18,
+      "perplexity": 1.359876894256149
+    },
+    {
+      "sample_idx": 19,
+      "perplexity": 1.3935778046735197
+    },
+    {
+      "sample_idx": 20,
+      "perplexity": 1.3116844844414342
+    },
+    {
+      "sample_idx": 21,
+      "perplexity": 1.260892600167653
+    },
+    {
+      "sample_idx": 22,
+      "perplexity": 1.248433655008368
+    },
+    {
+      "sample_idx": 23,
+      "perplexity": 1.5242566550512275
+    },
+    {
+      "sample_idx": 24,
+      "perplexity": 1.200233776226324
+    },
+    {
+      "sample_idx": 25,
+      "perplexity": 1.6814227777116528
+    },
+    {
+      "sample_idx": 26,
+      "perplexity": 1.4312338423799082
+    },
+    {
+      "sample_idx": 27,
+      "perplexity": 1.304385385065154
+    },
+    {
+      "sample_idx": 28,
+      "perplexity": 1.3221682903548075
+    },
+    {
+      "sample_idx": 29,
+      "perplexity": 1.3437237759638885
+    },
+    {
+      "sample_idx": 30,
+      "perplexity": 1.1959624199943992
+    },
+    {
+      "sample_idx": 31,
+      "perplexity": 1.2656274433592252
+    },
+    {
+      "sample_idx": 32,
+      "perplexity": 1.245269134802252
+    },
+    {
+      "sample_idx": 33,
+      "perplexity": 1.3589666679106533
+    },
+    {
+      "sample_idx": 34,
+      "perplexity": 1.2185285328556554
+    },
+    {
+      "sample_idx": 35,
+      "perplexity": 1.312365044032177
+    },
+    {
+      "sample_idx": 36,
+      "perplexity": 1.2477213405375907
+    },
+    {
+      "sample_idx": 37,
+      "perplexity": 1.30165294105326
+    },
+    {
+      "sample_idx": 38,
+      "perplexity": 1.3008938811546054
+    },
+    {
+      "sample_idx": 39,
+      "perplexity": 1.3311532879823729
+    },
+    {
+      "sample_idx": 40,
+      "perplexity": 1.3593523670885974
+    },
+    {
+      "sample_idx": 41,
+      "perplexity": 1.154571729360226
+    },
+    {
+      "sample_idx": 42,
+      "perplexity": 1.1814429826996535
+    },
+    {
+      "sample_idx": 43,
+      "perplexity": 1.221332219399274
+    },
+    {
+      "sample_idx": 44,
+      "perplexity": 1.3083058479371836
+    },
+    {
+      "sample_idx": 45,
+      "perplexity": 1.2729981106106034
+    },
+    {
+      "sample_idx": 46,
+      "perplexity": 1.4588161154848522
+    },
+    {
+      "sample_idx": 47,
+      "perplexity": 1.3378526279583427
+    },
+    {
+      "sample_idx": 48,
+      "perplexity": 1.3326954564805473
+    },
+    {
+      "sample_idx": 49,
+      "perplexity": 1.2338066309173477
+    },
+    {
+      "sample_idx": 50,
+      "perplexity": 1.2712539361122934
+    },
+    {
+      "sample_idx": 51,
+      "perplexity": 1.2917244869875553
+    },
+    {
+      "sample_idx": 52,
+      "perplexity": 1.3564277662700261
+    },
+    {
+      "sample_idx": 53,
+      "perplexity": 1.4590650374388874
+    },
+    {
+      "sample_idx": 54,
+      "perplexity": 1.3973784912162446
+    },
+    {
+      "sample_idx": 55,
+      "perplexity": 1.2120403479128887
+    },
+    {
+      "sample_idx": 56,
+      "perplexity": 1.3437121226024713
+    },
+    {
+      "sample_idx": 57,
+      "perplexity": 1.3359219080802358
+    },
+    {
+      "sample_idx": 58,
+      "perplexity": 1.2097538597299438
+    },
+    {
+      "sample_idx": 59,
+      "perplexity": 1.2409853992674975
+    },
+    {
+      "sample_idx": 60,
+      "perplexity": 1.2988786460319104
+    },
+    {
+      "sample_idx": 61,
+      "perplexity": 1.2975235496522908
+    },
+    {
+      "sample_idx": 62,
+      "perplexity": 1.2594852434715453
+    },
+    {
+      "sample_idx": 63,
+      "perplexity": 1.308497539535924
+    },
+    {
+      "sample_idx": 64,
+      "perplexity": 1.315674368135465
+    },
+    {
+      "sample_idx": 65,
+      "perplexity": 1.4275623314098314
+    },
+    {
+      "sample_idx": 66,
+      "perplexity": 1.204004919935802
+    },
+    {
+      "sample_idx": 67,
+      "perplexity": 1.2063839388894997
+    },
+    {
+      "sample_idx": 68,
+      "perplexity": 1.305521575167051
+    },
+    {
+      "sample_idx": 69,
+      "perplexity": 1.3356744896234987
+    },
+    {
+      "sample_idx": 70,
+      "perplexity": 1.2511998537711118
+    },
+    {
+      "sample_idx": 71,
+      "perplexity": 1.2940620600049264
+    },
+    {
+      "sample_idx": 72,
+      "perplexity": 1.3951562023122657
+    },
+    {
+      "sample_idx": 73,
+      "perplexity": 1.3261075015912973
+    },
+    {
+      "sample_idx": 74,
+      "perplexity": 1.3570069332493042
+    },
+    {
+      "sample_idx": 75,
+      "perplexity": 1.2283339436573928
+    },
+    {
+      "sample_idx": 76,
+      "perplexity": 1.4540274471893824
+    },
+    {
+      "sample_idx": 77,
+      "perplexity": 1.2661667838809947
+    },
+    {
+      "sample_idx": 78,
+      "perplexity": 1.5480313123669363
+    },
+    {
+      "sample_idx": 79,
+      "perplexity": 1.2396352291850827
+    },
+    {
+      "sample_idx": 80,
+      "perplexity": 1.2804564641810068
+    },
+    {
+      "sample_idx": 81,
+      "perplexity": 1.3664910863995319
+    },
+    {
+      "sample_idx": 82,
+      "perplexity": 1.2948633249246855
+    },
+    {
+      "sample_idx": 83,
+      "perplexity": 1.2768555342615626
+    },
+    {
+      "sample_idx": 84,
+      "perplexity": 1.2928424822179547
+    },
+    {
+      "sample_idx": 85,
+      "perplexity": 1.2103998039276769
+    },
+    {
+      "sample_idx": 86,
+      "perplexity": 1.273182598961928
+    },
+    {
+      "sample_idx": 87,
+      "perplexity": 1.2627264381590286
+    },
+    {
+      "sample_idx": 88,
+      "perplexity": 1.389616281754718
+    },
+    {
+      "sample_idx": 89,
+      "perplexity": 1.3510994904017581
+    },
+    {
+      "sample_idx": 90,
+      "perplexity": 1.2037930186497279
+    },
+    {
+      "sample_idx": 91,
+      "perplexity": 1.3733834979857245
+    },
+    {
+      "sample_idx": 92,
+      "perplexity": 1.3191780606201071
+    },
+    {
+      "sample_idx": 93,
+      "perplexity": 1.316353074809603
+    },
+    {
+      "sample_idx": 94,
+      "perplexity": 1.2421549666207925
+    },
+    {
+      "sample_idx": 95,
+      "perplexity": 1.3133262095863316
+    },
+    {
+      "sample_idx": 96,
+      "perplexity": 1.270979271027862
+    },
+    {
+      "sample_idx": 97,
+      "perplexity": 1.3116844844414342
+    },
+    {
+      "sample_idx": 98,
+      "perplexity": 1.2976005423438322
+    },
+    {
+      "sample_idx": 99,
+      "perplexity": 1.279187510079427
+    }
+  ]
+}
