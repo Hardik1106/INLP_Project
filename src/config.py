@@ -19,9 +19,13 @@ class ModelConfig:
 
 @dataclass
 class SAEConfig:
-    release: str = "pythia-2.8b-res-jb"
+    release: str = "pythia-70m-deduped-res-sm"
     sae_id: Optional[str] = None
     expansion_factor: int = 8
+    
+    # NEW: Local SAE checkpoint support
+    local_sae_base_path: Optional[str] = None  # Base directory for local checkpoints
+    local_sae_path_template: Optional[str] = None  # Template: "{base}/{model}/layer_{layer}/sae_weights.pt"
 
 
 @dataclass

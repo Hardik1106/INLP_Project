@@ -12,6 +12,7 @@ from src import config
 import torch
 import torch.nn as nn
 from tqdm import tqdm
+import os
 
 from src.config import SAEConfig
 from src.utils import logger, save_tensor, load_tensor, ensure_dir
@@ -301,6 +302,67 @@ def _load_sae_from_huggingface(
         raise
 
 
+def load_sae_from_cotfaithfulness(
+    checkpoint_path: str,
+    device: str = "cpu",
+) -> SparseAutoencoder:
+    """
+    Load a SAE trained with cotFaithfulness (converted to INLP format).
+    
+    Args:
+        checkpoint_path: Path to converted .pt file
+        device: Device to load onto
+    
+    Returns:
+        SparseAutoencoder instance
+    """
+    logger.info(f"Loading SAE from cotFaithfulness checkpoint: {checkpoint_path}")
+    
+    if not os.path.exists(checkpoint_path):
+        raise FileNotFoundError(f"SAE checkpoint not found: {checkpoint_path}")
+    
+    state = torch.load(checkpoint_path, map_location=device, weights_only=False)
+    
+    # Extract SAE weights
+    W_enc = state.get("W_enc")
+    b_enc = state.get("b_enc")
+    W_dec = state.get("W_dec")
+    b_dec = state.get("b_dec")
+    
+    if W_enc is None or b_enc is None or W_dec is None or b_dec is None:
+        raise ValueError(f"Missing SAE weights in checkpoint: {checkpoint_path}")
+    
+    # ✅ Transpose weights: cotFaithfulness stores them transposed
+    print("="*70)
+    print(f"W_enc shape:{W_enc.shape}")
+    print(f"W_dec shape:{W_dec.shape}")
+    # W_enc = W_enc.T.contiguous()
+    W_dec = W_dec.T.contiguous()
+
+    print(f"W_enc shape:{W_enc.shape}")
+    print(f"W_dec shape:{W_dec.shape}")
+    print("="*70)
+    
+    d_model = W_enc.shape[0]
+    d_sae = W_enc.shape[1]
+    
+    sae = SparseAutoencoder(
+        d_model=d_model,
+        d_sae=d_sae,
+        W_enc=W_enc.to(device),
+        b_enc=b_enc.to(device),
+        W_dec=W_dec.to(device),
+        b_dec=b_dec.to(device),
+    )
+    
+    logger.info(f"  ✓ SAE loaded: d_model={d_model}, d_sae={d_sae}")
+    
+    # Log metadata if available
+    if "_metadata" in state:
+        logger.info(f"  Metadata: {state['_metadata']}")
+    
+    return sae
+
 def load_sae_from_weights(
     weights_path: str,
     device: str = "cpu",
@@ -354,6 +416,81 @@ def encode_activations(
 
     return torch.cat(all_features, dim=0)
 
+def encode_and_cache_all(
+    sae_config: SAEConfig,
+    cached_activations: Dict[str, Dict[int, torch.Tensor]],
+    layers: List[int],
+    cache_dir: str,
+    device: str = "cpu",
+    batch_size: int = 512,
+) -> Dict[str, Dict[int, torch.Tensor]]:
+    """
+    Encode cached activations through SAEs.
+    Checks local checkpoint paths before falling back to SAELens.
+    """
+    results = {}
+    
+    for layer in layers:
+        logger.info(f"--- Encoding layer {layer} ---")
+        
+        # Try local checkpoint first
+        sae = None
+        if sae_config.local_sae_base_path:
+            try:
+                # Try exact path first
+                local_path = sae_config.local_sae_path_template.format(
+                    base=sae_config.local_sae_base_path,
+                    layer=layer,
+                    model="",  # Will be handled by template
+                ) if sae_config.local_sae_path_template else None
+                
+                # Fallback: build standard path
+                if not local_path or not os.path.exists(local_path):
+                    model_short = sae_config.release.split("-")[0] if sae_config.release else "model"
+                    local_path = os.path.join(
+                        sae_config.local_sae_base_path,
+                        model_short,
+                        f"layer_{layer}",
+                        "sae_weights.pt"
+                    )
+                
+                if os.path.exists(local_path):
+                    logger.info(f"  Loading local SAE from: {local_path}")
+                    sae = load_sae_from_cotfaithfulness(local_path, device)
+            except Exception as e:
+                logger.warning(f"Failed to load local SAE: {e}. Falling back to SAELens...")
+        
+        # Fall back to SAELens
+        if sae is None:
+            sae = load_sae_from_saelens(
+                release=sae_config.release,
+                sae_id=sae_config.sae_id,
+                layer=layer,
+                device=device,
+            )
+        
+        # Encode for each dataset
+        for label, layer_acts in cached_activations.items():
+            if layer not in layer_acts:
+                continue
+            
+            acts = layer_acts[layer]
+            features = encode_activations(sae, acts, batch_size)
+            
+            if label not in results:
+                results[label] = {}
+            results[label][layer] = features
+            
+            out_path = f"{cache_dir}/{label}/sae_features_layer_{layer}.pt"
+            save_tensor(features, out_path)
+            logger.info(
+                f"  {label} layer {layer}: encoded {acts.shape} → {features.shape}"
+            )
+        
+        del sae
+        torch.cuda.empty_cache()
+    
+    return results
 
 # def encode_and_cache_all(
 #     sae_config: SAEConfig,
@@ -361,116 +498,66 @@ def encode_activations(
 #     layers: List[int],
 #     cache_dir: str,
 #     device: str = "cpu",
+#     batch_size: int = 512,  # increased from 64
 # ) -> Dict[str, Dict[int, torch.Tensor]]:
-#     """
-#     For each dataset condition and layer, encode cached dense activations
-#     through the layer-specific SAE and save the sparse features.
-
-#     Returns:
-#         Nested dict: dataset_label -> layer -> [N, d_sae] features
-#     """
 #     results = {}
-
 #     for layer in layers:
 #         logger.info(f"--- Encoding layer {layer} ---")
+
+#         # Fast path: reuse precomputed SAE features if they already exist.
+#         # This is useful on clusters where the desired SAE release is unavailable
+#         # in the installed sae_lens pretrained registry.
+#         can_reuse_cached = True
+#         cached_feature_tensors: Dict[str, torch.Tensor] = {}
+
+#         for label, layer_acts in cached_activations.items():
+#             if layer not in layer_acts:
+#                 continue
+
+#             feature_path = f"{cache_dir}/{label}/sae_features_layer_{layer}.pt"
+#             if not Path(feature_path).exists():
+#                 can_reuse_cached = False
+#                 break
+
+#             feats = load_tensor(feature_path)
+#             expected_n = layer_acts[layer].shape[0]
+#             if feats.shape[0] < expected_n:
+#                 logger.warning(
+#                     f"Cached SAE features too short at {feature_path}: "
+#                     f"found {feats.shape[0]}, expected at least {expected_n}. Recomputing."
+#                 )
+#                 can_reuse_cached = False
+#                 break
+
+#             cached_feature_tensors[label] = feats[:expected_n].cpu()
+
+#         if can_reuse_cached and cached_feature_tensors:
+#             for label, feats in cached_feature_tensors.items():
+#                 if label not in results:
+#                     results[label] = {}
+#                 results[label][layer] = feats
+#                 logger.info(
+#                     f"  {label} layer {layer}: reused cached SAE features {tuple(feats.shape)}"
+#                 )
+#             continue
+
 #         sae = load_sae_from_saelens(
 #             release=sae_config.release,
 #             sae_id=sae_config.sae_id,
 #             layer=layer,
 #             device=device,
 #         )
-
 #         for label, layer_acts in cached_activations.items():
 #             if layer not in layer_acts:
 #                 continue
-
-#             acts = layer_acts[layer]  # [N, d_model]
-#             features = encode_activations(sae, acts)
-
+#             acts = layer_acts[layer].to(device)  # keep on GPU
+#             features = encode_activations(sae, acts, batch_size=batch_size)
 #             if label not in results:
 #                 results[label] = {}
 #             results[label][layer] = features
-
-#             # Save
 #             out_path = f"{cache_dir}/{label}/sae_features_layer_{layer}.pt"
 #             save_tensor(features, out_path)
-#             logger.info(
-#                 f"  {label} layer {layer}: encoded {acts.shape} -> {features.shape}"
-#             )
-
-#         # Free SAE memory before loading the next layer's SAE
+#             logger.info(f"  {label} layer {layer}: {acts.shape} -> {features.shape}")
 #         del sae
 #         torch.cuda.empty_cache()
-
 #     return results
-
-
-def encode_and_cache_all(
-    sae_config: SAEConfig,
-    cached_activations: Dict[str, Dict[int, torch.Tensor]],
-    layers: List[int],
-    cache_dir: str,
-    device: str = "cpu",
-    batch_size: int = 512,  # increased from 64
-) -> Dict[str, Dict[int, torch.Tensor]]:
-    results = {}
-    for layer in layers:
-        logger.info(f"--- Encoding layer {layer} ---")
-
-        # Fast path: reuse precomputed SAE features if they already exist.
-        # This is useful on clusters where the desired SAE release is unavailable
-        # in the installed sae_lens pretrained registry.
-        can_reuse_cached = True
-        cached_feature_tensors: Dict[str, torch.Tensor] = {}
-
-        for label, layer_acts in cached_activations.items():
-            if layer not in layer_acts:
-                continue
-
-            feature_path = f"{cache_dir}/{label}/sae_features_layer_{layer}.pt"
-            if not Path(feature_path).exists():
-                can_reuse_cached = False
-                break
-
-            feats = load_tensor(feature_path)
-            expected_n = layer_acts[layer].shape[0]
-            if feats.shape[0] < expected_n:
-                logger.warning(
-                    f"Cached SAE features too short at {feature_path}: "
-                    f"found {feats.shape[0]}, expected at least {expected_n}. Recomputing."
-                )
-                can_reuse_cached = False
-                break
-
-            cached_feature_tensors[label] = feats[:expected_n].cpu()
-
-        if can_reuse_cached and cached_feature_tensors:
-            for label, feats in cached_feature_tensors.items():
-                if label not in results:
-                    results[label] = {}
-                results[label][layer] = feats
-                logger.info(
-                    f"  {label} layer {layer}: reused cached SAE features {tuple(feats.shape)}"
-                )
-            continue
-
-        sae = load_sae_from_saelens(
-            release=sae_config.release,
-            sae_id=sae_config.sae_id,
-            layer=layer,
-            device=device,
-        )
-        for label, layer_acts in cached_activations.items():
-            if layer not in layer_acts:
-                continue
-            acts = layer_acts[layer].to(device)  # keep on GPU
-            features = encode_activations(sae, acts, batch_size=batch_size)
-            if label not in results:
-                results[label] = {}
-            results[label][layer] = features
-            out_path = f"{cache_dir}/{label}/sae_features_layer_{layer}.pt"
-            save_tensor(features, out_path)
-            logger.info(f"  {label} layer {layer}: {acts.shape} -> {features.shape}")
-        del sae
-        torch.cuda.empty_cache()
-    return results

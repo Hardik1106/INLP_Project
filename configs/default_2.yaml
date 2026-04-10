@@ -16,31 +16,31 @@ sae:
   expansion_factor: 8
   
   # Local SAE checkpoint support
-  local_sae_base_path: "/ssd_scratch/arnav.sharma/INLP/project/INLP_Project/scripts/local_sae_checkpoints/pythia70m_cot/pythia70m_centered_gsm8k_CoT"  # ← UPDATE THIS
-  local_sae_path_template: "{base}/{model}/layer_{layer}/sae_weights.pt"
-
-  # local_sae_base_path: "/ssd_scratch/arnav.sharma/INLP/project/INLP_Project/scripts/local_sae_checkpoints/pythia2.8b_cot/pythia2.8b_centered_gsm8k_CoT"  # ← UPDATE THIS
+  # local_sae_base_path: "/ssd_scratch/arnav.sharma/INLP/project/INLP_Project/scripts/local_sae_checkpoints/pythia70m_cot/pythia70m_centered_gsm8k_CoT"  # ← UPDATE THIS
   # local_sae_path_template: "{base}/{model}/layer_{layer}/sae_weights.pt"
 
-  local_sae_base_path: "/ssd_scratch/arnav.sharma/INLP/project/INLP_Project/scripts/local_sae_checkpoints/pythia70m_nocot/pythia70m_centered_gsm8k_NoCoT"  # ← UPDATE THIS
+  local_sae_base_path: "/ssd_scratch/arnav.sharma/INLP/project/INLP_Project/scripts/local_sae_checkpoints/pythia2.8b_cot/pythia2.8b_centered_gsm8k_CoT"  # ← UPDATE THIS
   local_sae_path_template: "{base}/{model}/layer_{layer}/sae_weights.pt"
 
-  # local_sae_base_path: "/ssd_scratch/arnav.sharma/INLP/project/INLP_Project/scripts/local_sae_checkpoints/pythia2.8b_nocot/pythia2.8b_centered_gsm8k_NoCoT"  # ← UPDATE THIS
+  # local_sae_base_path: "/ssd_scratch/arnav.sharma/INLP/project/INLP_Project/scripts/local_sae_checkpoints/pythia70m_nocot/pythia70m_centered_gsm8k_NoCoT"  # ← UPDATE THIS
   # local_sae_path_template: "{base}/{model}/layer_{layer}/sae_weights.pt"
+
+  local_sae_base_path: "/ssd_scratch/arnav.sharma/INLP/project/INLP_Project/scripts/local_sae_checkpoints/pythia2.8b_nocot/pythia2.8b_centered_gsm8k_NoCoT"  # ← UPDATE THIS
+  local_sae_path_template: "{base}/{model}/layer_{layer}/sae_weights.pt"
 
 # --- Layers to analyze ---
 layers:
   shallow: [2]
-  deep: [4]
+  deep: [12]
   # Which layers to actually run interventions on (subset of shallow + deep)
   # intervention_layers: [2, 12, 14, 16]
-  intervention_layers: [2, 4]
+  intervention_layers: [2, 12]
 
 # --- Data ---
 data:
   gsm8k_split: "test"
   triviaqa_split: "validation"
-  num_samples: 75                        # Number of samples per dataset condition
+  num_samples: 100                        # Number of samples per dataset condition
   max_seq_len: 1024
   cache_dir: "data/activations"
   use_triviaqa: true                      # Set to false to skip TriviaQA download

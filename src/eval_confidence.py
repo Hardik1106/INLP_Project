@@ -1,8 +1,11 @@
 """
 Module 4b – Confidence Evaluation (Answer Log-Probability)
 ============================================================
-Measures model confidence by computing log-probability of the predicted
-answer tokens conditioned on the original prompt.
+Measures model confidence by computing log-probability of the CORRECT ANSWER
+tokens conditioned on the original prompt.
+
+This measures "calibration" - how likely was the model to generate the
+correct answer, regardless of what it actually generated.
 """
 
 from typing import List, Dict, Optional, Tuple
@@ -13,7 +16,6 @@ import torch.nn.functional as F
 from tqdm import tqdm
 
 from src.interventions import InterventionResult
-from src.eval_accuracy import extract_numerical_answer
 from src.utils import logger, compute_stats
 
 
@@ -57,35 +59,14 @@ def answer_logprob(
     return sum_lp, mean_lp, len(ans_ids)
 
 
-def _pick_answer_text(
-    generated_text: str,
-    patterns: Optional[List[str]] = None,
-) -> Optional[str]:
-    """
-    Choose answer text for confidence scoring.
-
-    Priority:
-      1) Extracted numerical answer (for GSM8K-style outputs)
-      2) First non-empty generated line as fallback
-    """
-    extracted = extract_numerical_answer(generated_text, patterns)
-    if extracted is not None and extracted.strip():
-        return extracted.strip()
-
-    for line in generated_text.splitlines():
-        candidate = line.strip()
-        if candidate:
-            return candidate
-    return None
-
-
 def evaluate_confidence(
     results: List[InterventionResult],
     model,
-    patterns: Optional[List[str]] = None,
 ) -> Dict[str, Dict]:
     """
-    Evaluate answer-token confidence for intervention outputs.
+    Evaluate answer-token confidence for CORRECT ANSWERS (ground truth).
+
+    Measures calibration: "How confident is the model in the correct answer?"
 
     Returns:
         Dict mapping spec_label -> {
@@ -108,8 +89,9 @@ def evaluate_confidence(
         details: List[Dict] = []
 
         for r in tqdm(spec_results, desc=f"Confidence [{label}]", leave=False):
-            answer_text = _pick_answer_text(r.generated_text, patterns)
-            if not answer_text:
+            # Use ground truth (correct answer), not generated answer
+            answer_text = r.ground_truth
+            if not answer_text or not answer_text.strip():
                 details.append(
                     {
                         "sample_idx": r.sample_idx,
@@ -157,7 +139,7 @@ def evaluate_confidence(
         }
 
         logger.info(
-            f"  [{label}] Confidence logP/token: "
+            f"  [{label}] Confidence (correct answer) logP/token: "
             f"mean={stats_mean['mean']:.4f} (n={len(mean_lps)})"
         )
 
@@ -167,16 +149,20 @@ def evaluate_confidence(
 def evaluate_confidence_baseline(
     baseline_results: List[Dict],
     model,
-    patterns: Optional[List[str]] = None,
 ) -> Dict:
-    """Evaluate answer-token confidence for baseline outputs."""
+    """
+    Evaluate answer-token confidence for CORRECT ANSWERS (ground truth).
+    
+    Measures calibration on baseline (no intervention) results.
+    """
     sum_lps: List[float] = []
     mean_lps: List[float] = []
     details: List[Dict] = []
 
     for r in tqdm(baseline_results, desc="Confidence [Baseline]"):
-        answer_text = _pick_answer_text(r["generated_text"], patterns)
-        if not answer_text:
+        # Use ground truth (correct answer), not generated answer
+        answer_text = r["ground_truth"]
+        if not answer_text or not answer_text.strip():
             details.append(
                 {
                     "sample_idx": r["sample_idx"],
@@ -214,7 +200,7 @@ def evaluate_confidence_baseline(
     stats_sum = compute_stats(sum_lps) if sum_lps else {"mean": -1}
     stats_mean = compute_stats(mean_lps) if mean_lps else {"mean": -1}
 
-    logger.info(f"  [Baseline] Confidence logP/token: mean={stats_mean['mean']:.4f}")
+    logger.info(f"  [Baseline] Confidence (correct answer) logP/token: mean={stats_mean['mean']:.4f}")
 
     return {
         "mean_answer_logprob": stats_sum["mean"],

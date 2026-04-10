@@ -6,6 +6,7 @@ against the ground truth.
 """
 
 import re
+import math
 from typing import List, Dict, Optional, Tuple
 
 from src.interventions import InterventionResult
@@ -55,6 +56,9 @@ def normalize_answer(answer: str) -> str:
     # Remove trailing .0 for integer comparisons
     try:
         val = float(ans)
+        # Handle infinity and NaN
+        if not math.isfinite(val):
+            return str(val)
         if val == int(val):
             return str(int(val))
         return str(val)

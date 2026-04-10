@@ -1,365 +1,0 @@
-[2026-04-05 22:39:51] INFO cot_faithfulness: Random seed set to 42
-[2026-04-05 22:39:51] INFO cot_faithfulness: ============================================================
-[2026-04-05 22:39:51] INFO cot_faithfulness: STAGE 1: Data Pipeline & Activation Caching
-[2026-04-05 22:39:51] INFO cot_faithfulness: ============================================================
-[2026-04-05 22:39:51] INFO cot_faithfulness: Loading GSM8K split='test'...
-[2026-04-05 22:40:00] INFO cot_faithfulness:   Loaded 100 GSM8K samples
-[DATA PIPELINE] Downloading GSM8K split='test'...
-Formatting GSM8K CoT:   0%|          | 0/100 [00:00<?, ?it/s]Formatting GSM8K CoT: 100%|██████████| 100/100 [00:00<00:00, 219942.53it/s]
-Formatting GSM8K No-CoT:   0%|          | 0/100 [00:00<?, ?it/s]Formatting GSM8K No-CoT: 100%|██████████| 100/100 [00:00<00:00, 241468.28it/s]
-[2026-04-05 22:40:00] INFO cot_faithfulness: Prompt sets built (no TriviaQA): gsm8k_cot=100, gsm8k_no_cot=100
-[2026-04-05 22:40:00] INFO cot_faithfulness: Loading HookedTransformer: pythia-70m
-/home2/hardikchadha/miniconda3/envs/inlp_project/lib/python3.10/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
-  warnings.warn(
-Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
-[2026-04-05 22:40:25] INFO cot_faithfulness:   Loaded model with 6 layers, d_model=512, device=cuda
-[2026-04-05 22:40:25] INFO cot_faithfulness: Auto batch size: 1024 (VRAM: 11.3 GB)
-[2026-04-05 22:40:25] INFO cot_faithfulness: Caching activations for 'gsm8k_cot' (100 samples, layers=[2, 3, 4, 5], batch_size=1024)
-Loaded pretrained model pythia-70m into HookedTransformer
-Cache [gsm8k_cot]:   0%|          | 0/1 [00:00<?, ?it/s]Cache [gsm8k_cot]: 100%|██████████| 1/1 [00:00<00:00,  2.33it/s]Cache [gsm8k_cot]: 100%|██████████| 1/1 [00:00<00:00,  2.33it/s]
-[2026-04-05 22:40:25] INFO cot_faithfulness:   Layer 2: saved torch.Size([100, 512]) -> data/activations/gsm8k_cot/layer_2.pt
-[2026-04-05 22:40:25] INFO cot_faithfulness:   Layer 3: saved torch.Size([100, 512]) -> data/activations/gsm8k_cot/layer_3.pt
-[2026-04-05 22:40:25] INFO cot_faithfulness:   Layer 4: saved torch.Size([100, 512]) -> data/activations/gsm8k_cot/layer_4.pt
-[2026-04-05 22:40:26] INFO cot_faithfulness:   Layer 5: saved torch.Size([100, 512]) -> data/activations/gsm8k_cot/layer_5.pt
-[2026-04-05 22:40:26] INFO cot_faithfulness: Caching activations for 'gsm8k_no_cot' (100 samples, layers=[2, 3, 4, 5], batch_size=1024)
-Cache [gsm8k_no_cot]:   0%|          | 0/1 [00:00<?, ?it/s]Cache [gsm8k_no_cot]: 100%|██████████| 1/1 [00:00<00:00,  4.78it/s]Cache [gsm8k_no_cot]: 100%|██████████| 1/1 [00:00<00:00,  4.78it/s]
-[2026-04-05 22:40:26] INFO cot_faithfulness:   Layer 2: saved torch.Size([100, 512]) -> data/activations/gsm8k_no_cot/layer_2.pt
-[2026-04-05 22:40:26] INFO cot_faithfulness:   Layer 3: saved torch.Size([100, 512]) -> data/activations/gsm8k_no_cot/layer_3.pt
-[2026-04-05 22:40:26] INFO cot_faithfulness:   Layer 4: saved torch.Size([100, 512]) -> data/activations/gsm8k_no_cot/layer_4.pt
-[2026-04-05 22:40:26] INFO cot_faithfulness:   Layer 5: saved torch.Size([100, 512]) -> data/activations/gsm8k_no_cot/layer_5.pt
-[2026-04-05 22:40:26] INFO cot_faithfulness: ============================================================
-[2026-04-05 22:40:26] INFO cot_faithfulness: STAGE 2: SAE Encoding & Contrastive Analysis
-[2026-04-05 22:40:26] INFO cot_faithfulness: ============================================================
-[2026-04-05 22:40:26] INFO cot_faithfulness: --- Encoding layer 2 ---
-[2026-04-05 22:40:26] INFO cot_faithfulness:   gsm8k_cot layer 2: reused cached SAE features (100, 32768)
-[2026-04-05 22:40:26] INFO cot_faithfulness:   gsm8k_no_cot layer 2: reused cached SAE features (100, 32768)
-[2026-04-05 22:40:26] INFO cot_faithfulness: --- Encoding layer 3 ---
-[2026-04-05 22:40:26] INFO cot_faithfulness:   gsm8k_cot layer 3: reused cached SAE features (100, 32768)
-[2026-04-05 22:40:26] INFO cot_faithfulness:   gsm8k_no_cot layer 3: reused cached SAE features (100, 32768)
-[2026-04-05 22:40:26] INFO cot_faithfulness: --- Encoding layer 4 ---
-[2026-04-05 22:40:26] INFO cot_faithfulness:   gsm8k_cot layer 4: reused cached SAE features (100, 32768)
-[2026-04-05 22:40:26] INFO cot_faithfulness:   gsm8k_no_cot layer 4: reused cached SAE features (100, 32768)
-[2026-04-05 22:40:26] INFO cot_faithfulness: --- Encoding layer 5 ---
-[2026-04-05 22:40:26] INFO cot_faithfulness:   gsm8k_cot layer 5: reused cached SAE features (100, 32768)
-[2026-04-05 22:40:26] INFO cot_faithfulness:   gsm8k_no_cot layer 5: reused cached SAE features (100, 32768)
-[2026-04-05 22:40:26] INFO cot_faithfulness: Layer 2: no TriviaQA features, using intra-dataset contrast only
-[2026-04-05 22:40:26] INFO cot_faithfulness: --- Contrastive analysis: Layer 2 ---
-[2026-04-05 22:40:26] INFO cot_faithfulness:   Intra-dataset (CoT - No-CoT): 32768 candidates above 95th percentile
-[2026-04-05 22:40:26] INFO cot_faithfulness:   Inter-dataset contrast: skipped (no TriviaQA)
-[2026-04-05 22:40:26] INFO cot_faithfulness:   Candidate reasoning features (strict intersection): 32768
-[2026-04-05 22:40:26] INFO cot_faithfulness: Layer 3: no TriviaQA features, using intra-dataset contrast only
-[2026-04-05 22:40:26] INFO cot_faithfulness: --- Contrastive analysis: Layer 3 ---
-[2026-04-05 22:40:26] INFO cot_faithfulness:   Intra-dataset (CoT - No-CoT): 32768 candidates above 95th percentile
-[2026-04-05 22:40:26] INFO cot_faithfulness:   Inter-dataset contrast: skipped (no TriviaQA)
-[2026-04-05 22:40:26] INFO cot_faithfulness:   Candidate reasoning features (strict intersection): 32768
-[2026-04-05 22:40:26] INFO cot_faithfulness: Layer 4: no TriviaQA features, using intra-dataset contrast only
-[2026-04-05 22:40:26] INFO cot_faithfulness: --- Contrastive analysis: Layer 4 ---
-[2026-04-05 22:40:26] INFO cot_faithfulness:   Intra-dataset (CoT - No-CoT): 32768 candidates above 95th percentile
-[2026-04-05 22:40:26] INFO cot_faithfulness:   Inter-dataset contrast: skipped (no TriviaQA)
-[2026-04-05 22:40:26] INFO cot_faithfulness:   Candidate reasoning features (strict intersection): 32768
-[2026-04-05 22:40:26] INFO cot_faithfulness: Layer 5: no TriviaQA features, using intra-dataset contrast only
-[2026-04-05 22:40:26] INFO cot_faithfulness: --- Contrastive analysis: Layer 5 ---
-[2026-04-05 22:40:26] INFO cot_faithfulness:   Intra-dataset (CoT - No-CoT): 1639 candidates above 95th percentile
-[2026-04-05 22:40:26] INFO cot_faithfulness:   Inter-dataset contrast: skipped (no TriviaQA)
-[2026-04-05 22:40:26] INFO cot_faithfulness:   Candidate reasoning features (strict intersection): 1639
-[2026-04-05 22:40:26] INFO cot_faithfulness: === Contrastive Analysis Summary ===
-[2026-04-05 22:40:26] INFO cot_faithfulness:   Layer 2: 32768 reasoning features
-[2026-04-05 22:40:26] INFO cot_faithfulness:   Layer 3: 32768 reasoning features
-[2026-04-05 22:40:26] INFO cot_faithfulness:   Layer 4: 32768 reasoning features
-[2026-04-05 22:40:26] INFO cot_faithfulness:   Layer 5: 1639 reasoning features
-[2026-04-05 22:40:26] INFO cot_faithfulness: ============================================================
-[2026-04-05 22:40:26] INFO cot_faithfulness: STAGE 3: Causal Interventions
-[2026-04-05 22:40:26] INFO cot_faithfulness: ============================================================
-[2026-04-05 22:40:31] INFO cot_faithfulness: Built 72 intervention specs
-Baseline generation:   0%|          | 0/1 [00:00<?, ?it/s]
-  0%|          | 0/512 [00:00<?, ?it/s][A
-  0%|          | 1/512 [00:00<02:18,  3.70it/s][A
-  1%|          | 6/512 [00:00<00:27, 18.58it/s][A
-  2%|▏         | 11/512 [00:00<00:17, 28.16it/s][A
-  3%|▎         | 16/512 [00:00<00:14, 34.04it/s][A
-  4%|▍         | 21/512 [00:00<00:12, 38.28it/s][A
-  5%|▌         | 26/512 [00:00<00:11, 41.16it/s][A
-  6%|▌         | 31/512 [00:00<00:11, 43.09it/s][A
-  7%|▋         | 36/512 [00:01<00:10, 44.53it/s][A
-  8%|▊         | 41/512 [00:01<00:10, 45.48it/s][A
-  9%|▉         | 46/512 [00:01<00:10, 46.16it/s][A
- 10%|▉         | 51/512 [00:01<00:09, 46.59it/s][A
- 11%|█         | 56/512 [00:01<00:09, 46.89it/s][A
- 12%|█▏        | 61/512 [00:01<00:09, 47.14it/s][A
- 13%|█▎        | 66/512 [00:01<00:09, 47.34it/s][A
- 14%|█▍        | 71/512 [00:01<00:09, 47.47it/s][A
- 15%|█▍        | 76/512 [00:01<00:09, 47.55it/s][A
- 16%|█▌        | 81/512 [00:01<00:09, 47.57it/s][A
- 17%|█▋        | 86/512 [00:02<00:08, 47.40it/s][A
- 18%|█▊        | 91/512 [00:02<00:08, 47.09it/s][A
- 19%|█▉        | 96/512 [00:02<00:08, 46.46it/s][A
- 20%|█▉        | 101/512 [00:02<00:08, 46.87it/s][A
- 21%|██        | 106/512 [00:02<00:08, 47.11it/s][A
- 22%|██▏       | 111/512 [00:02<00:08, 47.19it/s][A
- 23%|██▎       | 116/512 [00:02<00:08, 47.33it/s][A
- 24%|██▎       | 121/512 [00:02<00:08, 47.40it/s][A
- 25%|██▍       | 126/512 [00:02<00:08, 47.31it/s][A
- 26%|██▌       | 131/512 [00:03<00:08, 47.35it/s][A
- 27%|██▋       | 136/512 [00:03<00:07, 47.27it/s][A
- 28%|██▊       | 141/512 [00:03<00:07, 47.25it/s][A
- 29%|██▊       | 146/512 [00:03<00:07, 47.17it/s][A
- 29%|██▉       | 151/512 [00:03<00:07, 47.12it/s][A
- 30%|███       | 156/512 [00:03<00:07, 47.12it/s][A
- 31%|███▏      | 161/512 [00:03<00:07, 47.05it/s][A
- 32%|███▏      | 166/512 [00:03<00:07, 47.02it/s][A
- 33%|███▎      | 171/512 [00:03<00:07, 46.82it/s][A
- 34%|███▍      | 176/512 [00:03<00:07, 46.79it/s][A
- 35%|███▌      | 181/512 [00:04<00:07, 46.73it/s][A
- 36%|███▋      | 186/512 [00:04<00:06, 46.65it/s][A
- 37%|███▋      | 191/512 [00:04<00:06, 46.62it/s][A
- 38%|███▊      | 196/512 [00:04<00:06, 46.51it/s][A
- 39%|███▉      | 201/512 [00:04<00:06, 46.37it/s][A
- 40%|████      | 206/512 [00:04<00:06, 46.09it/s][A
- 41%|████      | 211/512 [00:04<00:06, 45.44it/s][A
- 42%|████▏     | 216/512 [00:04<00:06, 45.22it/s][A
- 43%|████▎     | 221/512 [00:04<00:06, 44.92it/s][A
- 44%|████▍     | 226/512 [00:05<00:06, 44.60it/s][A
- 45%|████▌     | 231/512 [00:05<00:06, 44.29it/s][A
- 46%|████▌     | 236/512 [00:05<00:06, 43.91it/s][A
- 47%|████▋     | 241/512 [00:05<00:06, 43.59it/s][A
- 48%|████▊     | 246/512 [00:05<00:06, 43.25it/s][A
- 49%|████▉     | 251/512 [00:05<00:06, 42.85it/s][A
- 50%|█████     | 256/512 [00:05<00:06, 42.47it/s][A
- 51%|█████     | 261/512 [00:05<00:05, 42.04it/s][A
- 52%|█████▏    | 266/512 [00:06<00:05, 41.69it/s][A
- 53%|█████▎    | 271/512 [00:06<00:05, 41.34it/s][A
- 54%|█████▍    | 276/512 [00:06<00:05, 41.03it/s][A
- 55%|█████▍    | 281/512 [00:06<00:05, 40.54it/s][A
- 56%|█████▌    | 286/512 [00:06<00:05, 40.20it/s][A
- 57%|█████▋    | 291/512 [00:06<00:05, 39.90it/s][A
- 58%|█████▊    | 295/512 [00:06<00:05, 39.48it/s][A
- 58%|█████▊    | 299/512 [00:06<00:05, 39.14it/s][A
- 59%|█████▉    | 303/512 [00:06<00:05, 38.73it/s][A
- 60%|█████▉    | 307/512 [00:07<00:05, 38.45it/s][A
- 61%|██████    | 311/512 [00:07<00:05, 38.06it/s][A
- 62%|██████▏   | 315/512 [00:07<00:05, 37.80it/s][A
- 62%|██████▏   | 319/512 [00:07<00:05, 37.58it/s][A
- 63%|██████▎   | 323/512 [00:07<00:05, 37.29it/s][A
- 64%|██████▍   | 327/512 [00:07<00:04, 37.14it/s][A
- 65%|██████▍   | 331/512 [00:07<00:04, 36.93it/s][A
- 65%|██████▌   | 335/512 [00:07<00:04, 36.74it/s][A
- 66%|██████▌   | 339/512 [00:07<00:04, 36.55it/s][A
- 67%|██████▋   | 343/512 [00:08<00:04, 36.38it/s][A
- 68%|██████▊   | 347/512 [00:08<00:04, 36.17it/s][A
- 69%|██████▊   | 351/512 [00:08<00:04, 35.98it/s][A
- 69%|██████▉   | 355/512 [00:08<00:04, 35.80it/s][A
- 70%|███████   | 359/512 [00:08<00:04, 35.58it/s][A
- 71%|███████   | 363/512 [00:08<00:04, 35.36it/s][A
- 72%|███████▏  | 367/512 [00:08<00:04, 35.13it/s][A
- 72%|███████▏  | 371/512 [00:08<00:04, 34.92it/s][A
- 73%|███████▎  | 375/512 [00:08<00:03, 34.72it/s][A
- 74%|███████▍  | 379/512 [00:09<00:03, 34.53it/s][A
- 75%|███████▍  | 383/512 [00:09<00:03, 34.32it/s][A
- 76%|███████▌  | 387/512 [00:09<00:03, 34.15it/s][A
- 76%|███████▋  | 391/512 [00:09<00:03, 33.97it/s][A
- 77%|███████▋  | 395/512 [00:09<00:03, 33.78it/s][A
- 78%|███████▊  | 399/512 [00:09<00:03, 33.60it/s][A
- 79%|███████▊  | 403/512 [00:09<00:03, 33.39it/s][A
- 79%|███████▉  | 407/512 [00:09<00:03, 33.21it/s][A
- 80%|████████  | 411/512 [00:10<00:03, 33.05it/s][A
- 81%|████████  | 415/512 [00:10<00:02, 32.86it/s][A
- 82%|████████▏ | 419/512 [00:10<00:02, 32.65it/s][A
- 83%|████████▎ | 423/512 [00:10<00:02, 32.47it/s][A
- 83%|████████▎ | 427/512 [00:10<00:02, 32.28it/s][A
- 84%|████████▍ | 431/512 [00:10<00:02, 32.12it/s][A
- 85%|████████▍ | 435/512 [00:10<00:02, 31.96it/s][A
- 86%|████████▌ | 439/512 [00:10<00:02, 31.77it/s][A
- 87%|████████▋ | 443/512 [00:11<00:02, 31.59it/s][A
- 87%|████████▋ | 447/512 [00:11<00:02, 31.40it/s][A
- 88%|████████▊ | 451/512 [00:11<00:01, 31.24it/s][A
- 89%|████████▉ | 455/512 [00:11<00:01, 31.07it/s][A
- 90%|████████▉ | 459/512 [00:11<00:01, 30.92it/s][A
- 90%|█████████ | 463/512 [00:11<00:01, 30.75it/s][A
- 91%|█████████ | 467/512 [00:11<00:01, 30.56it/s][A
- 92%|█████████▏| 471/512 [00:11<00:01, 30.42it/s][A
- 93%|█████████▎| 475/512 [00:12<00:01, 30.25it/s][A
- 94%|█████████▎| 479/512 [00:12<00:01, 30.08it/s][A
- 94%|█████████▍| 483/512 [00:12<00:00, 29.90it/s][A
- 95%|█████████▍| 486/512 [00:12<00:00, 29.78it/s][A
- 96%|█████████▌| 489/512 [00:12<00:00, 29.65it/s][A
- 96%|█████████▌| 492/512 [00:12<00:00, 29.54it/s][A
- 97%|█████████▋| 495/512 [00:12<00:00, 29.41it/s][A
- 97%|█████████▋| 498/512 [00:12<00:00, 29.23it/s][A
- 98%|█████████▊| 501/512 [00:13<00:00, 29.13it/s][A
- 98%|█████████▊| 504/512 [00:13<00:00, 28.93it/s][A
- 99%|█████████▉| 507/512 [00:13<00:00, 28.83it/s][A
-100%|█████████▉| 510/512 [00:13<00:00, 28.74it/s][A100%|██████████| 512/512 [00:13<00:00, 38.22it/s]
-Baseline generation: 100%|██████████| 1/1 [00:13<00:00, 13.44s/it]Baseline generation: 100%|██████████| 1/1 [00:13<00:00, 13.44s/it]
-[2026-04-05 22:40:44] INFO cot_faithfulness: Generated 100 baseline outputs
-Baseline generation:   0%|          | 0/1 [00:00<?, ?it/s]
-  0%|          | 0/512 [00:00<?, ?it/s][A
-  0%|          | 1/512 [00:00<01:16,  6.67it/s][A
-  1%|          | 6/512 [00:00<00:18, 27.24it/s][A
-  2%|▏         | 11/512 [00:00<00:14, 35.78it/s][A
-  3%|▎         | 16/512 [00:00<00:12, 40.18it/s][A
-  4%|▍         | 21/512 [00:00<00:11, 42.83it/s][A
-  5%|▌         | 26/512 [00:00<00:10, 44.50it/s][A
-  6%|▌         | 31/512 [00:00<00:10, 45.57it/s][A
-  7%|▋         | 36/512 [00:00<00:10, 46.35it/s][A
-  8%|▊         | 41/512 [00:00<00:10, 46.90it/s][A
-  9%|▉         | 46/512 [00:01<00:09, 47.15it/s][A
- 10%|▉         | 51/512 [00:01<00:09, 47.39it/s][A
- 11%|█         | 56/512 [00:01<00:09, 47.55it/s][A
- 12%|█▏        | 61/512 [00:01<00:09, 47.68it/s][A
- 13%|█▎        | 66/512 [00:01<00:09, 47.64it/s][A
- 14%|█▍        | 71/512 [00:01<00:09, 47.70it/s][A
- 15%|█▍        | 76/512 [00:01<00:09, 47.70it/s][A
- 16%|█▌        | 81/512 [00:01<00:09, 47.81it/s][A
- 17%|█▋        | 86/512 [00:01<00:08, 47.86it/s][A
- 18%|█▊        | 91/512 [00:02<00:08, 47.88it/s][A
- 19%|█▉        | 96/512 [00:02<00:08, 47.84it/s][A
- 20%|█▉        | 101/512 [00:02<00:08, 47.80it/s][A
- 21%|██        | 106/512 [00:02<00:08, 47.80it/s][A
- 22%|██▏       | 111/512 [00:02<00:08, 47.77it/s][A
- 23%|██▎       | 116/512 [00:02<00:08, 47.62it/s][A
- 24%|██▎       | 121/512 [00:02<00:08, 47.60it/s][A
- 25%|██▍       | 126/512 [00:02<00:08, 47.58it/s][A
- 26%|██▌       | 131/512 [00:02<00:08, 47.59it/s][A
- 27%|██▋       | 136/512 [00:02<00:07, 47.54it/s][A
- 28%|██▊       | 141/512 [00:03<00:07, 47.53it/s][A
- 29%|██▊       | 146/512 [00:03<00:07, 47.43it/s][A
- 29%|██▉       | 151/512 [00:03<00:07, 47.36it/s][A
- 30%|███       | 156/512 [00:03<00:07, 47.30it/s][A
- 31%|███▏      | 161/512 [00:03<00:07, 47.15it/s][A
- 32%|███▏      | 166/512 [00:03<00:07, 47.12it/s][A
- 33%|███▎      | 171/512 [00:03<00:07, 47.03it/s][A
- 34%|███▍      | 176/512 [00:03<00:07, 46.99it/s][A
- 35%|███▌      | 181/512 [00:03<00:07, 46.89it/s][A
- 36%|███▋      | 186/512 [00:04<00:06, 46.85it/s][A
- 37%|███▋      | 191/512 [00:04<00:06, 46.79it/s][A
- 38%|███▊      | 196/512 [00:04<00:06, 46.71it/s][A
- 39%|███▉      | 201/512 [00:04<00:06, 46.59it/s][A
- 40%|████      | 206/512 [00:04<00:06, 46.34it/s][A
- 41%|████      | 211/512 [00:04<00:06, 46.06it/s][A
- 42%|████▏     | 216/512 [00:04<00:06, 45.74it/s][A
- 43%|████▎     | 221/512 [00:04<00:06, 45.43it/s][A
- 44%|████▍     | 226/512 [00:04<00:06, 45.03it/s][A
- 45%|████▌     | 231/512 [00:05<00:06, 44.69it/s][A
- 46%|████▌     | 236/512 [00:05<00:06, 44.31it/s][A
- 47%|████▋     | 241/512 [00:05<00:06, 43.93it/s][A
- 48%|████▊     | 246/512 [00:05<00:06, 43.56it/s][A
- 49%|████▉     | 251/512 [00:05<00:06, 43.13it/s][A
- 50%|█████     | 256/512 [00:05<00:05, 42.77it/s][A
- 51%|█████     | 261/512 [00:05<00:05, 42.40it/s][A
- 52%|█████▏    | 266/512 [00:05<00:05, 42.03it/s][A
- 53%|█████▎    | 271/512 [00:05<00:05, 41.68it/s][A
- 54%|█████▍    | 276/512 [00:06<00:05, 41.30it/s][A
- 55%|█████▍    | 281/512 [00:06<00:05, 40.95it/s][A
- 56%|█████▌    | 286/512 [00:06<00:05, 40.62it/s][A
- 57%|█████▋    | 291/512 [00:06<00:05, 40.25it/s][A
- 58%|█████▊    | 296/512 [00:06<00:05, 39.94it/s][A
- 59%|█████▊    | 300/512 [00:06<00:05, 39.63it/s][A
- 59%|█████▉    | 304/512 [00:06<00:05, 39.33it/s][A
- 60%|██████    | 308/512 [00:06<00:05, 39.03it/s][A
- 61%|██████    | 312/512 [00:07<00:05, 38.75it/s][A
- 62%|██████▏   | 316/512 [00:07<00:05, 38.45it/s][A
- 62%|██████▎   | 320/512 [00:07<00:05, 38.16it/s][A
- 63%|██████▎   | 324/512 [00:07<00:04, 37.89it/s][A
- 64%|██████▍   | 328/512 [00:07<00:04, 37.56it/s][A
- 65%|██████▍   | 332/512 [00:07<00:04, 37.30it/s][A
- 66%|██████▌   | 336/512 [00:07<00:04, 37.06it/s][A
- 66%|██████▋   | 340/512 [00:07<00:04, 36.82it/s][A
- 67%|██████▋   | 344/512 [00:07<00:04, 36.57it/s][A
- 68%|██████▊   | 348/512 [00:08<00:04, 36.37it/s][A
- 69%|██████▉   | 352/512 [00:08<00:04, 36.13it/s][A
- 70%|██████▉   | 356/512 [00:08<00:04, 35.92it/s][A
- 70%|███████   | 360/512 [00:08<00:04, 35.62it/s][A
- 71%|███████   | 364/512 [00:08<00:04, 35.43it/s][A
- 72%|███████▏  | 368/512 [00:08<00:04, 35.22it/s][A
- 73%|███████▎  | 372/512 [00:08<00:04, 34.99it/s][A
- 73%|███████▎  | 376/512 [00:08<00:03, 34.79it/s][A
- 74%|███████▍  | 380/512 [00:08<00:03, 34.62it/s][A
- 75%|███████▌  | 384/512 [00:09<00:03, 34.39it/s][A
- 76%|███████▌  | 388/512 [00:09<00:03, 34.22it/s][A
- 77%|███████▋  | 392/512 [00:09<00:03, 34.03it/s][A
- 77%|███████▋  | 396/512 [00:09<00:03, 33.84it/s][A
- 78%|███████▊  | 400/512 [00:09<00:03, 33.62it/s][A
- 79%|███████▉  | 404/512 [00:09<00:03, 33.46it/s][A
- 80%|███████▉  | 408/512 [00:09<00:03, 33.27it/s][A
- 80%|████████  | 412/512 [00:09<00:03, 33.11it/s][A
- 81%|████████▏ | 416/512 [00:10<00:02, 32.93it/s][A
- 82%|████████▏ | 420/512 [00:10<00:02, 32.72it/s][A
- 83%|████████▎ | 424/512 [00:10<00:02, 32.52it/s][A
- 84%|████████▎ | 428/512 [00:10<00:02, 32.35it/s][A
- 84%|████████▍ | 432/512 [00:10<00:02, 32.17it/s][A
- 85%|████████▌ | 436/512 [00:10<00:02, 31.99it/s][A
- 86%|████████▌ | 440/512 [00:10<00:02, 31.82it/s][A
- 87%|████████▋ | 444/512 [00:10<00:02, 31.65it/s][A
- 88%|████████▊ | 448/512 [00:11<00:02, 31.46it/s][A
- 88%|████████▊ | 452/512 [00:11<00:01, 31.29it/s][A
- 89%|████████▉ | 456/512 [00:11<00:01, 31.11it/s][A
- 90%|████████▉ | 460/512 [00:11<00:01, 30.95it/s][A
- 91%|█████████ | 464/512 [00:11<00:01, 30.77it/s][A
- 91%|█████████▏| 468/512 [00:11<00:01, 30.61it/s][A
- 92%|█████████▏| 472/512 [00:11<00:01, 30.38it/s][A
- 93%|█████████▎| 476/512 [00:11<00:01, 30.25it/s][A
- 94%|█████████▍| 480/512 [00:12<00:01, 30.11it/s][A
- 95%|█████████▍| 484/512 [00:12<00:00, 29.97it/s][A
- 95%|█████████▌| 487/512 [00:12<00:00, 29.83it/s][A
- 96%|█████████▌| 490/512 [00:12<00:00, 29.71it/s][A
- 96%|█████████▋| 493/512 [00:12<00:00, 29.58it/s][A
- 97%|█████████▋| 496/512 [00:12<00:00, 29.44it/s][A
- 97%|█████████▋| 499/512 [00:12<00:00, 29.33it/s][A
- 98%|█████████▊| 502/512 [00:12<00:00, 29.20it/s][A
- 99%|█████████▊| 505/512 [00:12<00:00, 29.09it/s][A
- 99%|█████████▉| 508/512 [00:13<00:00, 28.95it/s][A
-100%|█████████▉| 511/512 [00:13<00:00, 28.83it/s][A100%|██████████| 512/512 [00:13<00:00, 38.85it/s]
-Baseline generation: 100%|██████████| 1/1 [00:13<00:00, 13.22s/it]Baseline generation: 100%|██████████| 1/1 [00:13<00:00, 13.22s/it]
-[2026-04-05 22:40:57] INFO cot_faithfulness: Generated 100 baseline outputs
-Total experiment progress:   0%|          | 0/7200 [00:00<?, ?it/s][2026-04-05 22:40:57] INFO cot_faithfulness: === Layer 2: 36 specs ===
-[2026-04-05 22:40:58] WARNING cot_faithfulness: SAE 'pythia-70m-deduped-res-sm' not in SAELens registry. Attempting HuggingFace fallback...
-Release pythia-70m-deduped-res-sm not found in pretrained SAEs directory.
-[2026-04-05 22:40:58] INFO cot_faithfulness: Loading SAE from HuggingFace: repo=ctigges/pythia-70m-deduped__res-sm_processed, layer=2
-[2026-04-05 22:40:58] ERROR cot_faithfulness: Failed to load SAE 'pythia-70m-deduped-res-sm' layer 2 from HuggingFace: 404 Client Error. (Request ID: Root=1-69d297a2-3613f89750c1616826494365;03188d0e-5532-4822-8274-e2dfbf50bb62)
-
-Entry Not Found for url: https://huggingface.co/ctigges/pythia-70m-deduped__res-sm_processed/resolve/main/sae_weights_layer_2.pt.
-[2026-04-05 22:40:58] WARNING cot_faithfulness: Unexpected error loading SAE for interventions: 404 Client Error. (Request ID: Root=1-69d297a2-3613f89750c1616826494365;03188d0e-5532-4822-8274-e2dfbf50bb62)
-
-Entry Not Found for url: https://huggingface.co/ctigges/pythia-70m-deduped__res-sm_processed/resolve/main/sae_weights_layer_2.pt.. Skipping intervention stage but keeping baseline outputs.
-Total experiment progress:   0%|          | 0/7200 [00:00<?, ?it/s]
-[2026-04-05 22:40:58] INFO cot_faithfulness: ============================================================
-[2026-04-05 22:40:58] INFO cot_faithfulness: STAGE 4: Evaluation (Accuracy + Confidence + Fluency)
-[2026-04-05 22:40:58] INFO cot_faithfulness: ============================================================
-[2026-04-05 22:40:58] INFO cot_faithfulness: --- Axis 1: Answer Accuracy ---
-[2026-04-05 22:40:58] INFO cot_faithfulness:   [Baseline] Accuracy: 0.000 (0/100)
-[2026-04-05 22:40:58] INFO cot_faithfulness: --- Axis 2: Confidence (Answer Log-Probability) ---
-Confidence [Baseline]:   0%|          | 0/100 [00:00<?, ?it/s]Confidence [Baseline]:   2%|▏         | 2/100 [00:00<00:05, 18.78it/s]Confidence [Baseline]:   6%|▌         | 6/100 [00:00<00:03, 26.52it/s]Confidence [Baseline]:  10%|█         | 10/100 [00:00<00:03, 28.68it/s]Confidence [Baseline]:  14%|█▍        | 14/100 [00:00<00:02, 31.95it/s]Confidence [Baseline]:  19%|█▉        | 19/100 [00:00<00:02, 35.67it/s]Confidence [Baseline]:  24%|██▍       | 24/100 [00:00<00:02, 37.82it/s]Confidence [Baseline]:  29%|██▉       | 29/100 [00:00<00:01, 39.17it/s]Confidence [Baseline]:  34%|███▍      | 34/100 [00:00<00:01, 39.73it/s]Confidence [Baseline]:  39%|███▉      | 39/100 [00:01<00:01, 40.48it/s]Confidence [Baseline]:  44%|████▍     | 44/100 [00:01<00:01, 40.50it/s]Confidence [Baseline]:  49%|████▉     | 49/100 [00:01<00:01, 40.99it/s]Confidence [Baseline]:  54%|█████▍    | 54/100 [00:01<00:01, 41.32it/s]Confidence [Baseline]:  59%|█████▉    | 59/100 [00:01<00:00, 41.60it/s]Confidence [Baseline]:  64%|██████▍   | 64/100 [00:01<00:00, 41.88it/s]Confidence [Baseline]:  69%|██████▉   | 69/100 [00:01<00:00, 42.02it/s]Confidence [Baseline]:  74%|███████▍  | 74/100 [00:01<00:00, 42.25it/s]Confidence [Baseline]:  79%|███████▉  | 79/100 [00:02<00:00, 42.06it/s]Confidence [Baseline]:  84%|████████▍ | 84/100 [00:02<00:00, 42.19it/s]Confidence [Baseline]:  89%|████████▉ | 89/100 [00:02<00:00, 42.27it/s]Confidence [Baseline]:  94%|█████████▍| 94/100 [00:02<00:00, 42.34it/s]Confidence [Baseline]:  99%|█████████▉| 99/100 [00:02<00:00, 42.43it/s]Confidence [Baseline]: 100%|██████████| 100/100 [00:02<00:00, 39.77it/s]
-[2026-04-05 22:41:01] INFO cot_faithfulness:   [Baseline] Confidence logP/token: mean=-3.1800
-[2026-04-05 22:41:01] INFO cot_faithfulness: --- Axis 3: Language Fluency ---
-Fluency [Baseline]:   0%|          | 0/100 [00:00<?, ?it/s]Fluency [Baseline]:   4%|▍         | 4/100 [00:00<00:02, 36.21it/s]Fluency [Baseline]:   8%|▊         | 8/100 [00:00<00:02, 36.48it/s]Fluency [Baseline]:  12%|█▏        | 12/100 [00:00<00:02, 36.65it/s]Fluency [Baseline]:  16%|█▌        | 16/100 [00:00<00:02, 36.77it/s]Fluency [Baseline]:  20%|██        | 20/100 [00:00<00:02, 36.80it/s]Fluency [Baseline]:  24%|██▍       | 24/100 [00:00<00:02, 36.87it/s]Fluency [Baseline]:  28%|██▊       | 28/100 [00:00<00:01, 36.90it/s]Fluency [Baseline]:  32%|███▏      | 32/100 [00:00<00:01, 36.83it/s]Fluency [Baseline]:  36%|███▌      | 36/100 [00:00<00:01, 36.84it/s]Fluency [Baseline]:  40%|████      | 40/100 [00:01<00:01, 36.83it/s]Fluency [Baseline]:  44%|████▍     | 44/100 [00:01<00:01, 36.84it/s]Fluency [Baseline]:  48%|████▊     | 48/100 [00:01<00:01, 36.80it/s]Fluency [Baseline]:  52%|█████▏    | 52/100 [00:01<00:01, 36.81it/s]Fluency [Baseline]:  56%|█████▌    | 56/100 [00:01<00:01, 36.86it/s]Fluency [Baseline]:  60%|██████    | 60/100 [00:01<00:01, 36.85it/s]Fluency [Baseline]:  64%|██████▍   | 64/100 [00:01<00:00, 36.90it/s]Fluency [Baseline]:  68%|██████▊   | 68/100 [00:01<00:00, 36.87it/s]Fluency [Baseline]:  72%|███████▏  | 72/100 [00:01<00:00, 36.85it/s]Fluency [Baseline]:  76%|███████▌  | 76/100 [00:02<00:00, 36.88it/s]Fluency [Baseline]:  80%|████████  | 80/100 [00:02<00:00, 36.82it/s]Fluency [Baseline]:  84%|████████▍ | 84/100 [00:02<00:00, 36.78it/s]Fluency [Baseline]:  88%|████████▊ | 88/100 [00:02<00:00, 36.86it/s]Fluency [Baseline]:  92%|█████████▏| 92/100 [00:02<00:00, 36.92it/s]Fluency [Baseline]:  96%|█████████▌| 96/100 [00:02<00:00, 36.93it/s]Fluency [Baseline]: 100%|██████████| 100/100 [00:02<00:00, 36.93it/s]Fluency [Baseline]: 100%|██████████| 100/100 [00:02<00:00, 36.84it/s]
-[2026-04-05 22:41:03] INFO cot_faithfulness:   [Baseline] Perplexity: mean=1.31
-[2026-04-05 22:41:03] INFO cot_faithfulness: ============================================================
-[2026-04-05 22:41:03] INFO cot_faithfulness: STAGE 5: Generate Publication Visualizations
-[2026-04-05 22:41:03] INFO cot_faithfulness: ============================================================
-[2026-04-05 22:41:03] INFO cot_faithfulness: ============================================================
-[2026-04-05 22:41:03] INFO cot_faithfulness: Generating Publication Visualizations
-[2026-04-05 22:41:03] INFO cot_faithfulness: ============================================================
-[2026-04-05 22:41:03] INFO cot_faithfulness: 1. Generating feature isolation scatter plot...
-[2026-04-05 22:41:04] INFO cot_faithfulness: Saved: outputs_70m_deduped/visualizations/01_feature_isolation_scatter_layer5.png
-[2026-04-05 22:41:04] INFO cot_faithfulness: 2. Generating sparsity distribution...
-/home2/hardikchadha/INLP_Project/src/visualizations.py:164: FutureWarning: 
-
-Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
-
-  sns.violinplot(data=df, x="Condition", y="L0 Norm (Active Features)",
-/home2/hardikchadha/INLP_Project/src/visualizations.py:164: UserWarning: The palette list has more values (2) than needed (1), which may not be intended.
-  sns.violinplot(data=df, x="Condition", y="L0 Norm (Active Features)",
-[2026-04-05 22:41:05] INFO cot_faithfulness: Saved: outputs_70m_deduped/visualizations/02_sparsity_distribution.png
-[2026-04-05 22:41:05] INFO cot_faithfulness: 3. Generating intervention impact chart...
-[2026-04-05 22:41:05] INFO cot_faithfulness:   [BASELINE] Accuracy: 0.000 (0/100)
-[2026-04-05 22:41:08] INFO cot_faithfulness: Saved: outputs_70m_deduped/visualizations/03_intervention_impact.png
-[2026-04-05 22:41:08] INFO cot_faithfulness: 4. Generating cross-layer evolution...
-[2026-04-05 22:41:08] INFO cot_faithfulness: Saved: outputs_70m_deduped/visualizations/04_cross_layer_evolution.png
-[2026-04-05 22:41:08] INFO cot_faithfulness: 5. Generating qualitative lobotomy table...
-[2026-04-05 22:41:08] WARNING cot_faithfulness: No ablation results found. Skipping lobotomy table.
-[2026-04-05 22:41:08] INFO cot_faithfulness: ============================================================
-[2026-04-05 22:41:08] INFO cot_faithfulness: All visualizations complete!
-[2026-04-05 22:41:08] INFO cot_faithfulness: Output directory: outputs_70m_deduped/visualizations
-[2026-04-05 22:41:08] INFO cot_faithfulness: ============================================================
-[2026-04-05 22:41:08] INFO cot_faithfulness: Total elapsed time: 77.4 seconds (1.3 min)
-[2026-04-05 22:41:08] INFO cot_faithfulness: Pipeline complete!
