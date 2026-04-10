@@ -7,7 +7,7 @@ Runs the complete experimental pipeline end-to-end:
   2. Cache activations across layers
   3. Encode through SAEs & run contrastive analysis
   4. Build intervention specs & run causal interventions
-  5. Evaluate on all three axes (accuracy, coherence, fluency)
+  5. Evaluate on all three axes (accuracy, confidence, fluency)
   6. Aggregate & save results
 
 Can be run for a single model or as part of a cross-model sweep.
@@ -40,6 +40,7 @@ from src.interventions import (
     run_baseline_generation,
 )
 from src.eval_accuracy import evaluate_accuracy, evaluate_accuracy_baseline
+from src.eval_confidence import evaluate_confidence, evaluate_confidence_baseline
 from src.eval_fluency import evaluate_fluency, evaluate_fluency_baseline
 
 
@@ -73,6 +74,7 @@ def stage_1_data_and_caching(config: ExperimentConfig, model=None):
 def stage_2_sae_and_contrastive(
     config: ExperimentConfig,
     cached_acts: Dict[str, Dict[int, torch.Tensor]],
+    results_dir: str,  # ADD THIS PARAMETER
 ):
     """Stage 2: SAE encoding and contrastive feature analysis."""
     logger.info("=" * 60)
@@ -91,22 +93,22 @@ def stage_2_sae_and_contrastive(
         batch_size=config.performance.sae_encode_batch_size,
     )
 
-    # Run contrastive analysis
+    # Run contrastive analysis - USE results_dir HERE
     contrastive_results = run_contrastive_analysis(
         sae_features=sae_features,
         layers=all_layers,
         cfg=config.contrastive,
-        output_dir=f"{config.output.results_dir}/contrastive",
+        output_dir=f"{results_dir}/contrastive",  # CHANGED
     )
 
     return sae_features, contrastive_results
-
 
 def stage_3_interventions(
     config: ExperimentConfig,
     prompt_sets: Dict,
     contrastive_results: Dict,
     model,
+    results_dir: str,  # ADD THIS
 ):
     """Stage 3: Run causal interventions (ablation + amplification)."""
     logger.info("=" * 60)
@@ -123,19 +125,11 @@ def stage_3_interventions(
     # Use GSM8K CoT samples for interventions
     samples = prompt_sets["gsm8k_cot"]
 
-    # Generate baselines
-    # baseline_results = run_baseline_generation(
-    #     model=model,
-    #     samples=samples,
-    #     max_new_tokens=config.interventions.max_new_tokens,
-    #     output_dir=f"{config.output.results_dir}/baseline",
-    # )
-
     baseline_results_cot = run_baseline_generation(
         model=model,
         samples=prompt_sets["gsm8k_cot"],
         max_new_tokens=config.interventions.max_new_tokens,
-        output_dir=f"{config.output.results_dir}/baseline_cot",
+        output_dir=f"{results_dir}/baseline_cot",  # CHANGED
         batch_size=config.performance.intervention_batch_size,
     )
 
@@ -143,7 +137,7 @@ def stage_3_interventions(
         model=model,
         samples=prompt_sets["gsm8k_no_cot"],
         max_new_tokens=config.interventions.max_new_tokens,
-        output_dir=f"{config.output.results_dir}/baseline_no_cot",
+        output_dir=f"{results_dir}/baseline_no_cot",  # CHANGED
         batch_size=config.performance.intervention_batch_size,
     )
 
@@ -154,13 +148,12 @@ def stage_3_interventions(
         samples=samples,
         specs=specs,
         max_new_tokens=config.interventions.max_new_tokens,
-        output_dir=f"{config.output.results_dir}/interventions",
+        output_dir=f"{results_dir}/interventions",  # CHANGED
         device=config.model.device,
         batch_size=config.performance.intervention_batch_size,
     )
 
     return baseline_results_cot, baseline_results_no_cot, intervention_results, specs
-
 
 # def stage_4_evaluation(
 #     config: ExperimentConfig,
@@ -207,41 +200,57 @@ def stage_4_evaluation(
     baseline_results: List[Dict],
     intervention_results: List,
     model,
+    results_dir: str,  # ADD THIS
 ):
-    """Stage 4: Two-axis evaluation (accuracy + fluency)."""
+    """Stage 4: Evaluation (accuracy + confidence + fluency)."""
     logger.info("=" * 60)
-    logger.info("STAGE 4: Evaluation (Accuracy + Fluency)")
+    logger.info("STAGE 4: Evaluation (Accuracy + Confidence + Fluency)")
     logger.info("=" * 60)
 
-    eval_dir = ensure_dir(f"{config.output.results_dir}/evaluation")
+    eval_dir = ensure_dir(f"{results_dir}/evaluation")  # CHANGED
 
-    # --- Axis 1: Answer Accuracy ---
-    logger.info("--- Axis 1: Answer Accuracy ---")
-    accuracy_baseline = evaluate_accuracy_baseline(baseline_results)
-    accuracy_intervention = evaluate_accuracy(intervention_results)
+    # # --- Axis 1: Answer Accuracy ---
+    # logger.info("--- Axis 1: Answer Accuracy ---")
+    # accuracy_baseline = evaluate_accuracy_baseline(baseline_results)
+    # accuracy_intervention = evaluate_accuracy(intervention_results)
 
-    save_json(accuracy_baseline, f"{eval_dir}/accuracy_baseline.json")
-    save_json(accuracy_intervention, f"{eval_dir}/accuracy_intervention.json")
+    # save_json(accuracy_baseline, f"{eval_dir}/accuracy_baseline.json")
+    # save_json(accuracy_intervention, f"{eval_dir}/accuracy_intervention.json")
 
-    # --- Axis 2: Language Fluency (Perplexity) ---
-    logger.info("--- Axis 2: Language Fluency ---")
-    fluency_baseline = evaluate_fluency_baseline(
-        baseline_results, model, config.evaluation,
+    # --- Axis 2: Confidence (Answer Log-Probability) ---
+    logger.info("--- Axis 2: Confidence (Answer Log-Probability) ---")
+    confidence_baseline = evaluate_confidence_baseline(
+        baseline_results,
+        model,
     )
-    fluency_intervention = evaluate_fluency(
-        intervention_results, model, config.evaluation,
+    confidence_intervention = evaluate_confidence(
+        intervention_results,
+        model,
     )
 
-    save_json(fluency_baseline, f"{eval_dir}/fluency_baseline.json")
-    save_json(fluency_intervention, f"{eval_dir}/fluency_intervention.json")
+    save_json(confidence_baseline, f"{eval_dir}/confidence_baseline.json")
+    save_json(confidence_intervention, f"{eval_dir}/confidence_intervention.json")
+
+    # # --- Axis 3: Language Fluency (Perplexity) ---
+    # logger.info("--- Axis 3: Language Fluency ---")
+    # fluency_baseline = evaluate_fluency_baseline(
+    #     baseline_results, model, config.evaluation,
+    # )
+    # fluency_intervention = evaluate_fluency(
+    #     intervention_results, model, config.evaluation,
+    # )
+
+    # save_json(fluency_baseline, f"{eval_dir}/fluency_baseline.json")
+    # save_json(fluency_intervention, f"{eval_dir}/fluency_intervention.json")
 
     return {
-        "accuracy_baseline": accuracy_baseline,
-        "accuracy_intervention": accuracy_intervention,
-        "fluency_baseline": fluency_baseline,
-        "fluency_intervention": fluency_intervention,
+        # "accuracy_baseline": accuracy_baseline,
+        # "accuracy_intervention": accuracy_intervention,
+        "confidence_baseline": confidence_baseline,
+        "confidence_intervention": confidence_intervention,
+        # "fluency_baseline": fluency_baseline,
+        # "fluency_intervention": fluency_intervention,
     }
-
 
 # ---------------------------------------------------------------------------
 # Aggregation & summary
@@ -270,21 +279,31 @@ def generate_summary(
         f"Baseline Perplexity: {bl_flu['mean_perplexity']:.2f}"
     )
 
+    # Baseline confidence
+    bl_conf = eval_results.get("confidence_baseline", {})
+    if bl_conf:
+        summary_lines.append(
+            "Baseline Confidence (mean logP/token): "
+            f"{bl_conf.get('mean_answer_logprob_per_token', -1):.4f}"
+        )
+
     # Intervention results table
     summary_lines.append("\n--- Intervention Results ---")
     summary_lines.append(
-        f"{'Spec Label':<50} {'Accuracy':>8} {'Perplexity':>11}"
+        f"{'Spec Label':<50} {'Accuracy':>8} {'LogP/tok':>10} {'Perplexity':>11}"
     )
     summary_lines.append("-" * 70)
 
     acc_inv = eval_results["accuracy_intervention"]
+    conf_inv = eval_results.get("confidence_intervention", {})
     flu_inv = eval_results["fluency_intervention"]
 
     for label in sorted(acc_inv.keys()):
         acc = acc_inv[label]["accuracy"]
+        conf = conf_inv.get(label, {}).get("mean_answer_logprob_per_token", -1)
         ppl = flu_inv.get(label, {}).get("mean_perplexity", -1)
         summary_lines.append(
-            f"{label:<50} {acc:>8.3f} {ppl:>11.2f}"
+            f"{label:<50} {acc:>8.3f} {conf:>10.4f} {ppl:>11.2f}"
         )
 
     summary_text = "\n".join(summary_lines)
@@ -357,14 +376,46 @@ def generate_summary(
 #     logger.info("Pipeline complete!")
 #     return eval_results
 
+def construct_results_dir(base_results_dir: str, config: ExperimentConfig) -> str:
+    """
+    Construct a model and layer-specific results directory.
+    
+    Structure: {base_results_dir}/{model_name}/layers_{layer_ids}/
+    Example: outputs/pythia-70M-deduped/layers_2_4/
+    
+    Args:
+        base_results_dir: Base output directory from config
+        config: Experiment configuration
+        
+    Returns:
+        Full path to model/layer-specific results directory
+    """
+    # Extract model name (use transformer_lens_name, fallback to name)
+    model_name = config.model.transformer_lens_name or config.model.name
+    # Clean up model name for filesystem
+    model_name = model_name.replace("/", "_").replace(".", "_")
+    
+    # Get layers as string
+    layers_str = "_".join(str(l) for l in sorted(config.layers.all_layers))
+    
+    # Construct full path
+    results_dir = f"{base_results_dir}/{model_name}/layers_{layers_str}"
+    
+    return results_dir
+
 
 def run_full_pipeline(config: ExperimentConfig):
     """Run the complete experimental pipeline."""
     set_seed(42)
-    ensure_dir(config.output.results_dir)
-
+    
+    # Construct model and layer-specific results directory
+    results_dir = construct_results_dir(config.output.results_dir, config)
+    ensure_dir(results_dir)
+    
     # Save config for reproducibility
-    save_json(config.to_dict(), f"{config.output.results_dir}/config.json")
+    save_json(config.to_dict(), f"{results_dir}/config.json")
+    
+    logger.info(f"Results will be saved to: {results_dir}")
 
     start_time = time.time()
 
@@ -373,17 +424,17 @@ def run_full_pipeline(config: ExperimentConfig):
 
     # Stage 2
     sae_features, contrastive_results = stage_2_sae_and_contrastive(
-        config, cached_acts
+        config, cached_acts, results_dir  # PASS HERE
     )
 
     # Stage 3
     baseline_results_cot, baseline_results_nocot, intervention_results, specs = stage_3_interventions(
-        config, prompt_sets, contrastive_results, model
+        config, prompt_sets, contrastive_results, model, results_dir  # PASS HERE
     )
 
     # Stage 4
     eval_results = stage_4_evaluation(
-        config, baseline_results_cot, intervention_results, model
+        config, baseline_results_cot, intervention_results, model, results_dir  # PASS HERE
     )
 
     # --- NEW: Stage 5 - Generate Visualizations ---
@@ -396,8 +447,13 @@ def run_full_pipeline(config: ExperimentConfig):
         baseline_results=baseline_results_cot,
         intervention_results=intervention_results,
         model=model,
-        output_dir=f"{config.output.results_dir}/visualizations",
+        confidence_baseline=eval_results.get("confidence_baseline"),
+        confidence_intervention=eval_results.get("confidence_intervention"),
+        output_dir=f"{results_dir}/visualizations",
         layers=config.layers.all_layers,
+        generate_accuracy_plots=False,        # Skip accuracy plots
+        generate_fluency_plots=False,         # Skip fluency plots
+        generate_confidence_plots=True,       # Keep confidence plots
     )
 
     end_time = time.time()
@@ -405,8 +461,8 @@ def run_full_pipeline(config: ExperimentConfig):
 
     logger.info(f"Total elapsed time: {elapsed:.1f} seconds ({elapsed/60:.1f} min)")
     logger.info("Pipeline complete!")
+    logger.info(f"All results saved to: {results_dir}")
     return eval_results
-
 
 # ---------------------------------------------------------------------------
 # CLI

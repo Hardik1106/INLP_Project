@@ -14,16 +14,42 @@ from enum import Enum
 from functools import partial
 
 import torch
+import os
 import torch.nn.functional as F
 from tqdm import tqdm
 import transformer_lens as tl
 import time
 
-from src.sae_encoder import SparseAutoencoder, load_sae_from_saelens
+from src.sae_encoder import SparseAutoencoder, load_sae_from_saelens, load_sae_from_cotfaithfulness
 from src.contrastive_analysis import ContrastiveResult, get_top_k_features, get_random_k_features
 from src.data_pipeline import PromptSample
 from src.config import InterventionConfig, SAEConfig
 from src.utils import logger, save_json, ensure_dir
+
+def load_sae_for_interventions(sae_config: SAEConfig, layer: int, device: str = "cpu") -> SparseAutoencoder:
+    """
+    Load SAE for interventions with local checkpoint fallback.
+    Mimics encode_and_cache_all() logic to support local SAEs.
+    """
+    # Try local SAE checkpoint first (same logic as encode_and_cache_all)
+    if (sae_config.local_sae_base_path and 
+        hasattr(sae_config, 'local_sae_path_template')):
+        local_path = sae_config.local_sae_path_template.format(
+            base=sae_config.local_sae_base_path,
+            model="",  # model name if needed
+            layer=layer
+        )
+        if os.path.exists(local_path):
+            logger.info(f"Loading local SAE from: {local_path}")
+            return load_sae_from_cotfaithfulness(local_path, device=device)
+    
+    # Fall back to SAELens
+    return load_sae_from_saelens(
+        release=sae_config.release,
+        sae_id=sae_config.sae_id,
+        layer=layer,
+        device=device,
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -260,11 +286,18 @@ def build_intervention_specs(
 
         for k in intervention_cfg.k_values:
             if k > len(cr.reasoning_features):
-                logger.warning(
-                    f"Layer {layer}: k={k} > {len(cr.reasoning_features)} "
-                    f"reasoning features. Skipping."
-                )
-                continue
+                # logger.warning(
+                #     f"Layer {layer}: k={k} > {len(cr.reasoning_features)} "
+                #     f"reasoning features. Skipping."
+                # )
+                # Cap k to available reasoning features
+                effective_k = min(k, len(cr.reasoning_features))
+                if effective_k < k:
+                    logger.warning(
+                        f"Layer {layer}: requested k={k} > {len(cr.reasoning_features)} "
+                        f"reasoning features. Using k={effective_k} instead."
+                    )
+                k = effective_k
 
             # --- Top-K features ---
             top_k_indices = get_top_k_features(cr, k)
@@ -450,12 +483,34 @@ def run_intervention_experiment(
         for layer, layer_specs in sorted(specs_by_layer.items()):
             logger.info(f"=== Layer {layer}: {len(layer_specs)} specs ===")
 
-            sae = load_sae_from_saelens(
-                release=sae_config.release,
-                sae_id=sae_config.sae_id,
-                layer=layer,
-                device=device,
-            )
+            try:
+                sae = load_sae_for_interventions(
+                    sae_config=sae_config,
+                    layer=layer,
+                    device=device,
+                )
+            except (ValueError, FileNotFoundError, KeyError) as e:
+                msg = str(e)
+                logger.warning(
+                    "Skipping intervention stage because SAE release '%s' could not be loaded. "
+                    "Error: %s\n"
+                    "Baseline outputs are still valid.",
+                    sae_config.release,
+                    msg,
+                )
+                logger.info(
+                    "To enable interventions: (1) use a release available in sae_lens, "
+                    "(2) update sae_lens with upgraded pretrained_saes.yaml, or "
+                    "(3) download SAE weights manually."
+                )
+                return all_results
+            except Exception as e:
+                logger.warning(
+                    "Unexpected error loading SAE for interventions: %s. "
+                    "Skipping intervention stage but keeping baseline outputs.",
+                    str(e),
+                )
+                return all_results
 
             for spec in layer_specs:
                 subdir = f"{output_dir}/{spec.intervention_type.value}/{spec.sampling_strategy.value}"

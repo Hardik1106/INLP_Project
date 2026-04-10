@@ -8,35 +8,42 @@ model:
   device: "cuda:0"
   dtype: "float16"                        # float16 or float32
 
-# model:
-#   name: "google/gemma-2b-it"
-#   transformer_lens_name: "google/gemma-2b-it"
-#   device: "cuda:0"
-#   dtype: "float16"
-
 # --- SAE ---
 sae:
-  # Either a pre-trained SAE release/id from SAELens, or path to local weights
-  release: "pythia-70m-deduped-res-sm"
-  sae_id: "blocks.2.hook_resid_post"                       # If null, auto-resolved per layer
-  expansion_factor: 8                     # SAE hidden dim = expansion_factor * d_model
+  # Either a pre-trained SAE release/id from SAELens, or local path
+  release: null  # Set to null when using local SAEs
+  sae_id: "blocks.2.hook_resid_post"
+  expansion_factor: 8
+  
+  # Local SAE checkpoint support
+  local_sae_base_path: "/ssd_scratch/arnav.sharma/INLP/project/INLP_Project/scripts/local_sae_checkpoints/pythia70m_cot/pythia70m_centered_gsm8k_CoT"  # ← UPDATE THIS
+  local_sae_path_template: "{base}/{model}/layer_{layer}/sae_weights.pt"
+
+  # local_sae_base_path: "/ssd_scratch/arnav.sharma/INLP/project/INLP_Project/scripts/local_sae_checkpoints/pythia2.8b_cot/pythia2.8b_centered_gsm8k_CoT"  # ← UPDATE THIS
+  # local_sae_path_template: "{base}/{model}/layer_{layer}/sae_weights.pt"
+
+  local_sae_base_path: "/ssd_scratch/arnav.sharma/INLP/project/INLP_Project/scripts/local_sae_checkpoints/pythia70m_nocot/pythia70m_centered_gsm8k_NoCoT"  # ← UPDATE THIS
+  local_sae_path_template: "{base}/{model}/layer_{layer}/sae_weights.pt"
+
+  # local_sae_base_path: "/ssd_scratch/arnav.sharma/INLP/project/INLP_Project/scripts/local_sae_checkpoints/pythia2.8b_nocot/pythia2.8b_centered_gsm8k_NoCoT"  # ← UPDATE THIS
+  # local_sae_path_template: "{base}/{model}/layer_{layer}/sae_weights.pt"
 
 # --- Layers to analyze ---
 layers:
   shallow: [2]
-  deep: [3, 4, 5]
+  deep: [4]
   # Which layers to actually run interventions on (subset of shallow + deep)
   # intervention_layers: [2, 12, 14, 16]
-  intervention_layers: [2, 3]
+  intervention_layers: [2, 4]
 
 # --- Data ---
 data:
   gsm8k_split: "test"
   triviaqa_split: "validation"
-  num_samples: 100                        # Number of samples per dataset condition
+  num_samples: 75                        # Number of samples per dataset condition
   max_seq_len: 1024
   cache_dir: "data/activations"
-  use_triviaqa: false                      # Set to false to skip TriviaQA download
+  use_triviaqa: true                      # Set to false to skip TriviaQA download
 
 # --- Prompts ---
 prompts:
@@ -53,7 +60,7 @@ contrastive:
 
 # --- Interventions ---
 interventions:
-  k_values: [10, 50, 100, 200]           # Different K values to sweep
+  k_values: [2, 16, 64, 128]    # Different K values to sweep
   ablation_value: 0.0                     # Value to set ablated features to
   amplification_scales: [1.5, 3.0]  # Multipliers for amplification
   num_random_trials: 2                    # Number of Random-K random seeds

@@ -127,13 +127,21 @@ def load_triviaqa(
     """Load TriviaQA dataset from HuggingFace."""
     print(f"[DATA PIPELINE] Downloading TriviaQA split='{split}'...")
     logger.info(f"Loading TriviaQA split='{split}'...")
-    ds = load_dataset("trivia_qa", "rc.nocontext", split=split)
-    samples = list(ds)
-    if num_samples is not None:
-        samples = samples[:num_samples]
+    ds = load_dataset(
+        "trivia_qa", 
+        "rc.nocontext", 
+        split=split,
+        streaming=True,
+        verification_mode="no_checks"  # ← Add this
+    )
+    # Now take only the first num_samples without downloading the whole dataset
+    samples = []
+    for i, sample in enumerate(ds):
+        if num_samples is not None and i >= num_samples:
+            break
+        samples.append(sample)
     logger.info(f"  Loaded {len(samples)} TriviaQA samples")
     return samples
-
 
 def format_triviaqa(
     sample: Dict,

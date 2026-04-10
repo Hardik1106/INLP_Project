@@ -1,0 +1,101 @@
+# Central experiment configuration
+# ================================
+
+# --- Model ---
+model:
+  name: "EleutherAI/pythia-70M-deduped"        # HuggingFace model id
+  transformer_lens_name: "pythia-70M-deduped"   # TransformerLens model name
+  device: "cuda:0"
+  dtype: "float16"                        # float16 or float32
+
+# --- SAE ---
+sae:
+  # Either a pre-trained SAE release/id from SAELens, or local path
+  release: null  # Set to null when using local SAEs
+  sae_id: "blocks.2.hook_resid_post"
+  expansion_factor: 8
+  
+  # Local SAE checkpoint support
+  local_sae_base_path: "/ssd_scratch/arnav.sharma/INLP/project/INLP_Project/scripts/local_sae_checkpoints/pythia70m_cot/pythia70m_centered_gsm8k_CoT"  # ← UPDATE THIS
+  local_sae_path_template: "{base}/{model}/layer_{layer}/sae_weights.pt"
+
+  # local_sae_base_path: "/ssd_scratch/arnav.sharma/INLP/project/INLP_Project/scripts/local_sae_checkpoints/pythia2.8b_cot/pythia2.8b_centered_gsm8k_CoT"  # ← UPDATE THIS
+  # local_sae_path_template: "{base}/{model}/layer_{layer}/sae_weights.pt"
+
+  # local_sae_base_path: "/ssd_scratch/arnav.sharma/INLP/project/INLP_Project/scripts/local_sae_checkpoints/pythia70m_nocot/pythia70m_centered_gsm8k_NoCoT"  # ← UPDATE THIS
+  # local_sae_path_template: "{base}/{model}/layer_{layer}/sae_weights.pt"
+
+  # local_sae_base_path: "/ssd_scratch/arnav.sharma/INLP/project/INLP_Project/scripts/local_sae_checkpoints/pythia2.8b_nocot/pythia2.8b_centered_gsm8k_NoCoT"  # ← UPDATE THIS
+  # local_sae_path_template: "{base}/{model}/layer_{layer}/sae_weights.pt"
+
+# --- Layers to analyze ---
+layers:
+  shallow: [2]
+  deep: [4]
+  # Which layers to actually run interventions on (subset of shallow + deep)
+  # intervention_layers: [2, 12, 14, 16]
+  intervention_layers: [2, 4]
+
+# --- Data ---
+data:
+  gsm8k_split: "test"
+  triviaqa_split: "validation"
+  num_samples: 100                        # Number of samples per dataset condition
+  max_seq_len: 1024
+  cache_dir: "data/activations"
+  use_triviaqa: true                      # Set to false to skip TriviaQA download
+
+# --- Prompts ---
+prompts:
+  cot_prefix: "Let's solve this step by step.\n"
+  no_cot_prefix: "Answer directly.\n"
+  cot_suffix: "\nTherefore, the answer is"
+  no_cot_suffix: "\nThe answer is"
+
+# --- Contrastive Analysis ---
+contrastive:
+  activation_diff_threshold: 0.5          # Min abs diff to be a candidate feature
+  top_percentile: 95                      # Top percentile for intra-dataset contrast
+  intersection_method: "strict"           # "strict" (both contrasts) or "union"
+
+# --- Interventions ---
+interventions:
+  k_values: [2, 16, 64, 128]    # Different K values to sweep
+  ablation_value: 0.0                     # Value to set ablated features to
+  amplification_scales: [1.5, 3.0]  # Multipliers for amplification
+  num_random_trials: 2                    # Number of Random-K random seeds
+  max_new_tokens: 512                     # Tokens to generate per sample
+
+# --- Evaluation ---
+evaluation:
+  # Accuracy
+  answer_regex: "#### (\\-?[\\d,]+\\.?\\d*)"
+  
+  # Fluency
+  perplexity_model: null                  # null = use same base model
+  perplexity_stride: 256
+
+# --- Cross-Model Sweep ---
+sweep:
+  models:
+    - name: "EleutherAI/pythia-70m"
+      tl_name: "pythia-70m"
+      sae_release: "pythia-70m-res-jb"
+      layers: [1, 2, 3]
+    - name: "EleutherAI/pythia-2.8b"
+      tl_name: "pythia-2.8b"
+      sae_release: "pythia-2.8b-res-jb"
+      layers: [2, 12, 14, 16]
+
+# --- Output ---
+output:
+  results_dir: "outputs_70m_cot"
+  save_activations: true
+  save_generated_text: true
+  log_level: "INFO"
+
+# --- Performance ---
+performance:
+  activation_cache_batch_size: 1024    # For cache_activations_for_dataset
+  sae_encode_batch_size: 2560         # For encode_and_cache_all
+  intervention_batch_size: 1024  
