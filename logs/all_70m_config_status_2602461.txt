@@ -1,5 +1,0 @@
-SUCCESS: configs/70m_deep_layers.yaml
-SUCCESS: configs/70m_triviaqa_contrast.yaml
-SUCCESS: configs/70m_cross_layer_mapping.yaml
-SUCCESS: configs/70m_causal_necessity_final.yaml
-SUCCESS: configs/70m_pretrained_reference.yaml

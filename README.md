@@ -45,3 +45,8 @@ python scripts/run_pipeline.py --config configs/default.yaml
 3. **Targeted Causal Interventions** — Top-K and Random-K ablation/amplification of candidate reasoning features
 4. **Three-Axis Evaluation** — Answer accuracy, reasoning coherence, language fluency
 5. **Cross-Model Generalization** — Pythia, Llama, Gemma architectures
+
+
+The code for training SAEs is adapted from `thecotFaithfulness` repo:
+https://github.com/sekirodie1000/cotFaithfulness,  
+based on the works of [Chen et al 2025](https://arxiv.org/abs/2507.22928).
